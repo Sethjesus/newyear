@@ -51,75 +51,86 @@
             animation: sparkleMove 8s infinite linear;
         }
         
-        /* ====== 音樂控制 ====== */
+        /* ====== 音樂控制（修改後：縮小且半透明） ====== */
         .music-control {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 15px; /* 調整位置到左上角 */
+            right: 15px;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 10px 15px;
-            border-radius: 30px;
-            border: 3px solid #D4AF37;
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+            background: rgba(212, 175, 55, 0.25); /* 半透明金色背景 */
+            padding: 8px 12px;
+            border-radius: 25px;
+            border: 2px solid rgba(212, 175, 55, 0.5); /* 半透明邊框 */
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             animation: bounceIn 1s ease-out;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
+            transform: scale(0.85); /* 縮小整體尺寸 */
+            transition: all 0.3s ease;
         }
-        
+
+        /* 滑鼠懸停時稍微放大 */
+        .music-control:hover {
+            background: rgba(212, 175, 55, 0.35);
+            border: 2px solid rgba(212, 175, 55, 0.7);
+            transform: scale(0.9);
+        }
+
         .music-btn {
-            background: linear-gradient(135deg, #D4AF37, #FFD700);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(255, 215, 0, 0.9));
             border: none;
-            width: 48px;
-            height: 48px;
+            width: 36px; /* 縮小按鈕尺寸 */
+            height: 36px;
             border-radius: 50%;
             color: white;
-            font-size: 1.3rem;
+            font-size: 1rem; /* 縮小圖標 */
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
-        
+
         .music-btn:hover {
             transform: scale(1.1) rotate(15deg);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 1), rgba(255, 215, 0, 1));
         }
-        
+
         .volume-control {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
-        
+
         .volume-slider {
-            width: 100px;
-            height: 6px;
+            width: 70px; /* 縮小音量滑桿 */
+            height: 5px;
             -webkit-appearance: none;
-            background: linear-gradient(to right, #8B4513, #D4AF37);
+            background: linear-gradient(to right, rgba(139, 69, 19, 0.7), rgba(212, 175, 55, 0.7));
             border-radius: 3px;
             outline: none;
         }
-        
+
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: #8B4513;
-            border: 3px solid #FFD700;
+            background: rgba(139, 69, 19, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.8);
             cursor: pointer;
         }
-        
+
         .music-status {
-            font-size: 0.9rem;
-            color: #8B4513;
+            font-size: 0.8rem; /* 縮小字體 */
+            color: rgba(139, 69, 19, 0.9);
             font-weight: 600;
             animation: textGlow 2s infinite alternate;
+            opacity: 0.9;
         }
         
         /* ====== 主要內容區 ====== */
@@ -511,12 +522,6 @@
         
         /* 響應式設計 */
         @media (max-width: 768px) {
-            .music-control {
-                top: 15px;
-                right: 15px;
-                padding: 8px 12px;
-            }
-            
             .chinese-name {
                 font-size: 2.2rem;
             }
@@ -551,12 +556,17 @@
             }
             
             .music-control {
-                flex-direction: column;
-                gap: 10px;
+                transform: scale(0.75);
+                top: 10px;
+                right: 10px;
+            }
+            
+            .music-control:hover {
+                transform: scale(0.8);
             }
             
             .volume-slider {
-                width: 80px;
+                width: 60px;
             }
         }
     </style>
@@ -565,12 +575,10 @@
     <!-- 背景動畫 -->
     <div class="animation-bg" id="animationBg"></div>
     
-    <!-- 音樂控制 -->
+    <!-- 音樂控制（簡化版，只有音量控制） -->
     <div class="music-control">
-        <button class="music-btn" id="musicToggle">
-            <i class="fas fa-volume-up"></i>
-        </button>
         <div class="volume-control">
+            <i class="fas fa-volume-up" style="color: rgba(139, 69, 19, 0.9); font-size: 1rem;"></i>
             <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.7">
         </div>
         <div class="music-status" id="musicStatus">🎵 播放中</div>
@@ -697,21 +705,20 @@
             }
         }
         
-        // === 音樂系統 - 確保預設有聲音 ===
+        // === 音樂系統 - 強制播放且無法關閉 ===
         class MusicSystem {
             constructor() {
                 this.audio = document.getElementById('bgMusic');
-                this.toggleBtn = document.getElementById('musicToggle');
                 this.volumeSlider = document.getElementById('volumeSlider');
                 this.musicStatus = document.getElementById('musicStatus');
-                this.isPlaying = false;
+                this.isPlaying = true; // 預設為播放狀態
                 this.volume = 0.7;
                 
                 this.init();
             }
             
             async init() {
-                console.log('🎵 初始化音樂系統...');
+                console.log('🎵 初始化音樂系統（強制播放模式）...');
                 
                 // 設定音樂參數
                 this.audio.volume = this.volume;
@@ -729,12 +736,7 @@
             }
             
             setupEventListeners() {
-                // 播放/暫停控制
-                this.toggleBtn.addEventListener('click', () => {
-                    this.togglePlay();
-                });
-                
-                // 音量控制
+                // 音量控制（保留）
                 this.volumeSlider.addEventListener('input', (e) => {
                     this.volume = parseFloat(e.target.value);
                     this.audio.volume = this.volume;
@@ -744,15 +746,17 @@
                 // 音樂事件監聽
                 this.audio.addEventListener('play', () => {
                     this.isPlaying = true;
-                    this.toggleBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
                     this.musicStatus.textContent = '🎵 播放中';
                     console.log('✅ 音樂開始播放');
                 });
                 
                 this.audio.addEventListener('pause', () => {
-                    this.isPlaying = false;
-                    this.toggleBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-                    this.musicStatus.textContent = '⏸️ 已暫停';
+                    // 如果音樂被暫停，自動重新播放
+                    setTimeout(() => {
+                        if (!this.isPlaying) {
+                            this.audio.play();
+                        }
+                    }, 100);
                 });
                 
                 this.audio.addEventListener('canplaythrough', () => {
@@ -778,7 +782,7 @@
             }
             
             async forceAutoplay() {
-                console.log('🚀 強制自動播放...');
+                console.log('🚀 強制自動播放（無法關閉模式）...');
                 
                 try {
                     // 立即播放
@@ -788,17 +792,19 @@
                         await playPromise;
                         console.log('✅ 自動播放成功');
                         this.isPlaying = true;
+                        this.musicStatus.textContent = '🎵 播放中';
                     }
                     
                 } catch (error) {
                     console.log('⚠️ 自動播放被阻止，等待互動');
-                    this.musicStatus.textContent = '👆 點擊啟用';
+                    this.musicStatus.textContent = '👆 點擊啟用音樂';
                     
                     // 用戶互動後播放
                     const playOnInteraction = async () => {
                         try {
                             await this.audio.play();
                             console.log('✅ 互動後播放成功');
+                            this.musicStatus.textContent = '🎵 播放中';
                         } catch (e) {
                             console.log('互動後播放失敗:', e);
                         }
@@ -808,16 +814,6 @@
                     document.addEventListener('click', playOnInteraction, { once: true });
                     document.addEventListener('touchstart', playOnInteraction, { once: true });
                     document.addEventListener('keydown', playOnInteraction, { once: true });
-                }
-            }
-            
-            togglePlay() {
-                if (this.isPlaying) {
-                    this.audio.pause();
-                } else {
-                    this.audio.play().catch(e => {
-                        console.log('播放失敗:', e);
-                    });
                 }
             }
             
@@ -874,7 +870,8 @@
                 title: `${theme.icon} 第${i+1}籤 - ${keywords[0]}`,
                 poem: `${keywords[0]}運氣高，${keywords[1]}福氣豪。\n${keywords[2]}樂無窮，吉星高照喜眉梢。`,
                 meaning: `此乃上上籤！主${keywords.join('、')}，事事順心如意，好運連連不斷，福氣滿門常駐。`,
-                number: i + 1
+                number: i + 1,
+                icon: theme.icon
             };
         });
         
@@ -1022,7 +1019,7 @@
                         </div>
                         <div style="font-size:1rem; line-height:1.8; background:rgba(255,255,255,0.8); padding:20px; border-radius:15px;">
                             🎵 馬年好回音<br>
-                            📜 求籤很運到<br>
+                            📜 求籤好運到<br>
                             🐎 馬年吉祥精彩<br>
                             ✨ ESG行動大吉
                         </div>
