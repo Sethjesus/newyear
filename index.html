@@ -38,99 +38,110 @@
             padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         }
         
-        /* ====== 音樂控制 - 完整版回歸 ====== */
+        /* ====== 音樂控制 - 小型化版本 ====== */
         .music-control {
             position: fixed;
-            top: 15px;
-            right: 15px;
+            top: 10px;
+            right: 10px;
             z-index: 1000;
-            background: rgba(212, 175, 55, 0.95);
-            padding: 10px 15px;
-            border-radius: 50px;
+            background: rgba(212, 175, 55, 0.9);
+            padding: 6px 10px;
+            border-radius: 25px;
             border: 2px solid rgba(139, 69, 19, 0.8);
-            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             animation: bounceIn 1s ease-out;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
             touch-action: manipulation;
+            max-width: 160px;
         }
 
         .music-control:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.6);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
         }
 
         .music-btn {
             background: linear-gradient(135deg, #D4AF37, #FFD700);
             border: none;
-            width: 44px;
-            height: 44px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             color: white;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 3px 8px rgba(212, 175, 55, 0.4);
             touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
+            flex-shrink: 0;
         }
 
         .music-btn:active {
             transform: scale(0.95);
-            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
         }
 
         .volume-control {
             display: flex;
             align-items: center;
-            gap: 8px;
-            min-width: 100px;
+            gap: 5px;
+            flex: 1;
+            min-width: 0;
         }
 
         .volume-slider {
-            width: 80px;
-            height: 6px;
+            width: 50px;
+            height: 4px;
             -webkit-appearance: none;
             background: linear-gradient(to right, rgba(139, 69, 19, 0.8), rgba(212, 175, 55, 0.8));
-            border-radius: 3px;
+            border-radius: 2px;
             outline: none;
             transition: all 0.3s ease;
+            flex: 1;
+            min-width: 40px;
         }
 
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background: #8B4513;
-            border: 3px solid #FFD700;
+            border: 2px solid #FFD700;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .volume-slider::-webkit-slider-thumb:active {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
 
         .music-status {
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             color: #5C4033;
-            font-weight: 700;
+            font-weight: 600;
             white-space: nowrap;
-            min-width: 60px;
+            min-width: 40px;
             text-align: center;
+            flex-shrink: 0;
         }
         
-        /* ====== 主要內容區 ====== */
+        .volume-icon {
+            color: #8B4513;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        /* ====== 主要內容區 - 增加上邊距避免被遮擋 ====== */
         .main-content {
-            padding: 90px 15px 40px;
+            padding: 70px 15px 40px;
             max-width: 100%;
             margin: 0 auto;
             width: 100%;
@@ -140,7 +151,7 @@
         /* 公司標題 */
         .company-header {
             text-align: center;
-            padding: 25px 0;
+            padding: 20px 0;
             animation: slideInDown 0.8s ease-out;
             width: 100%;
         }
@@ -148,7 +159,7 @@
         .chinese-name {
             font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             background: linear-gradient(45deg, #8B4513, #D2691E, #D4AF37);
             -webkit-background-clip: text;
             background-clip: text;
@@ -164,15 +175,16 @@
             display: inline-block;
             background: linear-gradient(135deg, #8B4513, #D2691E, #D4AF37);
             color: #FFF5E1;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: clamp(1rem, 3.5vw, 1.3rem);
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
             font-weight: 700;
             border: 3px solid #FFD700;
             box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
             animation: badgeFloat 3s infinite ease-in-out, badgeGlow 2s infinite alternate;
             word-wrap: break-word;
             margin: 5px;
+            max-width: 90%;
         }
         
         /* ====== 馬年圖片展示 ====== */
@@ -476,44 +488,78 @@
         /* ====== 響應式設計 ====== */
         @media (max-width: 768px) {
             .music-control {
-                top: 10px;
-                right: 10px;
-                padding: 8px 12px;
-                gap: 10px;
+                top: 8px;
+                right: 8px;
+                padding: 5px 8px;
+                gap: 6px;
+                max-width: 140px;
             }
             
             .music-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
             }
             
             .volume-slider {
-                width: 70px;
+                width: 40px;
+                height: 3px;
+            }
+            
+            .volume-slider::-webkit-slider-thumb {
+                width: 14px;
+                height: 14px;
+            }
+            
+            .music-status {
+                font-size: 0.65rem;
+                min-width: 35px;
+            }
+            
+            .volume-icon {
+                font-size: 0.7rem;
             }
             
             .main-content {
-                padding: 80px 10px 30px;
+                padding: 60px 10px 30px;
             }
         }
         
         @media (max-width: 480px) {
             .music-control {
-                flex-direction: column;
-                padding: 8px 10px;
-                gap: 8px;
+                top: 5px;
+                right: 5px;
+                padding: 4px 6px;
+                gap: 4px;
+                max-width: 120px;
+            }
+            
+            .music-btn {
+                width: 26px;
+                height: 26px;
+                font-size: 0.75rem;
             }
             
             .volume-slider {
-                width: 60px;
+                width: 35px;
+            }
+            
+            .volume-slider::-webkit-slider-thumb {
+                width: 12px;
+                height: 12px;
             }
             
             .music-status {
-                font-size: 0.8rem;
+                font-size: 0.6rem;
+                min-width: 30px;
+            }
+            
+            .volume-icon {
+                font-size: 0.65rem;
             }
             
             .main-content {
-                padding: 70px 8px 25px;
+                padding: 55px 8px 25px;
             }
         }
         
@@ -521,32 +567,55 @@
             .music-control {
                 top: 5px;
                 right: 5px;
-                padding: 6px 8px;
+                padding: 3px 5px;
+                max-width: 110px;
             }
             
             .music-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
+                width: 24px;
+                height: 24px;
+                font-size: 0.7rem;
             }
             
             .volume-slider {
-                width: 50px;
+                width: 30px;
+            }
+            
+            .music-status {
+                font-size: 0.55rem;
+                min-width: 25px;
+            }
+            
+            .main-content {
+                padding: 50px 5px 20px;
+            }
+        }
+        
+        /* 橫屏模式 */
+        @media (orientation: landscape) and (max-height: 600px) {
+            .music-control {
+                top: 5px;
+                right: 5px;
+                padding: 4px 8px;
+            }
+            
+            .main-content {
+                padding: 50px 10px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 音樂控制 - 完整功能回歸 -->
+    <!-- 音樂控制 - 小型化版本 -->
     <div class="music-control" id="musicControl">
         <button class="music-btn" id="musicToggle">
             <i class="fas fa-play" id="musicIcon"></i>
         </button>
         <div class="volume-control">
-            <i class="fas fa-volume-up" style="color: #8B4513; font-size: 1rem;"></i>
+            <i class="fas fa-volume-up volume-icon"></i>
             <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
         </div>
-        <div class="music-status" id="musicStatus">點擊播放</div>
+        <div class="music-status" id="musicStatus">播放</div>
     </div>
     
     <!-- 主要內容 -->
@@ -554,7 +623,7 @@
         <!-- 公司標題 -->
         <div class="company-header">
             <h1 class="chinese-name">UDM ESG景煬科技祝您<br>馬年行大運</h1>
-            <div class="year-badge">2026 丙午馬年 下拉看今年運勢🎵</div>
+            <div class="year-badge">2026 丙午馬年 🎵</div>
         </div>
         
         <!-- 馬年圖片展示 -->
@@ -654,14 +723,14 @@
         </div>
     </div>
     
-    <!-- 音訊元素 - 這是最重要的部分 -->
+    <!-- 音訊元素 -->
     <audio id="bgMusic" loop preload="auto" playsinline>
         <source src="https://raw.githubusercontent.com/Sethjesus/newyear/main/horse.mp3" type="audio/mpeg">
         <source src="https://assets.mixkit.co/music/preview/mixkit-happy-new-year-2026-1256.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // === 音樂系統 - 完整控制功能 ===
+        // === 音樂系統 ===
         class MusicSystem {
             constructor() {
                 this.audio = document.getElementById('bgMusic');
@@ -696,9 +765,7 @@
                 this.volumeSlider.addEventListener('input', (e) => {
                     this.volume = parseFloat(e.target.value);
                     this.audio.volume = this.volume;
-                    this.musicStatus.textContent = this.isPlaying ? 
-                        `音量: ${Math.round(this.volume * 100)}%` : 
-                        '點擊播放';
+                    this.updateMusicStatus();
                 });
                 
                 // 音樂事件監聽
@@ -723,35 +790,20 @@
                         this.audio.pause();
                     }
                 });
-                
-                // 用戶點擊頁面時嘗試播放（解決iOS限制）
-                const tryPlayOnInteraction = () => {
-                    if (this.audio.paused) {
-                        this.audio.play().catch(e => {
-                            console.log('需要用戶明確點擊播放按鈕');
-                        });
-                    }
-                };
-                
-                document.addEventListener('click', tryPlayOnInteraction);
-                document.addEventListener('touchstart', tryPlayOnInteraction);
             }
             
             async loadMusic() {
                 try {
-                    // 嘗試載入第一個音源
                     this.audio.load();
                     
-                    // 檢查音樂是否可播放
                     this.audio.addEventListener('canplaythrough', () => {
                         console.log('✅ 音樂可以播放');
-                        this.musicStatus.textContent = '點擊播放';
+                        this.musicStatus.textContent = '播放';
                     });
                     
-                    // 錯誤處理
                     this.audio.addEventListener('error', (e) => {
                         console.log('音樂載入錯誤:', e);
-                        this.musicStatus.textContent = '音樂載入失敗';
+                        this.musicStatus.textContent = '錯誤';
                         this.musicIcon.className = 'fas fa-exclamation-triangle';
                     });
                     
@@ -779,33 +831,31 @@
                         })
                         .catch(error => {
                             console.log('播放失敗:', error);
-                            this.musicStatus.textContent = '點擊播放音樂';
+                            this.musicStatus.textContent = '點擊播放';
                             this.musicIcon.className = 'fas fa-play';
-                            
-                            // 顯示提示
-                            if (error.name === 'NotAllowedError') {
-                                this.musicStatus.textContent = '請點擊播放';
-                            }
                         });
+                }
+            }
+            
+            updateMusicStatus() {
+                if (this.isPlaying) {
+                    this.musicStatus.textContent = `${Math.round(this.volume * 100)}%`;
                 }
             }
             
             updateUI() {
                 if (this.isPlaying) {
                     this.musicIcon.className = 'fas fa-pause';
-                    this.musicStatus.textContent = `音量: ${Math.round(this.volume * 100)}%`;
-                    this.musicToggle.style.background = 'linear-gradient(135deg, #8B4513, #D2691E)';
+                    this.updateMusicStatus();
                 } else {
                     this.musicIcon.className = 'fas fa-play';
-                    this.musicStatus.textContent = '點擊播放';
-                    this.musicToggle.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
+                    this.musicStatus.textContent = '播放';
                 }
             }
             
             playCelebrationSound() {
                 if (!this.isPlaying) return;
                 
-                // 創建新的音頻元素播放慶祝音效
                 const sound = new Audio();
                 sound.src = 'https://raw.githubusercontent.com/Sethjesus/newyear/main/horse.mp3';
                 sound.volume = this.volume * 0.3;
@@ -817,14 +867,14 @@
                 
                 const colors = ['#FFD700', '#D4AF37', '#8B4513', '#D2691E'];
                 
-                for (let i = 0; i < 25; i++) {
+                for (let i = 0; i < 15; i++) {
                     setTimeout(() => {
                         const confetti = document.createElement('div');
                         confetti.className = 'confetti';
                         confetti.style.left = `${Math.random() * 100}%`;
                         confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                        confetti.style.width = '8px';
-                        confetti.style.height = '8px';
+                        confetti.style.width = '6px';
+                        confetti.style.height = '6px';
                         confetti.style.borderRadius = '50%';
                         confetti.style.position = 'fixed';
                         confetti.style.zIndex = '1001';
@@ -838,16 +888,6 @@
                         }, 2000);
                     }, i * 50);
                 }
-                
-                // 添加confetti動畫
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes confettiRain {
-                        0% { transform: translateY(-60px) rotate(0deg); opacity: 1; }
-                        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-                    }
-                `;
-                document.head.appendChild(style);
             }
         }
         
@@ -901,23 +941,19 @@
                 musicSystem.playCelebrationSound();
             }
             
-            // 搖籤動畫
             fortuneTube.style.animation = 'shakeTube 0.6s ease-in-out';
             
-            // 籤詩跳動動畫
             const sticks = document.querySelectorAll('.fortune-stick');
             sticks.forEach((stick, index) => {
                 stick.style.animation = 'jumpStick 0.5s ease-in-out';
                 stick.style.animationDelay = `${index * 0.08}s`;
             });
             
-            // 隨機選擇籤詩
             setTimeout(() => {
                 const randomIndex = Math.floor(Math.random() * fortunes.length);
                 const selectedFortune = fortunes[randomIndex];
                 displayFortune(selectedFortune);
                 
-                // 恢復動畫
                 setTimeout(() => {
                     fortuneTube.style.animation = 'tubeFloat 5s infinite ease-in-out';
                     sticks.forEach(stick => {
@@ -985,17 +1021,17 @@
             setTimeout(() => {
                 fortuneResult.innerHTML = `
                     <div style="text-align:center; color:#8B4513; animation: fadeIn 1s ease-out">
-                        <div style="display:flex; align-items:center; justify-content:center; gap:15px; margin-bottom:15px; flex-wrap: wrap;">
-                            <i class="fas fa-horse" style="font-size:2rem; animation: badgeFloat 3s infinite ease-in-out;"></i>
-                            <i class="fas fa-star" style="font-size:2rem; animation: spin 2s infinite linear;"></i>
-                            <i class="fas fa-music" style="font-size:2rem; animation: badgeFloat 3s infinite ease-in-out reverse;"></i>
+                        <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:15px; flex-wrap: wrap;">
+                            <i class="fas fa-horse" style="font-size:1.8rem;"></i>
+                            <i class="fas fa-star" style="font-size:1.8rem; animation: spin 2s infinite linear;"></i>
+                            <i class="fas fa-music" style="font-size:1.8rem;"></i>
                         </div>
-                        <div style="font-size:1.1rem; margin-bottom:15px; font-weight:bold; word-wrap: break-word;">
+                        <div style="font-size:1.1rem; margin-bottom:15px; font-weight:bold;">
                             🎊 歡迎使用AI求籤系統 🎊
                         </div>
-                        <div style="font-size:0.9rem; line-height:1.6; background:rgba(255,255,255,0.8); padding:15px; border-radius:12px; word-wrap: break-word;">
-                            🎵 聽天籟得AI<br>
-                            📜 求籤大吉<br>
+                        <div style="font-size:0.9rem; line-height:1.6; background:rgba(255,255,255,0.8); padding:12px; border-radius:10px;">
+                            🎵 點擊右上角播放音樂<br>
+                            📜 求籤獲得64首上上籤<br>
                             🐎 馬年吉祥精彩<br>
                             ✨ ESG行動大吉
                         </div>
@@ -1003,11 +1039,6 @@
                 `;
             }, 1000);
         });
-        
-        // 處理iOS網頁APP模式
-        if (window.navigator.standalone) {
-            document.body.classList.add('standalone');
-        }
     </script>
 </body>
 </html>
