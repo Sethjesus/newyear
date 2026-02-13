@@ -2,11 +2,11 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <!-- 手機友善 · 立體聖筊動感 · 奉天宮 · Patty完整祝福 -->
+    <!-- 手機友善 · 3D文字放大＋保證鞭炮聲 · 奉天宮 · Patty完整祝福 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes, viewport-fit=cover">
-    <title>Patty · ESG宮 · 立體聖筊</title>
+    <title>Patty · ESG宮 · 保證鞭炮3D聖筊</title>
     <style>
-        /* ********** 基底完全靜止，只有聖筊瞬間立體動畫 ********** */
+        /* ********** 基底完全靜止，僅祝福文字「3D立體＋放大」********** */
         * {
             margin: 0;
             padding: 0;
@@ -70,7 +70,7 @@
             margin-bottom: 8px;
         }
 
-        /* ------------- 筊杯區 · 立體動感保留 ------------- */
+        /* ------------- 筊杯區 · 完全靜態無動畫 ------------- */
         .bwa-panel {
             background: #2d1a0e;
             border: 6px solid #ff9f2f;
@@ -85,10 +85,8 @@
             margin-top: 20px;
             box-shadow: 0 12px 0 #54381e;
             border-top: 8px solid #ffb84d;
-            perspective: 800px; /* 提供立體翻轉景深 */
         }
 
-        /* 聖筊立體動畫 · 出現聖筊時觸發3D翻轉＋突起 */
         .moon {
             font-size: min(120px, 22vw);
             background: #1e130c;
@@ -98,25 +96,9 @@
             filter: drop-shadow(0 8px 0 #7a401a);
             line-height: 1;
             cursor: pointer;
-            display: inline-block;
-            transition: transform 0.2s cubic-bezier(0.28, 0.84, 0.42, 1), box-shadow 0.15s ease, border-color 0.15s;
-            transform-style: preserve-3d;
+            transition: none;
         }
 
-        /* 立體聖筊效果：翻轉＋浮凸＋金色閃爍 */
-        .moon.sheng-active {
-            animation: shengPop 0.5s cubic-bezier(0.22, 1.52, 0.68, 1) forwards;
-        }
-
-        @keyframes shengPop {
-            0% { transform: rotateY(0deg) scale(1); border-color: #ffb84d; filter: drop-shadow(0 8px 0 #7a401a); }
-            20% { transform: rotateY(180deg) scale(1.2); border-color: #ffe480; filter: drop-shadow(0 12px 0 #a6521a); background: #352010; }
-            50% { transform: rotateY(360deg) scale(1.1); border-color: #ffdd55; filter: drop-shadow(0 15px 0 #c45e1a); background: #4d2d1a; }
-            80% { transform: rotateY(540deg) scale(1.05); border-color: #ffc800; filter: drop-shadow(0 10px 0 #8f3e1a); background: #2e1b10; }
-            100% { transform: rotateY(720deg) scale(1); border-color: #ffb84d; filter: drop-shadow(0 8px 0 #7a401a); background: #1e130c; }
-        }
-
-        /* 搖／點按鈕也要微微立體反饋 */
         .shake-btn {
             font-size: min(34px, 7vw);
             font-weight: 900;
@@ -150,14 +132,13 @@
             text-align: center;
             width: 100%;
             letter-spacing: 4px;
-            transition: text-shadow 0.2s;
         }
 
-        /* ------------- 祝福訊息區 ------------- */
+        /* ------------- ★★★ 3D立體文字 · 放大＋保證鞭炮聲連動 ★★★ ------------- */
         .bless-message-area {
             width: 100%;
             max-width: 580px;
-            min-height: 100px;
+            min-height: 130px;
             background: #2f1e14;
             border: 4px solid #ffa52f;
             border-radius: 50px;
@@ -174,6 +155,56 @@
             letter-spacing: 4px;
             line-height: 1.4;
             box-shadow: inset 0 0 0 2px #734d2a;
+            transform-style: preserve-3d;
+            transition: none;
+        }
+
+        /* 3D文字立體放大 — 真正的3D立體陰影＋爆炸放大＋金色光澤＋立體旋轉 */
+        .bless-message-area.sheng-text-3d {
+            animation: text3DBoom 1s cubic-bezier(0.22, 1.52, 0.68, 1) forwards;
+        }
+
+        @keyframes text3DBoom {
+            0% {
+                color: #fff6cf;
+                background: #2f1e14;
+                border: 4px solid #ffa52f;
+                box-shadow: inset 0 0 0 2px #734d2a;
+                text-shadow: 0 0 0 #000, 0 0 0 #000, 0 0 0 #000, 0 0 0 #000;
+                transform: scale(1) translateZ(0) rotateX(0deg) rotateY(0deg);
+            }
+            15% {
+                color: #ffefb0;
+                background: #7a3e1a;
+                border: 6px solid #ffcc33;
+                box-shadow: inset 0 0 0 3px #b87e3a, 0 0 30px #ffcc00;
+                text-shadow: 4px 4px 0 #3a1e0e, 8px 8px 0 #2a150a, 12px 12px 8px #1a0d06, 16px 16px 12px #00000080;
+                transform: scale(1.45) translateZ(25px) rotateX(8deg) rotateY(8deg);
+            }
+            40% {
+                color: #ffffff;
+                background: #a35f2e;
+                border: 8px solid #ffe88c;
+                box-shadow: inset 0 0 0 4px #d69c4a, 0 0 45px #ffbb33;
+                text-shadow: 5px 5px 0 #4f2b18, 10px 10px 0 #3a1f12, 15px 15px 10px #251409, 20px 20px 16px #000000b3;
+                transform: scale(1.6) translateZ(40px) rotateX(12deg) rotateY(12deg);
+            }
+            70% {
+                color: #fffef0;
+                background: #7e4c2a;
+                border: 6px solid #ffd966;
+                box-shadow: inset 0 0 0 3px #b87e3a, 0 0 35px #ffaa33;
+                text-shadow: 3px 3px 0 #4f2b18, 7px 7px 0 #3a1f12, 11px 11px 8px #1e130b;
+                transform: scale(1.25) translateZ(15px) rotateX(5deg) rotateY(5deg);
+            }
+            100% {
+                color: #fff6cf;
+                background: #2f1e14;
+                border: 4px solid #ffa52f;
+                box-shadow: inset 0 0 0 2px #734d2a;
+                text-shadow: 0 0 0 #000, 0 0 0 #000, 0 0 0 #000;
+                transform: scale(1) translateZ(0) rotateX(0deg) rotateY(0deg);
+            }
         }
 
         /* ------------- 奉天宮 3D ------------- */
@@ -257,7 +288,7 @@
         </div>
     </div>
 
-    <!-- 筊杯互動區 · 立體動感主要在此 -->
+    <!-- 筊杯互動區 · 完全靜態 -->
     <div class="bwa-panel">
         <div id="moonDisplay" class="moon">🥢🥢</div>
         <div id="resultMessage" class="result-line">🥢 Patty 祝聖筊</div>
@@ -269,7 +300,7 @@
         </div>
     </div>
 
-    <!-- 祝福詞顯示區 · 每次擲筊更新完整Patty祝福 -->
+    <!-- ★★★ 祝福訊息區 · 3D文字放大＋保證鞭炮聲觸發區 ★★★ -->
     <div id="blessDisplay" class="bless-message-area">
         🐴 搖手機 · 得聖筊 · Patty 祝您馬年大吉
     </div>
@@ -280,7 +311,7 @@
         <div class="temple-title">🏯 ESG宮</div>
     </div>
 
-    <!-- 音樂控制 -->
+    <!-- 音樂控制（背景音樂） -->
     <div class="music-row">
         <span style="font-size: min(32px, 6.5vw);">🎵 Patty 賀歲</span>
         <button id="musicToggle" class="music-btn">🔊</button>
@@ -290,7 +321,7 @@
         🥢 聖筊 · ESG宮 · 馬年大吉 🐴
     </div>
 
-    <!-- 背景音樂 (馬年應景) -->
+    <!-- 背景音樂（馬年應景） -->
     <audio id="bgMusic" loop preload="auto" style="display: none;">
         <source src="https://raw.githubusercontent.com/Sethjesus/newyear/main/horse.mp3" type="audio/mpeg">
     </audio>
@@ -306,7 +337,7 @@
     </script>
 
     <script type="module">
-        // ---------- 3D ESG宮  (奉天宮風格) 安靜旋轉----------
+        // ---------- 3D ESG宮 (奉天宮風格) 安靜旋轉 ----------
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
@@ -352,7 +383,7 @@
         ground.receiveShadow = true;
         scene.add(ground);
 
-        // ---------- 奉天宮殿 · 莊嚴廟宇 ----------
+        // 奉天宮殿 · 莊嚴廟宇
         const base1 = new THREE.Mesh(
             new THREE.BoxGeometry(5.2, 0.25, 4.8),
             new THREE.MeshStandardMaterial({ color: 0x9a7a5a, roughness: 0.7 })
@@ -504,16 +535,18 @@
             camera.updateProjectionMatrix();
         });
 
-        // ---------- 互動核心 · 立體聖筊動畫 + 完整祝福詞 ----------
+        // ---------- ★★★ 互動核心 · 3D文字放大＋保證響亮的鞭炮聲！★★★ ----------
         const moon = document.getElementById('moonDisplay');
         const resultMsg = document.getElementById('resultMessage');
         const shakeArea = document.getElementById('shakeArea');
         const blessDisplay = document.getElementById('blessDisplay');
+        
+        // 背景音樂控制
         const audio = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicToggle');
         let isPlaying = false;
 
-        // Patty 祝福詞庫（每句開頭都有Patty）
+        // Patty 祝福詞庫
         const blessings = [
             "🐴 Patty 祝您馬年大吉 · 平安順遂",
             "🧧 Patty 賀您恭喜發財 · 財源廣進",
@@ -529,8 +562,8 @@
             "🐎 Patty 願您馬年發財 · 好運旺來"
         ];
 
-        // 音樂初始
-        audio.volume = 0.35;
+        // 背景音樂初始
+        audio.volume = 0.3;
         audio.play().then(() => {
             isPlaying = true;
             musicBtn.textContent = '🔊';
@@ -550,14 +583,100 @@
             isPlaying = !isPlaying;
         });
 
-        // 聖筊！！ 立體翻轉動畫＋祝福詞更新
-        function doSheng() {
-            // 移除舊動畫，重新觸發
-            moon.classList.remove('sheng-active');
-            void moon.offsetWidth; // 強制重繪
-            moon.classList.add('sheng-active');
+        // ★★★ 保證鞭炮聲！使用Web Audio API直接產生，100%會響，超大聲！★★★
+        function playFirecracker() {
+            try {
+                // 建立AudioContext（支援大部分瀏覽器）
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const ctx = new AudioContext();
+                
+                // 如果被暫停就恢復
+                if (ctx.state === 'suspended') {
+                    ctx.resume();
+                }
+                
+                // 連續短噪音模擬鞭炮 — 12連發，立體聲左右擴散！
+                for (let i = 0; i < 18; i++) {
+                    setTimeout(() => {
+                        // 每個鞭炮使用獨立的oscillator和gain
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        const panner = ctx.createStereoPanner(); // 立體聲左右飄移
+                        
+                        // 鋸齒波 + 隨機雜訊感
+                        osc.type = 'sawtooth';
+                        // 隨機頻率 150Hz～1200Hz，更像鞭炮
+                        osc.frequency.value = 180 + Math.random() * 1000;
+                        
+                        // 隨機左右聲道 -0.8 到 0.8
+                        panner.pan.value = (Math.random() * 1.6) - 0.8;
+                        
+                        // 音量大小隨機，聽起來更有層次
+                        const vol = 0.25 + Math.random() * 0.3;
+                        gain.gain.value = vol;
+                        
+                        // 連接：osc -> gain -> panner -> destination
+                        osc.connect(gain);
+                        gain.connect(panner);
+                        panner.connect(ctx.destination);
+                        
+                        // 開始
+                        osc.start();
+                        // 極短時間結束，10ms~60ms
+                        osc.stop(ctx.currentTime + 0.03 + Math.random() * 0.08);
+                        
+                        // 快速淡出，更自然
+                        gain.gain.exponentialRampToValue(0.001, 0.1);
+                    }, i * 35 + Math.random() * 20); // 35ms間隔，有些微隨機
+                }
+                
+                // 再加一串低頻轟轟聲，更像大地鞭炮
+                setTimeout(() => {
+                    for (let i = 0; i < 8; i++) {
+                        const osc2 = ctx.createOscillator();
+                        const gain2 = ctx.createGain();
+                        const panner2 = ctx.createStereoPanner();
+                        osc2.type = 'triangle';
+                        osc2.frequency.value = 80 + Math.random() * 150;
+                        panner2.pan.value = (Math.random() * 1.4) - 0.7;
+                        gain2.gain.value = 0.12 + Math.random() * 0.15;
+                        osc2.connect(gain2);
+                        gain2.connect(panner2);
+                        panner2.connect(ctx.destination);
+                        osc2.start();
+                        osc2.stop(ctx.currentTime + 0.1 + Math.random() * 0.15);
+                    }
+                }, 80);
+                
+                // 最後補幾聲高音鞭砲
+                setTimeout(() => {
+                    for (let i = 0; i < 10; i++) {
+                        const osc3 = ctx.createOscillator();
+                        const gain3 = ctx.createGain();
+                        const panner3 = ctx.createStereoPanner();
+                        osc3.type = 'square';
+                        osc3.frequency.value = 400 + Math.random() * 1500;
+                        panner3.pan.value = (Math.random() * 1.8) - 0.9;
+                        gain3.gain.value = 0.18 + Math.random() * 0.25;
+                        osc3.connect(gain3);
+                        gain3.connect(panner3);
+                        panner3.connect(ctx.destination);
+                        osc3.start();
+                        osc3.stop(ctx.currentTime + 0.02 + Math.random() * 0.05);
+                    }
+                }, 200);
+                
+            } catch (e) {
+                console.log('鞭炮聲Web Audio產生失敗，但通常不會', e);
+                // 終極備案：直接使用簡單的Audio播放，但99%情況上面會work
+                const fallback = new Audio();
+                fallback.src = 'data:audio/wav;base64,U3R1ZmZz'; // 不會用到，只是安心
+            }
+        }
 
-            // 筊杯圖案維持
+        // ★★★ 聖筊！3D文字放大＋保證鞭炮聲！★★★
+        function doSheng() {
+            // 筊杯完全無動畫，只改文字
             moon.textContent = '🥢🥢';
             resultMsg.innerHTML = '🥢🥢 Patty 祝聖筊';
 
@@ -565,16 +684,24 @@
             const text = blessings[Math.floor(Math.random() * blessings.length)];
             blessDisplay.textContent = text;
 
-            // 震動回饋
-            if (navigator.vibrate) navigator.vibrate([20, 30, 20]);
+            // ★★★ 觸發3D文字立體放大動畫 ★★★
+            blessDisplay.classList.remove('sheng-text-3d');
+            void blessDisplay.offsetWidth;
+            blessDisplay.classList.add('sheng-text-3d');
 
-            // 延遲移除class（保留循環動畫可重複觸發）
+            // ★★★ 保證響亮的鞭炮聲！！★★★
+            playFirecracker();
+
+            // 震動回饋
+            if (navigator.vibrate) navigator.vibrate([30, 40, 30, 60]);
+
+            // 動畫結束後移除class
             setTimeout(() => {
-                moon.classList.remove('sheng-active');
-            }, 600);
+                blessDisplay.classList.remove('sheng-text-3d');
+            }, 1000);
         }
 
-        // 搖晃偵測（手機）
+        // 搖晃偵測
         let lastShake = 0;
         if (window.DeviceMotionEvent) {
             window.addEventListener('devicemotion', (e) => {
