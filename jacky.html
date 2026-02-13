@@ -2,31 +2,160 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <!-- 手機友善：搖一次聖筊 · 噴出6句Jacky祝福 · 無限互動 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes, viewport-fit=cover">
-    <title>Jacky 聖筊 · 無限祝福</title>
+    <title>Jacky · 聖筊拜年</title>
     <style>
-        /* ********** 互動炸裂 · 筊一次噴滿屏祝福 ********** */
+        /* 乾淨 · 喜氣 · 只留重點 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            background: #7d2a1a;
-            background: radial-gradient(circle at 20% 30%, #b84c2a, #601a0a);
+            background: #8b2e1a;
+            background: radial-gradient(circle at 30% 40%, #b34a2a, #5f1e0e);
             font-family: "Noto Serif TC", "標楷體", "PingFang TC", sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 12px;
-            color: #fff3d4;
+            justify-content: center;
+            padding: 16px;
             position: relative;
         }
 
-        /* ------------- 祝福泡泡容器 · 動態噴發 ------------- */
-        .bless-bubbles {
+        /* ------------- 主紅包 · 單純焦點 ------------- */
+        .red-card {
+            background: #d8431e;
+            background: linear-gradient(145deg, #e6552a, #bd3518);
+            max-width: 580px;
+            width: 100%;
+            border-radius: 60px 60px 30px 30px;
+            border: 12px solid #ffcf7a;
+            box-shadow: 0 16px 0 #773d1e, 0 30px 50px rgba(0,0,0,0.6);
+            padding: 36px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 20;
+            animation: softFloat 3s infinite alternate;
+        }
+
+        @keyframes softFloat {
+            from { transform: translateY(0px); }
+            to   { transform: translateY(-6px); }
+        }
+
+        .red-card::before {
+            content: "🐴 Jacky 拜年 · 丙午年 🐴";
+            position: absolute;
+            top: -18px;
+            left: 15%;
+            width: 70%;
+            background: #ffdb7c;
+            color: #792812;
+            font-size: min(28px, 6vw);
+            font-weight: 900;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 60px;
+            border: 5px solid #ffb82e;
+            box-shadow: 0 8px 0 #9e602a;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 0 #ffe9ae;
+        }
+
+        /* 聖筊大字 */
+        .sheng-big {
+            font-size: min(100px, 20vw);
+            font-weight: 900;
+            color: #fff6b3;
+            text-shadow: 8px 8px 0 #742818, 0 0 50px #ffcc44;
+            line-height: 1;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            animation: glow 1.6s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 8px 8px 0 #742818, 0 0 30px #ffcc44; }
+            to   { text-shadow: 8px 8px 0 #742818, 0 0 70px #ffea80; }
+        }
+
+        /* ------------- 筊杯 · 唯一互動 ------------- */
+        .bwa-center {
+            background: rgba(36, 18, 8, 0.95);
+            backdrop-filter: blur(12px);
+            border: 6px solid #ffaa3a;
+            border-radius: 90px 90px 40px 40px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            max-width: 580px;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 0 60px #ff8800;
+            border-top: 12px solid #ffc44c;
+        }
+
+        .moon {
+            font-size: min(130px, 24vw);
+            background: #2c1a10;
+            padding: 8px 50px;
+            border-radius: 200px;
+            border: 8px solid #ffc44c;
+            filter: drop-shadow(0 0 30px #ffaa33);
+            line-height: 1;
+            transition: 0.08s;
+            cursor: pointer;
+        }
+
+        .moon:active {
+            transform: scale(0.94);
+        }
+
+        .result-line {
+            font-size: min(40px, 9vw);
+            font-weight: 900;
+            color: #fff2b5;
+            background: #55321e;
+            padding: 16px 24px;
+            border-radius: 70px;
+            border: 6px solid #ffb042;
+            text-align: center;
+            width: 100%;
+            letter-spacing: 6px;
+        }
+
+        .shake-btn {
+            font-size: min(38px, 8vw);
+            font-weight: 900;
+            background: #4d2c1a;
+            color: #ffe694;
+            padding: 14px 32px;
+            border-radius: 90px;
+            border: 5px solid #ffa83a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.05s;
+            border-bottom: 8px solid #7a481e;
+        }
+
+        .shake-btn:active {
+            transform: translateY(6px);
+            border-bottom-width: 2px;
+        }
+
+        /* ------------- 祝福飄落 · 一句 · 清楚 ------------- */
+        .bless-sky {
             position: fixed;
             top: 0;
             left: 0;
@@ -36,399 +165,141 @@
             z-index: 9999;
             overflow: hidden;
         }
-        
-        .bubble-bless {
+
+        .floating-bless {
             position: absolute;
-            font-size: min(32px, 7vw);
+            font-size: min(48px, 10vw);
             font-weight: 900;
             white-space: nowrap;
-            background: linear-gradient(145deg, #fff7cf, #ffdb7c);
+            background: linear-gradient(145deg, #ffefb0, #ffd46a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px #ff8c1a, 0 0 15px #ff5500, 3px 3px 0 #6a2a1a;
-            letter-spacing: 4px;
-            animation: bubbleUp 3s ease-out forwards;
-            z-index: 10000;
-            filter: drop-shadow(0 0 15px #ffaa00);
-        }
-        
-        @keyframes bubbleUp {
-            0% { opacity: 0; transform: translateY(0) scale(0.5); }
-            10% { opacity: 1; transform: translateY(-20px) scale(1.2); }
-            80% { opacity: 1; transform: translateY(-180px) scale(1); }
-            100% { opacity: 0; transform: translateY(-250px) scale(0.8); }
-        }
-
-        /* ------------- 滿天Jacky賀詞 · 背景常駐 ------------- */
-        .sky-jacky {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-        .fly-jacky {
-            position: absolute;
-            font-size: min(36px, 7.5vw);
-            font-weight: 900;
+            text-shadow: 0 0 35px #ff6a00, 0 0 20px #ffaa33, 4px 4px 0 #542010;
+            letter-spacing: 8px;
+            animation: floatUp 4s ease-out forwards;
+            filter: drop-shadow(0 0 20px #ffaa00);
             opacity: 0;
-            animation: flyAround 20s infinite linear;
-            white-space: nowrap;
-            background: linear-gradient(145deg, #ffeaa6, #ffcc66);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px #ff8c1a, 0 0 10px #ff5500, 2px 2px 0 #7a2a0a;
-            letter-spacing: 6px;
+            z-index: 10000;
         }
-        @keyframes flyAround {
-            0% { opacity: 0; transform: translateX(120vw) translateY(20vh) rotate(0deg); }
-            10% { opacity: 0.95; }
-            90% { opacity: 0.95; }
-            100% { opacity: 0; transform: translateX(-40vw) translateY(-20vh) rotate(360deg); }
-        }
-        
-        .j1 { top: 5%; left: 0%; animation-delay: 0s; }
-        .j2 { top: 15%; left: 10%; animation-delay: 1.8s; }
-        .j3 { top: 30%; left: 5%; animation-delay: 3.2s; }
-        .j4 { top: 45%; left: 15%; animation-delay: 4.6s; }
-        .j5 { top: 60%; left: 8%; animation-delay: 6.0s; }
-        .j6 { top: 75%; left: 12%; animation-delay: 7.4s; }
-        .j7 { top: 20%; left: 70%; animation-delay: 2.2s; }
-        .j8 { top: 35%; left: 75%; animation-delay: 3.8s; }
-        .j9 { top: 50%; left: 80%; animation-delay: 5.4s; }
-        .j10 { top: 65%; left: 68%; animation-delay: 7.0s; }
-        .j11 { top: 80%; left: 72%; animation-delay: 8.4s; }
-        .j12 { top: 90%; left: 65%; animation-delay: 9.6s; }
 
-        /* ------------- 紅包主體 ------------- */
-        .red-packet {
-            background: #d43d1c;
-            background: linear-gradient(145deg, #e64d2a, #b32e12);
-            max-width: 700px;
+        @keyframes floatUp {
+            0% { opacity: 0; transform: translateY(30px) scale(0.7); }
+            15% { opacity: 1; transform: translateY(-20px) scale(1.2); }
+            80% { opacity: 1; transform: translateY(-180px) scale(1); }
+            100% { opacity: 0; transform: translateY(-280px) scale(0.8); }
+        }
+
+        /* ------------- 3D 廟宇 · 安靜背景 ------------- */
+        .temple-box {
             width: 100%;
-            border-radius: 60px 60px 30px 30px;
-            border: 12px solid #ffcd7e;
-            box-shadow: 0 20px 0 #7b3a1a, 0 30px 50px rgba(0,0,0,0.7);
-            padding: 35px 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            z-index: 20;
-            margin: 30px auto 20px;
-            animation: float 2.8s infinite alternate, borderGlow 1.5s infinite alternate;
-        }
-        @keyframes float {
-            from { transform: translateY(0px) rotate(-1deg); }
-            to { transform: translateY(-12px) rotate(1deg); }
-        }
-        @keyframes borderGlow {
-            from { border-color: #ffcd7e; box-shadow: 0 20px 0 #7b3a1a, 0 0 30px #ff9933; }
-            to { border-color: #ffeaa6; box-shadow: 0 20px 0 #7b3a1a, 0 0 70px #ffcc33; }
-        }
-
-        .red-packet::before {
-            content: "🐴 Jacky 無限祝福 🐴";
-            position: absolute;
-            top: -20px;
-            left: 15%;
-            width: 70%;
-            background: #ffe642;
-            color: #a33e1a;
-            font-size: min(34px, 7vw);
-            font-weight: 900;
-            text-align: center;
-            padding: 12px 0;
-            border-radius: 60px;
-            border: 6px solid #ffaa22;
-            box-shadow: 0 10px 0 #a05a2a, 0 0 40px #ffcc00;
-            letter-spacing: 10px;
-            animation: flap 1.2s infinite alternate;
-            text-shadow: 2px 2px 0 #fff3b0;
-        }
-        @keyframes flap {
-            from { transform: scale(1) rotate(-2deg); }
-            to { transform: scale(1.05) rotate(2deg); }
-        }
-
-        .jacky-avatar {
-            font-size: min(70px, 16vw);
-            filter: drop-shadow(0 0 30px #ffaa00);
-            animation: avatarSpin 5s infinite linear;
-            margin-bottom: 10px;
-        }
-        @keyframes avatarSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .big-sheng {
-            font-size: min(100px, 22vw);
-            font-weight: 900;
-            color: #fff8b0;
-            text-shadow: 8px 8px 0 #832a1a, 0 0 60px #ffdd44;
-            line-height: 1;
-            animation: bigPop 1.4s infinite alternate;
-        }
-        @keyframes bigPop {
-            from { transform: scale(1); text-shadow: 8px 8px 0 #832a1a, 0 0 30px #ffdd44; }
-            to { transform: scale(1.15); text-shadow: 10px 10px 0 #832a1a, 0 0 80px #ffee88; }
-        }
-
-        /* 跑馬燈 */
-        .marquee-jacky {
-            width: 100%;
-            background: rgba(80, 30, 10, 0.85);
-            backdrop-filter: blur(8px);
-            border-radius: 60px;
-            padding: 18px 10px;
-            margin: 20px 0;
-            border: 6px solid #ffcc44;
+            max-width: 580px;
+            height: 220px;
+            border-radius: 50px;
             overflow: hidden;
-            white-space: nowrap;
-            animation: borderFlash 1.8s infinite alternate;
-        }
-        @keyframes borderFlash {
-            from { border-color: #ffcc44; box-shadow: 0 0 20px #ffaa33; }
-            to { border-color: #ffee88; box-shadow: 0 0 50px #ffcc00; }
-        }
-        .marquee-text {
-            display: inline-block;
-            font-size: min(40px, 8.5vw);
-            font-weight: 900;
-            color: #fffacd;
-            text-shadow: 4px 4px 0 #6a2a1a;
-            animation: scrollText 12s infinite linear;
-            white-space: nowrap;
-            letter-spacing: 15px;
-        }
-        @keyframes scrollText {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-450%); }
-        }
-
-        /* ------------- 聖筊面板 · 搖一次噴6句 ------------- */
-        .bwa-panel {
-            background: rgba(25, 12, 5, 0.96);
-            backdrop-filter: blur(15px);
-            border: 8px solid #ffaa33;
-            border-radius: 80px 80px 40px 40px;
-            padding: 30px 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 0 70px #ff8800, inset 0 0 30px #5a2e1a;
-            border-top: 15px solid #ffcc44;
-            animation: panelWave 2s infinite alternate;
-            max-width: 700px;
-            width: 100%;
-            z-index: 30;
-        }
-        @keyframes panelWave {
-            from { box-shadow: 0 0 50px #ff8800, inset 0 0 20px #5a2e1a; border-color: #ffaa33; }
-            to { box-shadow: 0 0 100px #ffcc00, inset 0 0 40px #5a2e1a; border-color: #ffdd77; }
-        }
-
-        .moon-box {
-            font-size: min(150px, 28vw);
-            line-height: 1;
-            filter: drop-shadow(0 0 50px #ffbb33) drop-shadow(0 0 30px #ff5500);
-            background: #2a170c;
-            padding: 10px 60px;
-            border-radius: 200px;
-            border: 8px solid #ffcc44;
-            animation: moonDance 2s infinite alternate;
-            cursor: pointer;
-            transition: all 0.1s;
-        }
-        .moon-box:active {
-            transform: scale(0.95);
-        }
-        @keyframes moonDance {
-            from { transform: rotate(-5deg) scale(1); border-color: #ffcc44; }
-            to { transform: rotate(5deg) scale(1.1); border-color: #ffee88; }
-        }
-
-        .shake-big {
-            font-size: min(48px, 10.5vw);
-            font-weight: 900;
-            color: #ffdd77;
-            background: #402010;
-            padding: 18px 40px;
-            border-radius: 100px;
-            border: 6px solid #ffaa33;
-            animation: shakePulse 0.8s infinite alternate;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            white-space: nowrap;
-            width: 100%;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .shake-big:active {
-            transform: scale(0.97);
-        }
-        @keyframes shakePulse {
-            from { transform: scale(1); background: #402010; border-color: #ffaa33; }
-            to { transform: scale(1.05); background: #5a2e1a; border-color: #ffdd77; box-shadow: 0 0 40px #ffaa00; }
-        }
-
-        .result-big {
-            font-size: min(52px, 11vw);
-            font-weight: 900;
-            background: #4f2c1a;
-            padding: 22px 25px;
-            border-radius: 80px;
-            color: #fff5b0;
-            border: 8px solid #ffbb44;
-            text-align: center;
-            width: 100%;
-            animation: resultFlash 1.2s infinite alternate;
-            word-break: break-word;
-            line-height: 1.3;
-        }
-        @keyframes resultFlash {
-            from { border-color: #ffbb44; box-shadow: inset 0 0 20px #5a2e1a, 0 0 30px #ff8800; }
-            to { border-color: #ffee88; box-shadow: inset 0 0 40px #5a2e1a, 0 0 70px #ffcc00; }
-        }
-
-        /* 音樂控制 */
-        .music-box {
-            background: rgba(10,5,2,0.95);
-            border: 6px solid #ffaa33;
-            border-radius: 100px;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 0 50px #ff9900;
-            animation: musicBreath 1.8s infinite alternate;
-            max-width: 700px;
-            width: 100%;
+            border: 6px solid #ffaa44;
+            box-shadow: 0 0 40px #ff8800;
             margin-top: 20px;
         }
-        @keyframes musicBreath {
-            from { border-color: #ffaa33; box-shadow: 0 0 40px #ff9900; }
-            to { border-color: #ffdd77; box-shadow: 0 0 80px #ffcc00; }
-        }
-        .music-btn {
-            background: #ffaa33;
-            border: none;
-            color: #2d1706;
-            font-size: min(40px, 8.5vw);
-            font-weight: bold;
-            padding: 10px 30px;
-            border-radius: 80px;
-            border-bottom: 8px solid #8b5a2b;
-            cursor: pointer;
-        }
-        .music-btn:active { transform: translateY(6px); border-bottom-width: 2px; }
 
-        /* 3D廟宇 */
-        .temple-3d {
-            width: 100%;
-            max-width: 700px;
-            height: 280px;
-            border-radius: 60px;
-            overflow: hidden;
-            border: 8px solid #ffbb44;
-            box-shadow: 0 0 60px #ff8800;
-            animation: templeBreath 2s infinite alternate;
-            margin-top: 20px;
-        }
-        @keyframes templeBreath {
-            from { border-color: #ffbb44; box-shadow: 0 0 40px #ff8800; }
-            to { border-color: #ffee88; box-shadow: 0 0 90px #ffaa00; }
-        }
         #templeCanvas {
             width: 100%;
             height: 100%;
             display: block;
         }
 
-        .footer-jacky {
-            font-size: min(30px, 6.5vw);
-            color: #ffddaa;
-            margin: 25px 0 15px;
-            text-shadow: 2px 2px 0 #401a0a;
-            letter-spacing: 12px;
-            animation: footGlow 2s infinite alternate;
+        /* 音樂列 · 低調 */
+        .music-row {
+            background: rgba(20, 10, 5, 0.9);
+            border: 4px solid #ffaa33;
+            border-radius: 80px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 580px;
+            width: 100%;
+            margin-top: 18px;
+            box-shadow: 0 0 30px #ff9900;
         }
-        @keyframes footGlow {
-            from { opacity: 0.9; text-shadow: 2px 2px 0 #401a0a; }
-            to { opacity: 1; text-shadow: 0 0 30px #ffaa33, 2px 2px 0 #401a0a; }
+
+        .music-btn {
+            background: #ffaa33;
+            border: none;
+            color: #2f1a0a;
+            font-size: min(34px, 7vw);
+            font-weight: bold;
+            padding: 8px 28px;
+            border-radius: 70px;
+            border-bottom: 6px solid #7e4c24;
+            cursor: pointer;
         }
+
+        .music-btn:active {
+            transform: translateY(5px);
+            border-bottom-width: 2px;
+        }
+
+        .footer-note {
+            font-size: min(24px, 5.5vw);
+            color: #ffd9a3;
+            margin-top: 25px;
+            letter-spacing: 10px;
+            text-shadow: 2px 2px 0 #3d1d0e;
+        }
+
+        /* 動畫輔助 */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .spin-slow {
+            animation: spin 4s infinite linear;
+            display: inline-block;
+        }
+
+        /* 完全沒有滿天飛舞的文字干擾，只有一句祝福 */
     </style>
 </head>
 <body>
 
-    <!-- 祝福泡泡容器 · 每次筊就噴一堆 -->
-    <div id="blessBubbles" class="bless-bubbles"></div>
+    <!-- 祝福容器：每次只飄一句，乾淨清楚 -->
+    <div id="blessSky" class="bless-sky"></div>
 
-    <!-- 滿天Jacky賀詞 · 背景常駐飛舞 -->
-    <div class="sky-jacky">
-        <div class="fly-jacky j1">🐴 Jacky 祝 · 馬年大吉</div>
-        <div class="fly-jacky j2">🧧 Jacky 賀 · 恭喜發財</div>
-        <div class="fly-jacky j3">💰 Jacky 賜 · 財源廣進</div>
-        <div class="fly-jacky j4">🌸 Jacky 願 · 馬到成功</div>
-        <div class="fly-jacky j5">🏮 Jacky 送 · 聖筊連連</div>
-        <div class="fly-jacky j6">✨ Jacky 祈 · 金馬獻瑞</div>
-        <div class="fly-jacky j7">🎋 Jacky 盼 · 步步高升</div>
-        <div class="fly-jacky j8">🍊 Jacky 贈 · 大吉大利</div>
-        <div class="fly-jacky j9">🏇 Jacky 祝 · 前程萬里</div>
-        <div class="fly-jacky j10">🎊 Jacky 賀 · 五福臨門</div>
-        <div class="fly-jacky j11">🥢 Jacky 賜 · 聖筊聖筊</div>
-        <div class="fly-jacky j12">🐎 Jacky 願 · 馬年發財</div>
-    </div>
-
-    <!-- 紅包主體 · Jacky無限祝福 -->
-    <div class="red-packet">
-        <div class="jacky-avatar">🧧🐴🥢</div>
-        <div class="big-sheng">聖筊</div>
-        
-        <!-- Jacky 祝福跑馬燈 -->
-        <div class="marquee-jacky">
-            <span class="marquee-text">🐴 Jacky 祝您馬年行大運 · 聖筊連連發大財 · 無限祝福炸滿天 🥢</span>
+    <!-- 主紅包 · Jacky 賀歲 -->
+    <div class="red-card">
+        <div class="sheng-big">聖筊</div>
+        <div style="font-size: min(46px, 11vw); color: #ffeeb0; text-shadow: 4px 4px 0 #6a2a1a;">
+            🐴🧧🥢
         </div>
     </div>
 
-    <!-- 聖筊面板 · 搖一次噴6句祝福 -->
-    <div class="bwa-panel">
-        <div id="moonDisplay" class="moon-box">🥢🥢</div>
-        <div id="resultDisplay" class="result-big">🥢🥢 Jacky 賜聖筊</div>
-        
-        <div id="shakeTrigger" class="shake-big">
+    <!-- 筊杯互動區 · 唯一任務：擲聖筊、飄祝福 -->
+    <div class="bwa-center">
+        <div id="moonDisplay" class="moon">🥢🥢</div>
+        <div id="resultMessage" class="result-line">🥢 Jacky 賜聖筊</div>
+        <div id="shakeArea" class="shake-btn">
             <span>📳</span>
-            <span style="animation: spin 3s infinite linear;">🥢</span>
-            <span>搖我噴祝福</span>
-            <span style="animation: spin 3s infinite linear reverse;">🥢</span>
-        </div>
-        <div style="font-size: min(28px, 6vw); color: #ffcc88; margin-top: 5px; letter-spacing: 6px;">
-            👆 點筊杯也OK 👆
+            <span class="spin-slow">🥢</span>
+            <span>搖 / 點 聖筊</span>
+            <span class="spin-slow">🥢</span>
         </div>
     </div>
 
-    <!-- 音樂控制 -->
-    <div class="music-box">
-        <span style="font-size: min(40px, 8.5vw); display: flex; gap: 15px;">
-            <span style="animation: spin 4s infinite linear;">🎵</span>
-            <span>🐴 Jacky</span>
-        </span>
-        <button id="toggleMusicBtn" class="music-btn">🔊</button>
-    </div>
-
-    <!-- 3D廟宇 -->
-    <div class="temple-3d">
+    <!-- 3D 廟宇 · 安靜祈福 -->
+    <div class="temple-box">
         <canvas id="templeCanvas"></canvas>
     </div>
 
-    <div class="footer-jacky">
-        🥢 Jacky · 無限祝福 🐴
+    <!-- 音樂 · 簡潔 -->
+    <div class="music-row">
+        <span style="font-size: min(34px, 7vw); display: flex; gap: 8px;">
+            <span class="spin-slow">🎵</span> Jacky 賀歲
+        </span>
+        <button id="musicToggle" class="music-btn">🔊</button>
+    </div>
+
+    <div class="footer-note">
+        🥢 聖筊 · 馬年大吉 🐴
     </div>
 
     <!-- 背景音樂 -->
@@ -436,7 +307,7 @@
         <source src="https://raw.githubusercontent.com/Sethjesus/newyear/main/horse.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Three.js -->
+    <!-- Three.js 廟宇 -->
     <script type="importmap">
         {
             "imports": {
@@ -447,45 +318,46 @@
     </script>
 
     <script type="module">
-        // 3D 廟宇
+        // ---------- 3D 廟宇 · 安靜背景 ----------
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
         const canvas = document.getElementById('templeCanvas');
-        const width = canvas.clientWidth;
-        const height = canvas.clientHeight;
+        const w = canvas.clientWidth;
+        const h = canvas.clientHeight;
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x331e14);
+        scene.background = new THREE.Color(0x2f1c12);
 
-        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-        camera.position.set(5, 3, 10);
+        const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
+        camera.position.set(4.8, 2.8, 9.5);
         camera.lookAt(0, 1, 0);
 
         const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-        renderer.setSize(width, height);
+        renderer.setSize(w, h);
         renderer.shadowMap.enabled = true;
 
         const ambient = new THREE.AmbientLight(0x6f4e3a);
         scene.add(ambient);
         const light = new THREE.DirectionalLight(0xffeedd, 1);
-        light.position.set(5, 8, 10);
+        light.position.set(5, 7, 9);
         light.castShadow = true;
         light.receiveShadow = true;
         scene.add(light);
 
+        // 簡單廟
         const ground = new THREE.Mesh(
-            new THREE.CircleGeometry(12, 20),
+            new THREE.CircleGeometry(11, 16),
             new THREE.MeshStandardMaterial({ color: 0x6b4f3c, roughness: 0.8 })
         );
         ground.rotation.x = -Math.PI / 2;
-        ground.position.y = -0.01;
+        ground.position.y = -0.02;
         ground.receiveShadow = true;
         scene.add(ground);
 
         const base = new THREE.Mesh(
-            new THREE.BoxGeometry(5.0, 0.3, 4.8),
-            new THREE.MeshStandardMaterial({ color: 0x8a6b4b, roughness: 0.7 })
+            new THREE.BoxGeometry(4.6, 0.3, 4.2),
+            new THREE.MeshStandardMaterial({ color: 0x8a6b4b })
         );
         base.position.set(0, 0.15, 0);
         base.castShadow = true;
@@ -493,8 +365,8 @@
         scene.add(base);
 
         const wall = new THREE.Mesh(
-            new THREE.BoxGeometry(4.6, 1.6, 4.2),
-            new THREE.MeshStandardMaterial({ color: 0xb87333, roughness: 0.6 })
+            new THREE.BoxGeometry(4.2, 1.5, 3.8),
+            new THREE.MeshStandardMaterial({ color: 0xb87333 })
         );
         wall.position.set(0, 1.0, 0);
         wall.castShadow = true;
@@ -502,41 +374,30 @@
         scene.add(wall);
 
         const roof = new THREE.Mesh(
-            new THREE.ConeGeometry(3.8, 1.0, 4),
-            new THREE.MeshStandardMaterial({ color: 0xcc8833, roughness: 0.5 })
+            new THREE.ConeGeometry(3.5, 0.9, 4),
+            new THREE.MeshStandardMaterial({ color: 0xcc8833 })
         );
-        roof.position.set(0, 1.95, 0);
+        roof.position.set(0, 1.9, 0);
         roof.rotation.y = Math.PI / 4;
         roof.castShadow = true;
-        roof.receiveShadow = true;
         scene.add(roof);
 
-        const lanternMat = new THREE.MeshStandardMaterial({ color: 0xd84c3c, emissive: 0x441111, emissiveIntensity: 0.2 });
-        const positions = [[-1.4, 1.6, 1.4], [1.4, 1.6, 1.4], [0, 1.8, 1.4]];
-        positions.forEach(pos => {
-            const lantern = new THREE.Mesh(new THREE.SphereGeometry(0.22), lanternMat);
-            lantern.position.set(pos[0], pos[1], pos[2]);
-            lantern.castShadow = true;
-            scene.add(lantern);
+        // 燈籠
+        const lanternMat = new THREE.MeshStandardMaterial({ color: 0xd84c3c, emissive: 0x331111 });
+        [[-1.3, 1.5, 1.3], [1.3, 1.5, 1.3], [0, 1.7, 1.3]].forEach(pos => {
+            const l = new THREE.Mesh(new THREE.SphereGeometry(0.2), lanternMat);
+            l.position.set(pos[0], pos[1], pos[2]);
+            l.castShadow = true;
+            scene.add(l);
         });
-
-        const burner = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.7, 0.8, 0.2, 16),
-            new THREE.MeshStandardMaterial({ color: 0x5a4734 })
-        );
-        burner.position.set(0, 0.3, 0.9);
-        burner.castShadow = true;
-        burner.receiveShadow = true;
-        scene.add(burner);
 
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
-        controls.dampingFactor = 0.06;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 1.5;
+        controls.autoRotateSpeed = 1.2;
         controls.enableZoom = true;
         controls.enablePan = true;
-        controls.target.set(0, 1.2, 0);
+        controls.target.set(0, 1.0, 0);
 
         function animate() {
             requestAnimationFrame(animate);
@@ -553,17 +414,17 @@
             camera.updateProjectionMatrix();
         });
 
-        // ************ Jacky 無限祝福 · 搖一次噴6句 ************
-        const moonDisplay = document.getElementById('moonDisplay');
-        const resultDisplay = document.getElementById('resultDisplay');
-        const shakeTrigger = document.getElementById('shakeTrigger');
-        const blessBubbles = document.getElementById('blessBubbles');
+        // ---------- 互動核心 · 乾淨 · 一句祝福 ----------
+        const moon = document.getElementById('moonDisplay');
+        const resultMsg = document.getElementById('resultMessage');
+        const shakeArea = document.getElementById('shakeArea');
+        const blessSky = document.getElementById('blessSky');
         const audio = document.getElementById('bgMusic');
-        const toggleBtn = document.getElementById('toggleMusicBtn');
+        const musicBtn = document.getElementById('musicToggle');
         let isPlaying = false;
 
-        // Jacky 無限祝福詞庫 · 總共20句輪流噴
-        const jackyBlessings = [
+        // Jacky 祝福詞庫 · 每一句都清楚有力
+        const blessings = [
             "🐴 Jacky 祝 · 馬年大吉",
             "🧧 Jacky 賀 · 恭喜發財",
             "💰 Jacky 賜 · 財源廣進",
@@ -575,154 +436,112 @@
             "🏇 Jacky 祝 · 前程萬里",
             "🎊 Jacky 賀 · 五福臨門",
             "🥢 Jacky 賜 · 聖筊聖筊",
-            "🐎 Jacky 願 · 馬年發財",
-            "🍍 Jacky 旺 · 好運旺來",
-            "🍎 Jacky 送 · 平安健康",
-            "💎 Jacky 賜 · 金玉滿堂",
-            "⭐ Jacky 照 · 吉星高照",
-            "🌾 Jacky 豐 · 五穀豐登",
-            "🏆 Jacky 奪 · 一馬當先",
-            "🎁 Jacky 贈 · 福氣滿滿",
-            "🎈 Jacky 祝 · 心想事成"
+            "🐎 Jacky 願 · 馬年發財"
         ];
 
-        // 播放音樂
+        // 音樂
         audio.volume = 0.4;
         audio.play().then(() => {
             isPlaying = true;
-            toggleBtn.textContent = '🔊';
+            musicBtn.textContent = '🔊';
         }).catch(() => {
             isPlaying = false;
-            toggleBtn.textContent = '🔇';
+            musicBtn.textContent = '🔇';
         });
 
-        toggleBtn.addEventListener('click', () => {
+        musicBtn.addEventListener('click', () => {
             if (isPlaying) {
                 audio.pause();
-                toggleBtn.textContent = '🔇';
+                musicBtn.textContent = '🔇';
             } else {
                 audio.play();
-                toggleBtn.textContent = '🔊';
+                musicBtn.textContent = '🔊';
             }
             isPlaying = !isPlaying;
         });
 
-        // 噴發祝福泡泡 · 一次噴6句！
-        function explodeBlessings() {
-            // 清除舊泡泡（選擇性，也可以讓它疊加）
-            // blessBubbles.innerHTML = ''; // 如果要疊加就註解掉
+        // 飄落一句祝福（乾淨版）
+        function floatOneBless() {
+            const div = document.createElement('div');
+            div.className = 'floating-bless';
             
-            // 隨機選6句不重複的祝福
-            const shuffled = [...jackyBlessings].sort(() => Math.random() - 0.5);
-            const selected = shuffled.slice(0, 6);
-            
-            // 取得螢幕寬高作為噴發範圍
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
-            
-            selected.forEach((bless, index) => {
-                setTimeout(() => {
-                    const bubble = document.createElement('div');
-                    bubble.className = 'bubble-bless';
-                    bubble.textContent = bless;
-                    
-                    // 隨機位置（集中在中下區域，向上噴發）
-                    const startX = Math.random() * (screenWidth - 200) + 50;
-                    const startY = screenHeight * (0.5 + Math.random() * 0.3);
-                    
-                    bubble.style.left = startX + 'px';
-                    bubble.style.top = startY + 'px';
-                    
-                    // 隨機大小
-                    const scale = 0.8 + Math.random() * 0.8;
-                    bubble.style.fontSize = `${scale * 36}px`;
-                    
-                    // 隨機動畫時間
-                    const duration = 2.5 + Math.random() * 1.5;
-                    bubble.style.animation = `bubbleUp ${duration}s ease-out forwards`;
-                    
-                    blessBubbles.appendChild(bubble);
-                    
-                    // 3秒後移除
-                    setTimeout(() => {
-                        if (bubble.parentNode) {
-                            bubble.remove();
-                        }
-                    }, duration * 1000);
-                }, index * 80); // 間隔80ms依序噴出
-            });
-        }
+            // 隨機一句
+            const text = blessings[Math.floor(Math.random() * blessings.length)];
+            div.textContent = text;
 
-        // 搖晃/點擊聖筊
-        function throwSheng() {
-            // 筊杯動畫
-            moonDisplay.classList.add('shake-animation');
+            // 位置：偏中下，往上飄
+            const left = window.innerWidth * (0.2 + Math.random() * 0.6);
+            const top = window.innerHeight * 0.7;
+
+            div.style.left = left + 'px';
+            div.style.top = top + 'px';
+            
+            // 隨機小變化
+            const size = 44 + Math.floor(Math.random() * 20);
+            div.style.fontSize = size + 'px';
+            div.style.animationDuration = 3.5 + Math.random() * 1 + 's';
+
+            blessSky.appendChild(div);
+
             setTimeout(() => {
-                moonDisplay.classList.remove('shake-animation');
-            }, 400);
-            
-            // 顯示聖筊
-            moonDisplay.textContent = '🥢🥢';
-            resultDisplay.innerHTML = '🥢🥢 Jacky 賜聖筊 · 無限祝福';
-            
-            // 震動
-            if (navigator.vibrate) navigator.vibrate(45);
-            
-            // 噴發6句祝福泡泡！！！
-            explodeBlessings();
+                if (div.parentNode) div.remove();
+            }, 5000);
         }
 
-        // CSS 動畫
-        const style = document.createElement('style');
-        style.innerHTML = `
-            .shake-animation {
-                animation: shakeHard 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-            }
-            @keyframes shakeHard {
-                0% { transform: rotate(0deg); }
-                20% { transform: rotate(35deg); }
-                40% { transform: rotate(-35deg); }
-                60% { transform: rotate(25deg); }
-                80% { transform: rotate(-15deg); }
-                100% { transform: rotate(0deg); }
-            }
-            @keyframes spin {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
+        // 聖筊！
+        function doSheng() {
+            // 筊杯動畫
+            moon.classList.add('shake-animation');
+            setTimeout(() => {
+                moon.classList.remove('shake-animation');
+            }, 400);
+
+            moon.textContent = '🥢🥢';
+            resultMsg.innerHTML = '🥢🥢 Jacky 賜聖筊';
+
+            if (navigator.vibrate) navigator.vibrate(40);
+
+            // 只飄一句祝福，乾淨不亂
+            floatOneBless();
+        }
 
         // 搖晃偵測
         let lastShake = 0;
         if (window.DeviceMotionEvent) {
-            window.addEventListener('devicemotion', function(event) {
-                const acc = event.accelerationIncludingGravity;
+            window.addEventListener('devicemotion', (e) => {
+                const acc = e.accelerationIncludingGravity;
                 if (!acc) return;
-
                 const now = Date.now();
                 if (now - lastShake < 900) return;
-
                 const x = Math.abs(acc.x || 0);
                 const y = Math.abs(acc.y || 0);
                 const z = Math.abs(acc.z || 0);
-
-                if ((x > 9.5 || y > 9.5 || z > 9.5) && (x + y + z > 23)) {
+                if ((x > 9.5 || y > 9.5 || z > 9.5) && (x + y + z > 24)) {
                     lastShake = now;
-                    throwSheng();
+                    doSheng();
                 }
-            }, false);
+            });
         }
 
-        // 點擊筊杯觸發
-        moonDisplay.addEventListener('click', throwSheng);
-        
-        // 點擊「搖我噴祝福」也觸發
-        shakeTrigger.addEventListener('click', throwSheng);
-        
-        // 預設聖筊
-        moonDisplay.textContent = '🥢🥢';
-        resultDisplay.innerHTML = '🥢🥢 Jacky 賜聖筊 · 無限祝福';
+        // 點擊互動
+        moon.addEventListener('click', doSheng);
+        shakeArea.addEventListener('click', doSheng);
+
+        // CSS 動畫補上
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .shake-animation {
+                animation: shakeMoon 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1) !important;
+            }
+            @keyframes shakeMoon {
+                0% { transform: rotate(0deg); }
+                25% { transform: rotate(25deg); }
+                50% { transform: rotate(-25deg); }
+                75% { transform: rotate(15deg); }
+                100% { transform: rotate(0deg); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
