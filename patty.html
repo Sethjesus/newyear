@@ -44,7 +44,7 @@
         }
 
         body::after {
-            content: "🧧🐴🧧🐴🧧 奉天宮 元寶滿天 🧧🐴🧧🐴🧧";
+            content: "🧧🐴🧧🐴🧧 景煬宮 元寶滿天 🧧🐴🧧🐴🧧";
             position: fixed;
             bottom: 10px;
             right: 0px;
@@ -396,7 +396,7 @@
 
     <!-- 祝福訊息區 · 3D文字放大＋Patty音效 -->
     <div id="blessDisplay" class="bless-message-area">
-        🐴 搖手機 · 得聖筊 · 元寶從奉天宮噴出來啦！
+        🐴 搖手機 · 得聖筊 · 元寶從景煬宮噴出來啦！
     </div>
 
     <!-- 春聯區 · 雙馬明顯春聯 -->
@@ -408,10 +408,10 @@
        
     </div>
 
-    <!-- ★★★ 3D 奉天宮 · 廟外雙馬 ＋ 財神走入 ＋ 大量元寶從廟噴出 ★★★ -->
+    <!-- ★★★ 3D 景煬宮 · 廟外雙馬 ＋ 財神走入 ＋ 大量元寶從廟噴出 ★★★ -->
     <div class="temple-box">
         <canvas id="templeCanvas"></canvas>
-        <div class="temple-title">🏯 奉天宮 · 元寶噴泉</div>
+        <div class="temple-title">🏯 景煬宮 · 元寶噴泉</div>
     </div>
 
     <!-- 運動自然元素區 -->
@@ -445,7 +445,7 @@
     </script>
 
     <script type="module">
-        // ---------- 3D 奉天宮 · 雙馬 · 財神走入 · 大量元寶從廟噴發 ----------
+        // ---------- 3D 景煬宮 · 雙馬 · 財神走入 · 大量元寶從廟噴發 ----------
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
@@ -541,7 +541,7 @@
             scene.add(stone);
         }
 
-        // ========== 奉天宮主體 ==========
+        // ========== 景煬宮主體 ==========
         const base1 = new THREE.Mesh(
             new THREE.BoxGeometry(5.8, 0.4, 5.4),
             new THREE.MeshStandardMaterial({ color: 0xba8a6a, roughness: 0.7 })
@@ -834,7 +834,7 @@
         godOfWealth.rotation.y = 0.6;
         scene.add(godOfWealth);
 
-        // ★★★ 元寶噴泉系統：許多元寶從奉天宮廟門/屋頂噴出 ★★★
+        // ★★★ 元寶噴泉系統：許多元寶從景煬宮廟門/屋頂噴出 ★★★
         const ybArray = [];
         function createYuanBao() {
             const group = new THREE.Group();
@@ -981,15 +981,15 @@
 
         // 將所有「Jacky」祝福詞改為「Patty」
         const blessings = [
-            "💰 元寶從奉天宮噴出來啦！財神到 · Patty 招財",
-            "🐴 Patty 雙馬奔騰 · 元寶滿天飛",
-            "🏮 聖筊連連 · 奉天宮金幣灑不停 · Patty 富貴",
-            "🧧 千顆元寶萬兩金 · 財神爺賜福 Patty",
-            "🏃 財神陪你跑 · 元寶一路發 · Patty 如意",
-            "🌲 元寶掉進森林 · 自然生財 · Patty 豐收",
-            "☁️ 天降元寶 · 福氣滿天 · Patty 吉祥",
-            "⛰️ 元寶堆成山 · 步步高升 · Patty 登頂",
-            "🎋 財神賜聖筊 · 萬事如意 · Patty 發財"
+            "💰 元寶從景煬宮噴出來啦！財神到 · Patty 招財",
+            "🐴 Patty祝 雙馬奔騰 · 元寶滿天飛",
+            "🏮 聖筊連連 · 奉天宮金幣灑不停 · Patty祝富貴",
+            "🧧 千顆元寶萬兩金 · 財神爺賜福 ",
+            "🏃 財神陪你跑 · 元寶一路發 · Patty祝如意",
+            "🌲 元寶掉進森林 · 自然生財 · Patty祝豐收",
+            "☁️ 天降元寶 · 福氣滿天 · Patty祝吉祥",
+            "⛰️ 元寶堆成山 · 步步高升 · Patty祝登頂",
+            "🎋 財神賜聖筊 · 萬事如意 · Patty祝發財"
         ];
 
         function initAudio() {
