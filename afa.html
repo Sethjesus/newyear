@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <!-- 手機友善 · 3D文字放大＋AFA音效 · 奉天宮 · Afa完整祝福 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes, viewport-fit=cover">
+    <title>Afa · ESG宮 · AFA 3D聖筊</title>
+    <style>
+        /* ********** 基底完全靜止，僅祝福文字「3D立體＋放大」＋AFA音效 ********** */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #7f321e;
+            font-family: "Noto Serif TC", "標楷體", "PingFang TC", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* ------------- 主紅包 · 完全靜止 ------------- */
+        .red-card {
+            background: #c43c1e;
+            max-width: 580px;
+            width: 100%;
+            border-radius: 50px 50px 30px 30px;
+            border: 10px solid #ffc56e;
+            box-shadow: 0 12px 0 #6e351b;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 20;
+        }
+
+        .red-card::before {
+            content: "🐴 Afa 來拜年 🐴";
+            position: absolute;
+            top: -18px;
+            left: 15%;
+            width: 70%;
+            background: #ffd966;
+            color: #712e1a;
+            font-size: min(26px, 5.5vw);
+            font-weight: 900;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 50px;
+            border: 4px solid #ffa62b;
+            box-shadow: 0 6px 0 #8f552a;
+            letter-spacing: 6px;
+            text-shadow: none;
+        }
+
+        .sheng-big {
+            font-size: min(90px, 18vw);
+            font-weight: 900;
+            color: #fff0a5;
+            text-shadow: 6px 6px 0 #64281a;
+            line-height: 1;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        /* ------------- 筊杯區 · 完全靜態無動畫 ------------- */
+        .bwa-panel {
+            background: #2d1a0e;
+            border: 6px solid #ff9f2f;
+            border-radius: 70px 70px 30px 30px;
+            padding: 26px 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            max-width: 580px;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 12px 0 #54381e;
+            border-top: 8px solid #ffb84d;
+        }
+
+        .moon {
+            font-size: min(120px, 22vw);
+            background: #1e130c;
+            padding: 8px 45px;
+            border-radius: 180px;
+            border: 6px solid #ffb84d;
+            filter: drop-shadow(0 8px 0 #7a401a);
+            line-height: 1;
+            cursor: pointer;
+            transition: none;
+        }
+
+        .shake-btn {
+            font-size: min(34px, 7vw);
+            font-weight: 900;
+            background: #3f281a;
+            color: #ffdc8a;
+            padding: 12px 28px;
+            border-radius: 70px;
+            border: 4px solid #ff9f2f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-bottom: 8px solid #614124;
+            transition: transform 0.08s, border-bottom 0.08s;
+        }
+        .shake-btn:active {
+            transform: translateY(4px);
+            border-bottom-width: 4px;
+        }
+
+        .result-line {
+            font-size: min(36px, 7.5vw);
+            font-weight: 900;
+            color: #ffeeb0;
+            background: #412e1e;
+            padding: 14px 24px;
+            border-radius: 60px;
+            border: 4px solid #ffa62b;
+            text-align: center;
+            width: 100%;
+            letter-spacing: 4px;
+        }
+
+        /* ------------- ★★★ 3D立體文字 · 放大＋AFA音效連動 ★★★ ------------- */
+        .bless-message-area {
+            width: 100%;
+            max-width: 580px;
+            min-height: 130px;
+            background: #2f1e14;
+            border: 4px solid #ffa52f;
+            border-radius: 50px;
+            margin-top: 25px;
+            padding: 20px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff6cf;
+            font-size: min(32px, 6.8vw);
+            font-weight: 900;
+            text-align: center;
+            word-break: break-word;
+            letter-spacing: 4px;
+            line-height: 1.4;
+            box-shadow: inset 0 0 0 2px #734d2a;
+            transform-style: preserve-3d;
+            transition: none;
+        }
+
+        /* 3D文字立體放大 — 真正的3D立體陰影＋爆炸放大＋金色光澤＋立體旋轉 */
+        .bless-message-area.sheng-text-3d {
+            animation: text3DBoom 1s cubic-bezier(0.22, 1.52, 0.68, 1) forwards;
+        }
+
+        @keyframes text3DBoom {
+            0% {
+                color: #fff6cf;
+                background: #2f1e14;
+                border: 4px solid #ffa52f;
+                box-shadow: inset 0 0 0 2px #734d2a;
+                text-shadow: 0 0 0 #000, 0 0 0 #000, 0 0 0 #000, 0 0 0 #000;
+                transform: scale(1) translateZ(0) rotateX(0deg) rotateY(0deg);
+            }
+            15% {
+                color: #ffefb0;
+                background: #7a3e1a;
+                border: 6px solid #ffcc33;
+                box-shadow: inset 0 0 0 3px #b87e3a, 0 0 30px #ffcc00;
+                text-shadow: 4px 4px 0 #3a1e0e, 8px 8px 0 #2a150a, 12px 12px 8px #1a0d06, 16px 16px 12px #00000080;
+                transform: scale(1.45) translateZ(25px) rotateX(8deg) rotateY(8deg);
+            }
+            40% {
+                color: #ffffff;
+                background: #a35f2e;
+                border: 8px solid #ffe88c;
+                box-shadow: inset 0 0 0 4px #d69c4a, 0 0 45px #ffbb33;
+                text-shadow: 5px 5px 0 #4f2b18, 10px 10px 0 #3a1f12, 15px 15px 10px #251409, 20px 20px 16px #000000b3;
+                transform: scale(1.6) translateZ(40px) rotateX(12deg) rotateY(12deg);
+            }
+            70% {
+                color: #fffef0;
+                background: #7e4c2a;
+                border: 6px solid #ffd966;
+                box-shadow: inset 0 0 0 3px #b87e3a, 0 0 35px #ffaa33;
+                text-shadow: 3px 3px 0 #4f2b18, 7px 7px 0 #3a1f12, 11px 11px 8px #1e130b;
+                transform: scale(1.25) translateZ(15px) rotateX(5deg) rotateY(5deg);
+            }
+            100% {
+                color: #fff6cf;
+                background: #2f1e14;
+                border: 4px solid #ffa52f;
+                box-shadow: inset 0 0 0 2px #734d2a;
+                text-shadow: 0 0 0 #000, 0 0 0 #000, 0 0 0 #000;
+                transform: scale(1) translateZ(0) rotateX(0deg) rotateY(0deg);
+            }
+        }
+
+        /* ------------- 奉天宮 3D ------------- */
+        .temple-box {
+            width: 100%;
+            max-width: 580px;
+            height: 220px;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 6px solid #ff9f2f;
+            margin-top: 20px;
+            background: #1e130e;
+            position: relative;
+        }
+        .temple-title {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: #ffd966;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: min(20px, 4.5vw);
+            font-weight: 900;
+            letter-spacing: 6px;
+            border: 2px solid #ffaa33;
+            z-index: 30;
+            pointer-events: none;
+        }
+        #templeCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* ------------- 音樂列 ------------- */
+        .music-row {
+            background: #1e130c;
+            border: 4px solid #ff9f2f;
+            border-radius: 70px;
+            padding: 12px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 580px;
+            width: 100%;
+            margin-top: 18px;
+        }
+        .music-btn {
+            background: #ffaa33;
+            border: none;
+            color: #2f1a0a;
+            font-size: min(32px, 6.5vw);
+            font-weight: bold;
+            padding: 8px 26px;
+            border-radius: 60px;
+            border-bottom: 6px solid #7a4c26;
+            cursor: pointer;
+            transition: transform 0.06s;
+        }
+        .music-btn:active {
+            transform: translateY(4px);
+            border-bottom-width: 2px;
+        }
+        .footer-note {
+            font-size: min(22px, 5vw);
+            color: #ffcf8a;
+            margin-top: 25px;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 0 #3a1c0e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 主紅包 · Afa -->
+    <div class="red-card">
+        <div class="sheng-big">聖筊</div>
+        <div style="font-size: min(44px, 10vw); color: #ffecaa; text-shadow: 4px 4px 0 #5e2a1a;">
+            🐴🧧🥢
+        </div>
+    </div>
+
+    <!-- 筊杯互動區 · 完全靜態 -->
+    <div class="bwa-panel">
+        <div id="moonDisplay" class="moon">🥢🥢</div>
+        <div id="resultMessage" class="result-line">🥢 Afa 祝聖筊</div>
+        <div id="shakeArea" class="shake-btn">
+            <span>📳</span>
+            <span>🥢</span>
+            <span>搖 / 點 聖筊</span>
+            <span>🥢</span>
+        </div>
+    </div>
+
+    <!-- ★★★ 祝福訊息區 · 3D文字放大＋AFA音效觸發區 · 全改為Afa祝福 ★★★ -->
+    <div id="blessDisplay" class="bless-message-area">
+        🐴 搖手機 · 得聖筊 · Afa 祝您馬年大吉
+    </div>
+
+    <!-- 3D ESG宮 -->
+    <div class="temple-box">
+        <canvas id="templeCanvas"></canvas>
+        <div class="temple-title">🏯 ESG宮</div>
+    </div>
+
+    <!-- 音樂控制（背景音樂） -->
+    <div class="music-row">
+        <span style="font-size: min(32px, 6.5vw);">🎵 Afa 賀歲</span>
+        <button id="musicToggle" class="music-btn">🔊</button>
+    </div>
+
+    <div class="footer-note">
+        🥢 聖筊 · ESG宮 · 馬年大吉 🐴
+    </div>
+
+    <!-- 背景音樂（馬年應景） -->
+    <audio id="bgMusic" loop preload="auto" style="display: none;">
+        <source src="https://raw.githubusercontent.com/Sethjesus/newyear/main/horse.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Three.js 奉天宮模組 -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        // ---------- 3D ESG宮 (奉天宮風格) 安靜旋轉 ----------
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        const canvas = document.getElementById('templeCanvas');
+        const w = canvas.clientWidth;
+        const h = canvas.clientHeight;
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x2a1a12);
+
+        const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
+        camera.position.set(5.2, 3.2, 10);
+        camera.lookAt(0, 1.2, 0);
+
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setSize(w, h);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        // 燈光
+        const ambient = new THREE.AmbientLight(0x7a5a4a);
+        scene.add(ambient);
+        
+        const mainLight = new THREE.DirectionalLight(0xffeedd, 1.2);
+        mainLight.position.set(5, 8, 10);
+        mainLight.castShadow = true;
+        mainLight.receiveShadow = true;
+        mainLight.shadow.mapSize.width = 512;
+        mainLight.shadow.mapSize.height = 512;
+        scene.add(mainLight);
+
+        const fillLight = new THREE.DirectionalLight(0xffccaa, 0.5);
+        fillLight.position.set(-3, 2, 5);
+        scene.add(fillLight);
+
+        // 地面
+        const ground = new THREE.Mesh(
+            new THREE.CircleGeometry(14, 20),
+            new THREE.MeshStandardMaterial({ color: 0x6b4f3c, roughness: 0.9 })
+        );
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -0.02;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        // 奉天宮殿 · 莊嚴廟宇
+        const base1 = new THREE.Mesh(
+            new THREE.BoxGeometry(5.2, 0.25, 4.8),
+            new THREE.MeshStandardMaterial({ color: 0x9a7a5a, roughness: 0.7 })
+        );
+        base1.position.set(0, 0.15, 0);
+        base1.castShadow = true;
+        base1.receiveShadow = true;
+        scene.add(base1);
+
+        const base2 = new THREE.Mesh(
+            new THREE.BoxGeometry(4.8, 0.2, 4.4),
+            new THREE.MeshStandardMaterial({ color: 0xb38b6b, roughness: 0.7 })
+        );
+        base2.position.set(0, 0.4, 0);
+        base2.castShadow = true;
+        base2.receiveShadow = true;
+        scene.add(base2);
+
+        const columnBase = new THREE.Mesh(
+            new THREE.BoxGeometry(4.4, 0.2, 4.0),
+            new THREE.MeshStandardMaterial({ color: 0xc69c7c, roughness: 0.6 })
+        );
+        columnBase.position.set(0, 0.65, 0);
+        columnBase.castShadow = true;
+        columnBase.receiveShadow = true;
+        scene.add(columnBase);
+
+        const columnMat = new THREE.MeshStandardMaterial({ color: 0xb87333, roughness: 0.5, emissive: 0x331e0e, emissiveIntensity: 0.1 });
+        const colPos = [
+            [-1.6, 1.0, 1.4], [1.6, 1.0, 1.4],
+            [-1.6, 1.0, -1.4], [1.6, 1.0, -1.4]
+        ];
+        colPos.forEach(pos => {
+            const column = new THREE.Mesh(
+                new THREE.CylinderGeometry(0.18, 0.2, 1.4, 8),
+                columnMat
+            );
+            column.position.set(pos[0], pos[1], pos[2]);
+            column.castShadow = true;
+            column.receiveShadow = true;
+            scene.add(column);
+        });
+
+        const wall = new THREE.Mesh(
+            new THREE.BoxGeometry(4.2, 1.2, 3.8),
+            new THREE.MeshStandardMaterial({ color: 0xa05e3a, roughness: 0.7 })
+        );
+        wall.position.set(0, 1.1, 0);
+        wall.castShadow = true;
+        wall.receiveShadow = true;
+        scene.add(wall);
+
+        const doorMat = new THREE.MeshStandardMaterial({ color: 0x8b4513, roughness: 0.8, emissive: 0x2a1a0a, emissiveIntensity: 0.1 });
+        const door = new THREE.Mesh(
+            new THREE.BoxGeometry(1.2, 1.0, 0.2),
+            doorMat
+        );
+        door.position.set(0, 0.9, 1.91);
+        door.castShadow = true;
+        door.receiveShadow = true;
+        scene.add(door);
+
+        const roofMat1 = new THREE.MeshStandardMaterial({ color: 0xcc8844, roughness: 0.5, emissive: 0x442211, emissiveIntensity: 0.1 });
+        const roof1 = new THREE.Mesh(
+            new THREE.ConeGeometry(3.8, 0.7, 4),
+            roofMat1
+        );
+        roof1.position.set(0, 1.8, 0);
+        roof1.rotation.y = Math.PI / 4;
+        roof1.castShadow = true;
+        roof1.receiveShadow = true;
+        scene.add(roof1);
+
+        const roofMat2 = new THREE.MeshStandardMaterial({ color: 0xbb7733, roughness: 0.5 });
+        const roof2 = new THREE.Mesh(
+            new THREE.ConeGeometry(3.2, 0.6, 4),
+            roofMat2
+        );
+        roof2.position.set(0, 2.2, 0);
+        roof2.rotation.y = Math.PI / 4;
+        roof2.castShadow = true;
+        roof2.receiveShadow = true;
+        scene.add(roof2);
+
+        const topMat = new THREE.MeshStandardMaterial({ color: 0xeeaa33, emissive: 0x553311, emissiveIntensity: 0.2 });
+        const topOrb = new THREE.Mesh(
+            new THREE.SphereGeometry(0.15),
+            topMat
+        );
+        topOrb.position.set(0, 2.6, 0);
+        topOrb.castShadow = true;
+        scene.add(topOrb);
+
+        const lanternMat = new THREE.MeshStandardMaterial({ color: 0xd84c3c, emissive: 0x441111, emissiveIntensity: 0.2 });
+        const lanternPos = [
+            [-1.6, 1.7, 1.5], [1.6, 1.7, 1.5],
+            [-1.6, 1.7, -1.5], [1.6, 1.7, -1.5]
+        ];
+        lanternPos.forEach(pos => {
+            const lantern = new THREE.Mesh(new THREE.SphereGeometry(0.18), lanternMat);
+            lantern.position.set(pos[0], pos[1], pos[2]);
+            lantern.castShadow = true;
+            lantern.receiveShadow = true;
+            scene.add(lantern);
+        });
+
+        const burnerMat = new THREE.MeshStandardMaterial({ color: 0x6b4a3a, roughness: 0.8 });
+        const burner = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.6, 0.7, 0.2, 16),
+            burnerMat
+        );
+        burner.position.set(0, 0.3, 1.0);
+        burner.castShadow = true;
+        burner.receiveShadow = true;
+        scene.add(burner);
+
+        const burnerTop = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.4, 0.4, 0.1, 16),
+            new THREE.MeshStandardMaterial({ color: 0x8b5a3a })
+        );
+        burnerTop.position.set(0, 0.45, 1.0);
+        burnerTop.castShadow = true;
+        burnerTop.receiveShadow = true;
+        scene.add(burnerTop);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.06;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.7;
+        controls.enableZoom = true;
+        controls.enablePan = true;
+        controls.enableRotate = true;
+        controls.enableTouchRotate = true;
+        controls.target.set(0, 1.2, 0);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            const w = canvas.clientWidth;
+            const h = canvas.clientHeight;
+            renderer.setSize(w, h);
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+        });
+
+        // ---------- ★★★ 互動核心 · 3D文字放大＋AFA音效！所有Patty改為Afa ★★★ ----------
+        const moon = document.getElementById('moonDisplay');
+        const resultMsg = document.getElementById('resultMessage');
+        const shakeArea = document.getElementById('shakeArea');
+        const blessDisplay = document.getElementById('blessDisplay');
+        
+        // 背景音樂控制
+        const audio = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        // Afa 祝福詞庫 · 全數改為Afa
+        const blessings = [
+            "🐴 Afa 祝您馬年大吉 · 平安順遂",
+            "🧧 Afa 賀您恭喜發財 · 財源廣進",
+            "💰 Afa 賜您財源滾滾 · 富貴年年",
+            "🌸 Afa 願您馬到成功 · 步步高升",
+            "🏮 Afa 送您聖筊連連 · 好運不斷",
+            "✨ Afa 祈您金馬獻瑞 · 吉星高照",
+            "🎋 Afa 盼您一馬當先 · 前程萬里",
+            "🍊 Afa 贈您大吉大利 · 事事如意",
+            "🏇 Afa 祝您策馬揚鞭 · 鵬程萬里",
+            "🎊 Afa 賀您五福臨門 · 闔家平安",
+            "🥢 Afa 賜您聖筊聖筊 · 心想事成",
+            "🐎 Afa 願您馬年發財 · 好運旺來"
+        ];
+
+        // 背景音樂初始
+        audio.volume = 0.3;
+        audio.play().then(() => {
+            isPlaying = true;
+            musicBtn.textContent = '🔊';
+        }).catch(() => {
+            isPlaying = false;
+            musicBtn.textContent = '🔇';
+        });
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                musicBtn.textContent = '🔇';
+            } else {
+                audio.play();
+                musicBtn.textContent = '🔊';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // ★★★ AFA音效！使用Web Audio API產生「AFA！AFA！AFA！」人聲吶喊 ★★★
+        function playAFA() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const ctx = new AudioContext();
+                
+                if (ctx.state === 'suspended') {
+                    ctx.resume();
+                }
+                
+                // 產生「A」音 (800-1000Hz 短音)
+                function playA(time, panValue, volumeValue) {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    const panner = ctx.createStereoPanner();
+                    
+                    osc.type = 'sawtooth';
+                    osc.frequency.value = 820 + Math.random() * 180; // A 音頻
+                    
+                    panner.pan.value = panValue;
+                    gain.gain.value = volumeValue;
+                    
+                    osc.connect(gain);
+                    gain.connect(panner);
+                    panner.connect(ctx.destination);
+                    
+                    osc.start(time);
+                    osc.stop(time + 0.12);
+                    
+                    // 快速淡出
+                    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
+                }
+                
+                // 產生「F」音 (400-600Hz)
+                function playF(time, panValue, volumeValue) {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    const panner = ctx.createStereoPanner();
+                    
+                    osc.type = 'triangle';
+                    osc.frequency.value = 480 + Math.random() * 120; // F 音頻
+                    
+                    panner.pan.value = panValue;
+                    gain.gain.value = volumeValue;
+                    
+                    osc.connect(gain);
+                    gain.connect(panner);
+                    panner.connect(ctx.destination);
+                    
+                    osc.start(time);
+                    osc.stop(time + 0.15);
+                    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.13);
+                }
+                
+                // 產生第二個「A」音 (更高)
+                function playA2(time, panValue, volumeValue) {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    const panner = ctx.createStereoPanner();
+                    
+                    osc.type = 'sawtooth';
+                    osc.frequency.value = 920 + Math.random() * 160;
+                    
+                    panner.pan.value = panValue;
+                    gain.gain.value = volumeValue;
+                    
+                    osc.connect(gain);
+                    gain.connect(panner);
+                    panner.connect(ctx.destination);
+                    
+                    osc.start(time);
+                    osc.stop(time + 0.13);
+                    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.11);
+                }
+                
+                const now = ctx.currentTime;
+                
+                // 第一發 AFA！ - 左聲道
+                playA(now + 0.00, -0.6, 0.35);
+                playF(now + 0.08, -0.5, 0.32);
+                playA2(now + 0.16, -0.4, 0.35);
+                
+                // 第二發 AFA！ - 右聲道
+                playA(now + 0.35, 0.5, 0.38);
+                playF(now + 0.43, 0.6, 0.35);
+                playA2(now + 0.51, 0.5, 0.38);
+                
+                // 第三發 AFA！ - 中央＋更響
+                playA(now + 0.75, 0.0, 0.45);
+                playF(now + 0.83, 0.1, 0.42);
+                playA2(now + 0.91, -0.1, 0.45);
+                
+                // 最後一聲強力 AFA！ - 震撼結尾
+                playA(now + 1.15, -0.2, 0.5);
+                playF(now + 1.23, 0.2, 0.48);
+                playA2(now + 1.31, 0.0, 0.52);
+                
+            } catch (e) {
+                console.log('AFA音效產生失敗', e);
+            }
+        }
+
+        // ★★★ 聖筊！3D文字放大＋AFA吶喊！★★★
+        function doSheng() {
+            // 筊杯完全無動畫，只改文字
+            moon.textContent = '🥢🥢';
+            resultMsg.innerHTML = '🥢🥢 Afa 祝聖筊';
+
+            // 隨機抽取Afa祝福
+            const text = blessings[Math.floor(Math.random() * blessings.length)];
+            blessDisplay.textContent = text;
+
+            // ★★★ 觸發3D文字立體放大動畫 ★★★
+            blessDisplay.classList.remove('sheng-text-3d');
+            void blessDisplay.offsetWidth;
+            blessDisplay.classList.add('sheng-text-3d');
+
+            // ★★★ AFA！AFA！AFA！ ★★★
+            playAFA();
+
+            // 震動回饋
+            if (navigator.vibrate) navigator.vibrate([30, 40, 30, 60]);
+
+            // 動畫結束後移除class
+            setTimeout(() => {
+                blessDisplay.classList.remove('sheng-text-3d');
+            }, 1000);
+        }
+
+        // 搖晃偵測
+        let lastShake = 0;
+        if (window.DeviceMotionEvent) {
+            window.addEventListener('devicemotion', (e) => {
+                const acc = e.accelerationIncludingGravity;
+                if (!acc) return;
+                const now = Date.now();
+                if (now - lastShake < 1000) return;
+                const x = Math.abs(acc.x || 0);
+                const y = Math.abs(acc.y || 0);
+                const z = Math.abs(acc.z || 0);
+                if ((x > 9.8 || y > 9.8 || z > 9.8) && (x + y + z > 25)) {
+                    lastShake = now;
+                    doSheng();
+                }
+            });
+        }
+
+        // 點擊筊杯 & 按鈕
+        moon.addEventListener('click', doSheng);
+        shakeArea.addEventListener('click', doSheng);
+
+        // 初始祝福顯示
+        blessDisplay.textContent = "🐴 搖手機 · 得聖筊 · Afa 祝您馬年大吉";
+    </script>
+</body>
+</html>
