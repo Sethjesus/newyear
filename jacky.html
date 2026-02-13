@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Jacky 祝您快樂一整年</title>
+    <style>
+        /* 全域重置：手機友善強制 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        body {
+            background-color: #1e130f;
+            font-family: "Noto Serif TC", "標楷體", "DFKai-SB", "PMingLiU", "Helvetica Neue", Arial, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            overscroll-behavior: none;
+        }
+        /* ----- 入口畫面：Jacky 恭迎 ----- */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, #4d3422, #1f150e);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            transition: opacity 1.8s ease, visibility 1.8s ease;
+            color: #ffecb3;
+            text-shadow: 0 0 25px #ffaa33;
+            padding: 20px;
+        }
+        .splash-logo {
+            font-size: min(100px, 25vw);
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 30px #ffaa00);
+            animation: sway 2.6s infinite alternate;
+        }
+        @keyframes sway {
+            from { transform: rotate(-5deg); }
+            to { transform: rotate(5deg); }
+        }
+        .splash-title {
+            font-size: min(64px, 15vw);
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            color: #ffe7a3;
+            margin-top: 10px;
+            text-shadow: 4px 4px 0 #5e3a1e;
+            text-align: center;
+        }
+        .splash-name {
+            font-size: min(48px, 12vw);
+            background: #dbb079;
+            color: #2d1c0e;
+            padding: 12px 1.5em;
+            border-radius: 60px;
+            border: 5px solid #ffdd44;
+            box-shadow: 0 0 60px gold;
+            margin: 30px 0 20px;
+            font-weight: bold;
+            letter-spacing: 0.3em;
+            text-shadow: 2px 2px 0 #ffeeaa;
+            text-align: center;
+            width: 90%;
+            white-space: nowrap;
+        }
+        .enter-btn {
+            background: #c28b4b;
+            border: none;
+            color: #1e130b;
+            font-size: min(40px, 10vw);
+            font-weight: bold;
+            padding: 0.5em 1.8em;
+            border-radius: 100px;
+            letter-spacing: 0.3em;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.9);
+            cursor: pointer;
+            transition: 0.1s;
+            margin-top: 30px;
+            border-bottom: 10px solid #6b4a22;
+            font-family: inherit;
+            text-shadow: 2px 2px 0 #ffcc77;
+            width: 80%;
+            max-width: 500px;
+            -webkit-appearance: none;
+        }
+        .enter-btn:active {
+            border-bottom-width: 4px;
+            transform: translateY(6px);
+            background: #dba15a;
+        }
+
+        /* ----- 3D 畫布容器 (全螢幕) ----- */
+        .main-scene {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 2.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .show-scene {
+            opacity: 1 !important;
+        }
+
+        /* ----- 拜拜擲杯 大字 (保留您要的風格) ----- */
+        .worship-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffe68f;
+            font-size: min(64px, 12vw);
+            font-weight: 900;
+            text-shadow: 0 0 40px #ff5500, 0 0 90px #ffaa00, 4px 4px 0 #4a1e1a;
+            letter-spacing: 0.2em;
+            white-space: nowrap;
+            z-index: 30;
+            opacity: 0.2;
+            pointer-events: none;
+            border: 6px double #ffbb44;
+            padding: 0.6em 1.2em;
+            border-radius: 120px;
+            background: rgba(60, 28, 8, 0.4);
+            backdrop-filter: blur(6px);
+            animation: worshipPulse 3.2s infinite;
+            transition: opacity 2s;
+        }
+        @keyframes worshipPulse {
+            0% { opacity: 0.2; border-color: #ffaa33; }
+            50% { opacity: 0.4; border-color: #ffdd77; }
+            100% { opacity: 0.2; border-color: #ffaa33; }
+        }
+
+        /* ----- 飛天馬年賀詞 (手機飛舞) ----- */
+        .greeting-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 25;
+            overflow: hidden;
+        }
+        .greet {
+            position: absolute;
+            font-size: min(34px, 8vw);
+            font-weight: 800;
+            white-space: nowrap;
+            opacity: 0;
+            animation: flyAcross 16s linear infinite;
+            background: linear-gradient(145deg, #fff3bf, #ffd966);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(255, 100, 0, 0.8);
+            letter-spacing: 0.2em;
+            z-index: 26;
+        }
+        @keyframes flyAcross {
+            0% { opacity: 0.8; transform: translateX(100vw) translateY(0) rotate(12deg); }
+            25% { opacity: 1; }
+            75% { opacity: 0.9; }
+            100% { opacity: 0; transform: translateX(-40vw) translateY(-30vh) rotate(-18deg); }
+        }
+        .g01 { top: 12%; left: 5%; animation-delay: 0.2s; }
+        .g02 { top: 33%; left: 15%; animation-delay: 2.7s; }
+        .g03 { top: 67%; left: 8%; animation-delay: 4.5s; }
+        .g04 { top: 18%; left: 70%; animation-delay: 1.3s; }
+        .g05 { top: 49%; left: 45%; animation-delay: 5.8s; }
+        .g06 { top: 78%; left: 30%; animation-delay: 3.1s; }
+        .g07 { top: 8%; left: 50%; animation-delay: 6.6s; }
+        .g08 { top: 58%; left: 72%; animation-delay: 7.9s; }
+        .g09 { top: 27%; left: 88%; animation-delay: 2.0s; }
+        .g10 { top: 85%; left: 63%; animation-delay: 5.1s; }
+
+        /* ----- 搖擲杯面板 (手機特大版) ----- */
+        .divination-box {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            width: auto;
+            background: rgba(40, 22, 8, 0.95);
+            backdrop-filter: blur(12px);
+            border: 3px solid #edb15c;
+            border-radius: 50px 50px 30px 30px;
+            padding: 20px 18px;
+            color: #fff0c0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            z-index: 60;
+            box-shadow: 0 0 50px rgba(255, 140, 0, 0.7);
+            border-top: 10px solid #ffcc66;
+            pointer-events: auto;
+            transition: opacity 1.2s;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .jacky-sign {
+            font-size: min(26px, 7vw);
+            background: #b3763e;
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #fffad6;
+            letter-spacing: 0.3em;
+            font-weight: bold;
+            border: 2px solid #ffdcaa;
+            text-shadow: 2px 2px 0 #5e301a;
+            width: 100%;
+            text-align: center;
+        }
+        .moon-icons {
+            font-size: min(80px, 20vw);
+            line-height: 1.2;
+            filter: drop-shadow(0 0 18px #ffbb33);
+            background: #2f1e12;
+            padding: 10px 25px;
+            border-radius: 100px;
+            border: 3px solid #ffcc55;
+            transition: transform 0.2s;
+        }
+        .shake-animation {
+            animation: shakeMoon 0.4s ease;
+        }
+        @keyframes shakeMoon {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            50% { transform: rotate(-20deg); }
+            75% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .result-card {
+            font-size: min(24px, 6vw);
+            background: #4f2c1a;
+            padding: 18px 16px;
+            border-radius: 40px;
+            text-align: center;
+            color: #ffefb0;
+            border: 3px solid #ffbb44;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            font-weight: 600;
+            word-break: break-word;
+        }
+        
+        /* ----- 搖晃提示 (超醒目) ----- */
+        .shake-hint {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 215, 0, 0.9);
+            color: #3d1e0a;
+            font-size: min(32px, 8vw);
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 60px;
+            border: 4px solid #ff9933;
+            box-shadow: 0 0 50px #ffcc00;
+            z-index: 100;
+            white-space: nowrap;
+            letter-spacing: 8px;
+            backdrop-filter: blur(4px);
+            animation: hintPulse 1.8s infinite;
+            pointer-events: none;
+        }
+        @keyframes hintPulse {
+            0% { transform: translateX(-50%) scale(1); background: rgba(255, 215, 0, 0.9); }
+            50% { transform: translateX(-50%) scale(1.1); background: rgba(255, 200, 0, 1); }
+            100% { transform: translateX(-50%) scale(1); background: rgba(255, 215, 0, 0.9); }
+        }
+        
+        /* ----- 音樂控制鈕 (手機好按) ----- */
+        .music-control {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            border: 2px solid #ffaa33;
+            border-radius: 60px;
+            padding: 12px 18px;
+            color: white;
+            font-size: min(28px, 7vw);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 25px #ff9900;
+            pointer-events: auto;
+        }
+        .music-btn {
+            background: none;
+            border: none;
+            color: #ffdd77;
+            font-size: min(32px, 7vw);
+            cursor: pointer;
+            padding: 5px 10px;
+            -webkit-appearance: none;
+        }
+        .lantern-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 170, 0, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 8;
+        }
+        #hint-text {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            color: #ffefcd;
+            background: rgba(50, 25, 5, 0.8);
+            padding: 10px 20px;
+            border-radius: 60px;
+            backdrop-filter: blur(3px);
+            border: 2px solid #e6b45a;
+            font-size: min(20px, 5vw);
+            letter-spacing: 0.2em;
+            z-index: 55;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 音樂控制浮球 -->
+    <div id="musicControl" class="music-control" style="opacity:0; transition:opacity 1.5s; pointer-events:none;">
+        <span>🐴 馬年喜樂</span>
+        <button id="toggleMusicBtn" class="music-btn" style="pointer-events:auto;">🔊 開</button>
+    </div>
+
+    <!-- 入口廟門 · Jacky 恭迎 -->
+    <div id="splashScreen" class="splash-screen">
+        <div class="splash-logo">🏯🐴🥢</div>
+        <div class="splash-title">馬年祈福</div>
+        <div class="splash-name">Jacky 祝您</div>
+        <div style="font-size: min(30px, 7vw); margin: 20px 0; color: #ffe6aa; text-align:center;">搖晃手機 · 擲杯求運</div>
+        <button id="enterBtn" class="enter-btn">入廟</button>
+        <div style="font-size: min(20px, 5vw); margin-top: 30px; color: #dba959;">—— 拜拜囉 搖擲杯手機版 ——</div>
+    </div>
+
+    <!-- 3D 廟宇場景容器 -->
+    <div id="mainSceneContainer" class="main-scene">
+        <div id="info3d" style="position: absolute; top: 15px; left: 15px; background: rgba(70, 35, 10, 0.8); padding: 10px 22px; border-radius: 60px; border-left: 10px solid #ffbb33; color: #ffefc0; font-size: min(22px, 6vw); backdrop-filter: blur(4px); z-index: 45; box-shadow: 0 0 30px #cc8800; pointer-events: none; white-space: nowrap;">
+            🐎 <span style="font-weight:bold;">Jacky 祝您馬年發大財</span> 搖手機擲杯
+        </div>
+    </div>
+
+    <!-- 拜拜囉 大字 (您要的字) -->
+    <div id="worshipBig" class="worship-message">🙏 拜拜囉 🙏</div>
+
+    <!-- 漫天馬年賀詞 (Jacky 贈) -->
+    <div id="greetingLayer" style="opacity: 0; transition: opacity 2.2s;">
+        <div class="greeting-sky">
+            <div class="greet g01">🐴 龍馬精神 · Jacky 祝您</div>
+            <div class="greet g02">🏮 馬年大吉 · 平安順遂</div>
+            <div class="greet g03">💰 馬到成功 · 財源廣進</div>
+            <div class="greet g04">🙏 拜拜擲杯 · 心誠則靈</div>
+            <div class="greet g05">✨ 金馬獻瑞 · Jacky 祈福</div>
+            <div class="greet g06">🌸 馬年行大運 · 吉星高照</div>
+            <div class="greet g07">🎋 步步高升 · 一馬當先</div>
+            <div class="greet g08">🍊 大吉大利 · 馬年如意</div>
+            <div class="greet g09">🏇 策馬揚鞭 · 前程萬里</div>
+            <div class="greet g10">🎊 五福臨門 · Jacky 敬賀</div>
+        </div>
+    </div>
+
+    <!-- 搖擲杯互動區 (Jacky 專屬) -->
+    <div id="divinationUI" style="opacity: 0; transition: opacity 1.8s; pointer-events: none;">
+        <div class="divination-box">
+            <div class="jacky-sign">Jacky 搖擲杯 · 馬年行大運</div>
+            <div id="moonDisplay" class="moon-icons">🥢🥢</div>
+            <div id="resultMessage" class="result-card">搖晃手機 擲杯請示</div>
+            <div style="font-size: min(20px, 5vw); color: #ffe2a4; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <span>📱 搖動手機</span> <span style="font-size:28px;">🔄</span> <span>即擲杯</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 搖晃提示 (入廟後顯示) -->
+    <div id="shakeHint" class="shake-hint" style="opacity:0; transition: opacity 0.8s;">📳 搖手機擲杯 📳</div>
+
+    <div class="lantern-bg"></div>
+    <div id="hint-text" style="opacity: 0;">🥢 Jacky 祝您 · 馬年發財 🐎</div>
+
+    <!-- 背景音樂 (使用您指定的 GitHub raw 網址) -->
+    <audio id="bgMusic" loop preload="auto" style="display: none;">
+        <source src="https://raw.githubusercontent.com/Sethjesus/newyear/main/horse.mp3" type="audio/mpeg">
+        您的瀏覽器不支援音訊元素。
+    </audio>
+
+    <!-- Three.js 載入 (手機效能優化) -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        // ----- 3D 場景初始化 (手機友善) -----
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x22100c);
+        
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(5.5, 3.5, 12);
+        camera.lookAt(0, 1.2, 0);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        
+        const labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = '0px';
+        labelRenderer.domElement.style.left = '0px';
+        labelRenderer.domElement.style.pointerEvents = 'none';
+        
+        const mainContainer = document.getElementById('mainSceneContainer');
+        mainContainer.appendChild(renderer.domElement);
+        mainContainer.appendChild(labelRenderer.domElement);
+        
+        // 控制器 (手機手勢友善)
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.07;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.8;
+        controls.enableZoom = true;
+        controls.enablePan = true;
+        controls.enableRotate = true;
+        controls.enableTouchRotate = true;
+        controls.target.set(0, 1.3, 0);
+        controls.maxPolarAngle = Math.PI / 2.2;
+        controls.minDistance = 7;
+        controls.maxDistance = 20;
+        
+        // 燈光與簡易廟宇模型
+        const ambientLight = new THREE.AmbientLight(0x554433);
+        scene.add(ambientLight);
+        const mainLight = new THREE.DirectionalLight(0xffeedd, 1.0);
+        mainLight.position.set(5, 8, 10);
+        mainLight.castShadow = true;
+        mainLight.receiveShadow = true;
+        scene.add(mainLight);
+        
+        const ground = new THREE.Mesh(
+            new THREE.CircleGeometry(12, 16),
+            new THREE.MeshStandardMaterial({ color: 0x6b4f3c, roughness: 0.9 })
+        );
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -0.01;
+        ground.receiveShadow = true;
+        scene.add(ground);
+        
+        const base = new THREE.Mesh(
+            new THREE.BoxGeometry(5.8, 0.3, 5.0),
+            new THREE.MeshStandardMaterial({ color: 0x8a6b4b, roughness: 0.7 })
+        );
+        base.position.set(0, 0.15, 0);
+        base.castShadow = true;
+        base.receiveShadow = true;
+        scene.add(base);
+        
+        const wall = new THREE.Mesh(
+            new THREE.BoxGeometry(5.0, 1.6, 4.2),
+            new THREE.MeshStandardMaterial({ color: 0xb87333, roughness: 0.6 })
+        );
+        wall.position.set(0, 1.0, 0);
+        wall.castShadow = true;
+        wall.receiveShadow = true;
+        scene.add(wall);
+        
+        const roof = new THREE.Mesh(
+            new THREE.ConeGeometry(3.8, 0.9, 4),
+            new THREE.MeshStandardMaterial({ color: 0xcc8833, roughness: 0.5 })
+        );
+        roof.position.set(0, 1.9, 0);
+        roof.rotation.y = Math.PI/4;
+        roof.castShadow = true;
+        roof.receiveShadow = true;
+        scene.add(roof);
+        
+        const lanternMat = new THREE.MeshStandardMaterial({ color: 0xd84c3c, emissive: 0x331111, emissiveIntensity: 0.2 });
+        const pos = [[-1.5, 1.6, 1.5], [1.5, 1.6, 1.5], [0, 1.8, 1.5]];
+        pos.forEach(p => {
+            const l = new THREE.Mesh(new THREE.SphereGeometry(0.25), lanternMat);
+            l.position.set(p[0], p[1], p[2]);
+            l.castShadow = true;
+            scene.add(l);
+        });
+        
+        const div = document.createElement('div');
+        div.textContent = '🐴 Jacky 馬年聖廟 🐴';
+        div.style.color = '#ffdd77';
+        div.style.fontSize = '24px';
+        div.style.fontWeight = 'bold';
+        div.style.background = 'rgba(150,70,20,0.9)';
+        div.style.padding = '8px 25px';
+        div.style.borderRadius = '50px';
+        div.style.border = '4px solid #ffcc44';
+        div.style.letterSpacing = '8px';
+        div.style.whiteSpace = 'nowrap';
+        const label = new CSS2DObject(div);
+        label.position.set(0, 2.4, 1.2);
+        scene.add(label);
+        
+        const burner = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.7, 0.8, 0.2, 16),
+            new THREE.MeshStandardMaterial({ color: 0x5a4734 })
+        );
+        burner.position.set(0, 0.3, 0.9);
+        burner.castShadow = true;
+        burner.receiveShadow = true;
+        scene.add(burner);
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
+        }
+        animate();
+        
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // ----- 入廟切換、搖擲杯、音樂 (手機友善) -----
+        const splash = document.getElementById('splashScreen');
+        const mainSceneDiv = document.getElementById('mainSceneContainer');
+        const worshipEl = document.getElementById('worshipBig');
+        const greetingWrap = document.getElementById('greetingLayer');
+        const divinationUI = document.getElementById('divinationUI');
+        const hintEl = document.getElementById('hint-text');
+        const musicControl = document.getElementById('musicControl');
+        const enterBtn = document.getElementById('enterBtn');
+        const audio = document.getElementById('bgMusic');
+        const toggleBtn = document.getElementById('toggleMusicBtn');
+        const shakeHint = document.getElementById('shakeHint');
+        const moonDisplay = document.getElementById('moonDisplay');
+        const resultMsg = document.getElementById('resultMessage');
+        
+        // 音樂播放狀態
+        let isMusicPlaying = false;
+        
+        // 入廟
+        enterBtn.addEventListener('click', () => {
+            splash.style.opacity = '0';
+            splash.style.visibility = 'hidden';
+            
+            mainSceneDiv.classList.add('show-scene');
+            worshipEl.style.opacity = '0.25';
+            greetingWrap.style.opacity = '1';
+            divinationUI.style.opacity = '1';
+            divinationUI.style.pointerEvents = 'auto';
+            hintEl.style.opacity = '1';
+            musicControl.style.opacity = '1';
+            musicControl.style.pointerEvents = 'auto';
+            shakeHint.style.opacity = '1';
+            
+            // 嘗試播放音樂
+            audio.play().then(() => {
+                isMusicPlaying = true;
+                toggleBtn.textContent = '🔊 關';
+            }).catch(e => {
+                console.log('手機需點擊播放', e);
+                isMusicPlaying = false;
+                toggleBtn.textContent = '🔇 開';
+            });
+        });
+        
+        // 音樂開關
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isMusicPlaying) {
+                audio.pause();
+                toggleBtn.textContent = '🔇 開';
+            } else {
+                audio.play().then(() => {
+                    toggleBtn.textContent = '🔊 關';
+                }).catch(err => {
+                    alert('請先點擊畫面任一處啟動音樂');
+                });
+            }
+            isMusicPlaying = !isMusicPlaying;
+        });
+        
+        // ----- 搖擲杯核心功能 (手機搖晃感應) -----
+        const fortunes = [
+            { emoji: '🥢🥢', name: '聖筊', msg: '🐴 馬到成功 · Jacky 賀' },
+            { emoji: '🥢🌙', name: '笑筊', msg: '🏮 龍馬精神 · 平安喜樂' },
+            { emoji: '🌙🥢', name: '陰筊', msg: '🙏 拜拜擲杯 · 貴人相助' },
+            { emoji: '🥢🥢', name: '聖筊', msg: '💰 萬馬奔騰 · 財源廣進' },
+            { emoji: '🌙🌙', name: '笑筊', msg: '✨ 金馬祈福 · Jacky 祝您' },
+            { emoji: '🥢🌙', name: '聖筊', msg: '🌸 馬年如意 · 好事成雙' }
+        ];
+        
+        let lastShakeTime = 0;
+        let canShake = true;
+        
+        function throwMoons() {
+            if (!canShake) return;
+            canShake = false;
+            
+            // 筊杯搖晃動畫
+            moonDisplay.classList.add('shake-animation');
+            setTimeout(() => {
+                moonDisplay.classList.remove('shake-animation');
+            }, 500);
+            
+            // 隨機結果
+            const r = Math.floor(Math.random() * fortunes.length);
+            const f = fortunes[r];
+            moonDisplay.textContent = f.emoji;
+            resultMsg.innerHTML = `${f.name}<br><span style="font-size:1.3em; letter-spacing:0.2em;">${f.msg}</span>`;
+            
+            // 飛天加碼祝詞
+            const extra = document.createElement('div');
+            extra.className = 'greet';
+            extra.style.animation = 'flyAcross 12s linear';
+            extra.style.left = Math.random() * 70 + '%';
+            extra.style.top = Math.random() * 80 + '%';
+            extra.style.fontSize = 'min(42px, 10vw)';
+            extra.textContent = '🥢 Jacky 擲杯 · 馬年大發 🐴';
+            document.querySelector('.greeting-sky')?.appendChild(extra);
+            setTimeout(() => extra.remove(), 12000);
+            
+            // 搖晃冷卻 (避免連續觸發)
+            setTimeout(() => {
+                canShake = true;
+            }, 800);
+        }
+        
+        // 監聽裝置搖晃 (DeviceMotion)
+        if (window.DeviceMotionEvent) {
+            window.addEventListener('devicemotion', function(event) {
+                const acceleration = event.accelerationIncludingGravity;
+                if (!acceleration) return;
+                
+                const now = Date.now();
+                if (now - lastShakeTime < 1000) return; // 1秒內只觸發一次
+                
+                const x = Math.abs(acceleration.x || 0);
+                const y = Math.abs(acceleration.y || 0);
+                const z = Math.abs(acceleration.z || 0);
+                
+                // 搖晃偵測閾值 (手機友善)
+                if ((x > 12 || y > 12 || z > 12) && (x + y + z > 25)) {
+                    lastShakeTime = now;
+                    
+                    // 只有在入廟後才執行擲杯
+                    if (mainSceneDiv.classList.contains('show-scene')) {
+                        throwMoons();
+                        
+                        // 搖晃提示閃一下
+                        shakeHint.style.opacity = '0.8';
+                        shakeHint.style.animation = 'none';
+                        shakeHint.offsetHeight;
+                        shakeHint.style.animation = 'hintPulse 0.5s';
+                        setTimeout(() => {
+                            shakeHint.style.animation = 'hintPulse 1.8s infinite';
+                        }, 500);
+                    }
+                }
+            }, false);
+        } else {
+            // 若無搖晃感應，顯示替代提示
+            document.querySelector('.divination-box div:last-child').innerHTML = '📱 此裝置不支援搖晃感應，請點擊下方按鈕擲杯';
+            // 加入備用按鈕功能 (可選)
+        }
+        
+        // 備用：如果沒有搖晃功能，點擊筊杯也可擲杯
+        moonDisplay.addEventListener('click', function() {
+            if (mainSceneDiv.classList.contains('show-scene')) {
+                throwMoons();
+            }
+        });
+        
+        // 手機觸控最佳化
+        document.addEventListener('touchmove', (e) => { if (e.scale !== 1) e.preventDefault(); }, { passive: false });
+    </script>
+</body>
+</html>
