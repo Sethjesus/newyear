@@ -2,10 +2,11 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <!-- 手機友善 · 完全靜止 · 無閃爍 · 奉天宮 · Jacky完整祝福 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes, viewport-fit=cover">
-    <title>Jacky · 聖筊拜年</title>
+    <title>Jacky · 奉天宮 · 聖筊拜年</title>
     <style>
-        /* ********** 完全靜止 · 無閃爍 · 無飄移 ********** */
+        /* ********** 完全靜止 · 無任何動畫閃爍 ********** */
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +14,7 @@
         }
 
         body {
-            background: #8b2e1a;  /* 單一底色，無漸層、無動畫 */
+            background: #7f321e;  /* 單一深紅底色，無漸層 */
             font-family: "Noto Serif TC", "標楷體", "PingFang TC", sans-serif;
             min-height: 100vh;
             display: flex;
@@ -24,7 +25,7 @@
             position: relative;
         }
 
-        /* ------------- 主紅包 · 無任何動畫 ------------- */
+        /* ------------- 主紅包 · 完全靜止 ------------- */
         .red-card {
             background: #c43c1e;
             max-width: 580px;
@@ -59,7 +60,6 @@
             text-shadow: none;
         }
 
-        /* 聖筊大字 · 靜止 */
         .sheng-big {
             font-size: min(90px, 18vw);
             font-weight: 900;
@@ -70,7 +70,7 @@
             margin-bottom: 8px;
         }
 
-        /* ------------- 筊杯區 · 完全靜態，只有點擊效果 ------------- */
+        /* ------------- 筊杯區 · 完全靜態 ------------- */
         .bwa-panel {
             background: #2d1a0e;
             border: 6px solid #ff9f2f;
@@ -96,11 +96,11 @@
             filter: drop-shadow(0 8px 0 #7a401a);
             line-height: 1;
             cursor: pointer;
-            transition: none;  /* 無動畫 */
+            transition: none;
         }
 
         .moon:active {
-            opacity: 0.7;     /* 只有點擊回饋，無閃爍 */
+            opacity: 0.7;
         }
 
         .result-line {
@@ -136,41 +136,58 @@
 
         .shake-btn:active {
             opacity: 0.7;
-            border-bottom-width: 8px;  /* 不位移，不閃 */
         }
 
-        /* ------------- 祝福訊息 · 靜止置底 · 不飄不移 ------------- */
+        /* ------------- 祝福訊息區 · 固定顯示 · 完整祝福詞 ------------- */
         .bless-message-area {
             width: 100%;
             max-width: 580px;
-            min-height: 80px;
+            min-height: 100px;
             background: #2f1e14;
             border: 4px solid #ffa52f;
             border-radius: 50px;
             margin-top: 25px;
-            padding: 18px 20px;
+            padding: 20px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff6cf;
-            font-size: min(32px, 7vw);
+            font-size: min(32px, 6.8vw);
             font-weight: 900;
             text-align: center;
             word-break: break-word;
-            letter-spacing: 6px;
+            letter-spacing: 4px;
+            line-height: 1.4;
             box-shadow: inset 0 0 0 2px #734d2a;
         }
 
-        /* ------------- 3D廟宇 · 靜止旋轉（低調） ------------- */
+        /* ------------- 奉天宮 · 3D廟宇 ------------- */
         .temple-box {
             width: 100%;
             max-width: 580px;
-            height: 200px;
+            height: 220px;
             border-radius: 40px;
             overflow: hidden;
             border: 6px solid #ff9f2f;
             margin-top: 20px;
             background: #1e130e;
+            position: relative;
+        }
+
+        .temple-title {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: #ffd966;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: min(20px, 4.5vw);
+            font-weight: 900;
+            letter-spacing: 6px;
+            border: 2px solid #ffaa33;
+            z-index: 30;
+            pointer-events: none;
         }
 
         #templeCanvas {
@@ -179,7 +196,7 @@
             display: block;
         }
 
-        /* 音樂列 · 靜態 */
+        /* ------------- 音樂列 · 靜態 ------------- */
         .music-row {
             background: #1e130c;
             border: 4px solid #ff9f2f;
@@ -217,13 +234,12 @@
             text-shadow: 2px 2px 0 #3a1c0e;
         }
 
-        /* 完全沒有任何動畫、沒有飄移、沒有閃爍、沒有跑馬燈 */
-        /* 所有 animation 全部刪除 */
+        /* 完全沒有任何 animation，無閃爍、無飄移 */
     </style>
 </head>
 <body>
 
-    <!-- 主紅包 · Jacky 賀歲 · 完全靜止 -->
+    <!-- 主紅包 · Jacky 賀歲 -->
     <div class="red-card">
         <div class="sheng-big">聖筊</div>
         <div style="font-size: min(44px, 10vw); color: #ffecaa; text-shadow: 4px 4px 0 #5e2a1a;">
@@ -231,7 +247,7 @@
         </div>
     </div>
 
-    <!-- 筊杯互動區 · 無閃爍 -->
+    <!-- 筊杯互動區 -->
     <div class="bwa-panel">
         <div id="moonDisplay" class="moon">🥢🥢</div>
         <div id="resultMessage" class="result-line">🥢 Jacky 賜聖筊</div>
@@ -243,24 +259,25 @@
         </div>
     </div>
 
-    <!-- 祝福訊息 · 固定不動 · 每次更新內容 -->
+    <!-- 祝福訊息 · 固定顯示 · 完整Jacky祝福詞 -->
     <div id="blessDisplay" class="bless-message-area">
-        🐴 搖手機 · 得聖筊 · 接祝福
+        🐴 搖手機 · 得聖筊 · Jacky 祝您馬年大吉
     </div>
 
-    <!-- 3D 廟宇 · 安靜旋轉（無閃爍，只有慢轉） -->
+    <!-- 3D 奉天宮 · 標示清楚 -->
     <div class="temple-box">
         <canvas id="templeCanvas"></canvas>
+        <div class="temple-title">🏯 奉天宮</div>
     </div>
 
-    <!-- 音樂 · 簡潔 -->
+    <!-- 音樂控制 -->
     <div class="music-row">
         <span style="font-size: min(32px, 6.5vw);">🎵 Jacky 賀歲</span>
         <button id="musicToggle" class="music-btn">🔊</button>
     </div>
 
     <div class="footer-note">
-        🥢 聖筊 · 馬年大吉 🐴
+        🥢 聖筊 · 奉天宮 · 馬年大吉 🐴
     </div>
 
     <!-- 背景音樂 -->
@@ -268,7 +285,7 @@
         <source src="https://raw.githubusercontent.com/Sethjesus/newyear/main/horse.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Three.js 廟宇 -->
+    <!-- Three.js 奉天宮 -->
     <script type="importmap">
         {
             "imports": {
@@ -279,7 +296,7 @@
     </script>
 
     <script type="module">
-        // ---------- 3D 廟宇 · 安靜緩慢旋轉 ----------
+        // ---------- 3D 奉天宮 · 安靜緩慢旋轉 ----------
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
@@ -288,27 +305,37 @@
         const h = canvas.clientHeight;
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x2a1a12);
+        scene.background = new THREE.Color(0x2a1a12); // 深褐色
 
         const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
-        camera.position.set(5, 3, 9.5);
-        camera.lookAt(0, 1, 0);
+        camera.position.set(5.2, 3.2, 10);
+        camera.lookAt(0, 1.2, 0);
 
         const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
         renderer.setSize(w, h);
         renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-        const ambient = new THREE.AmbientLight(0x6f4e3a);
+        // 燈光
+        const ambient = new THREE.AmbientLight(0x7a5a4a);
         scene.add(ambient);
-        const light = new THREE.DirectionalLight(0xffeedd, 1);
-        light.position.set(5, 7, 9);
-        light.castShadow = true;
-        light.receiveShadow = true;
-        scene.add(light);
+        
+        const mainLight = new THREE.DirectionalLight(0xffeedd, 1.2);
+        mainLight.position.set(5, 8, 10);
+        mainLight.castShadow = true;
+        mainLight.receiveShadow = true;
+        mainLight.shadow.mapSize.width = 512;
+        mainLight.shadow.mapSize.height = 512;
+        scene.add(mainLight);
 
-        // 簡單廟宇模型
+        // 補光
+        const fillLight = new THREE.DirectionalLight(0xffccaa, 0.5);
+        fillLight.position.set(-3, 2, 5);
+        scene.add(fillLight);
+
+        // 地面
         const ground = new THREE.Mesh(
-            new THREE.CircleGeometry(11, 16),
+            new THREE.CircleGeometry(14, 20),
             new THREE.MeshStandardMaterial({ color: 0x6b4f3c, roughness: 0.9 })
         );
         ground.rotation.x = -Math.PI / 2;
@@ -316,53 +343,152 @@
         ground.receiveShadow = true;
         scene.add(ground);
 
-        const base = new THREE.Mesh(
-            new THREE.BoxGeometry(4.6, 0.3, 4.2),
-            new THREE.MeshStandardMaterial({ color: 0x8a6b4b })
+        // ---------- 奉天宮殿 · 較莊嚴的廟宇風格 ----------
+        // 基座 (三層)
+        const base1 = new THREE.Mesh(
+            new THREE.BoxGeometry(5.2, 0.25, 4.8),
+            new THREE.MeshStandardMaterial({ color: 0x9a7a5a, roughness: 0.7 })
         );
-        base.position.set(0, 0.15, 0);
-        base.castShadow = true;
-        base.receiveShadow = true;
-        scene.add(base);
+        base1.position.set(0, 0.15, 0);
+        base1.castShadow = true;
+        base1.receiveShadow = true;
+        scene.add(base1);
 
-        const wall = new THREE.Mesh(
-            new THREE.BoxGeometry(4.2, 1.5, 3.8),
-            new THREE.MeshStandardMaterial({ color: 0xb87333 })
+        const base2 = new THREE.Mesh(
+            new THREE.BoxGeometry(4.8, 0.2, 4.4),
+            new THREE.MeshStandardMaterial({ color: 0xb38b6b, roughness: 0.7 })
         );
-        wall.position.set(0, 1.0, 0);
+        base2.position.set(0, 0.4, 0);
+        base2.castShadow = true;
+        base2.receiveShadow = true;
+        scene.add(base2);
+
+        // 柱基
+        const columnBase = new THREE.Mesh(
+            new THREE.BoxGeometry(4.4, 0.2, 4.0),
+            new THREE.MeshStandardMaterial({ color: 0xc69c7c, roughness: 0.6 })
+        );
+        columnBase.position.set(0, 0.65, 0);
+        columnBase.castShadow = true;
+        columnBase.receiveShadow = true;
+        scene.add(columnBase);
+
+        // 柱子 (四角)
+        const columnMat = new THREE.MeshStandardMaterial({ color: 0xb87333, roughness: 0.5, emissive: 0x331e0e, emissiveIntensity: 0.1 });
+        const colPos = [
+            [-1.6, 1.0, 1.4], [1.6, 1.0, 1.4],
+            [-1.6, 1.0, -1.4], [1.6, 1.0, -1.4]
+        ];
+        colPos.forEach(pos => {
+            const column = new THREE.Mesh(
+                new THREE.CylinderGeometry(0.18, 0.2, 1.4, 8),
+                columnMat
+            );
+            column.position.set(pos[0], pos[1], pos[2]);
+            column.castShadow = true;
+            column.receiveShadow = true;
+            scene.add(column);
+        });
+
+        // 牆身
+        const wall = new THREE.Mesh(
+            new THREE.BoxGeometry(4.2, 1.2, 3.8),
+            new THREE.MeshStandardMaterial({ color: 0xa05e3a, roughness: 0.7 })
+        );
+        wall.position.set(0, 1.1, 0);
         wall.castShadow = true;
         wall.receiveShadow = true;
         scene.add(wall);
 
-        const roof = new THREE.Mesh(
-            new THREE.ConeGeometry(3.5, 0.9, 4),
-            new THREE.MeshStandardMaterial({ color: 0xcc8833 })
+        // 廟門
+        const doorMat = new THREE.MeshStandardMaterial({ color: 0x8b4513, roughness: 0.8, emissive: 0x2a1a0a, emissiveIntensity: 0.1 });
+        const door = new THREE.Mesh(
+            new THREE.BoxGeometry(1.2, 1.0, 0.2),
+            doorMat
         );
-        roof.position.set(0, 1.9, 0);
-        roof.rotation.y = Math.PI / 4;
-        roof.castShadow = true;
-        scene.add(roof);
+        door.position.set(0, 0.9, 1.91);
+        door.castShadow = true;
+        door.receiveShadow = true;
+        scene.add(door);
 
-        // 燈籠
-        const lanternMat = new THREE.MeshStandardMaterial({ color: 0xd84c3c, emissive: 0x331111, emissiveIntensity: 0.1 });
-        [[-1.3, 1.5, 1.3], [1.3, 1.5, 1.3], [0, 1.7, 1.3]].forEach(pos => {
-            const l = new THREE.Mesh(new THREE.SphereGeometry(0.2), lanternMat);
-            l.position.set(pos[0], pos[1], pos[2]);
-            l.castShadow = true;
-            scene.add(l);
+        // 屋頂 (三層燕尾)
+        const roofMat1 = new THREE.MeshStandardMaterial({ color: 0xcc8844, roughness: 0.5, emissive: 0x442211, emissiveIntensity: 0.1 });
+        const roof1 = new THREE.Mesh(
+            new THREE.ConeGeometry(3.8, 0.7, 4),
+            roofMat1
+        );
+        roof1.position.set(0, 1.8, 0);
+        roof1.rotation.y = Math.PI / 4;
+        roof1.castShadow = true;
+        roof1.receiveShadow = true;
+        scene.add(roof1);
+
+        const roofMat2 = new THREE.MeshStandardMaterial({ color: 0xbb7733, roughness: 0.5 });
+        const roof2 = new THREE.Mesh(
+            new THREE.ConeGeometry(3.2, 0.6, 4),
+            roofMat2
+        );
+        roof2.position.set(0, 2.2, 0);
+        roof2.rotation.y = Math.PI / 4;
+        roof2.castShadow = true;
+        roof2.receiveShadow = true;
+        scene.add(roof2);
+
+        // 屋頂裝飾
+        const topMat = new THREE.MeshStandardMaterial({ color: 0xeeaa33, emissive: 0x553311, emissiveIntensity: 0.2 });
+        const topOrb = new THREE.Mesh(
+            new THREE.SphereGeometry(0.15),
+            topMat
+        );
+        topOrb.position.set(0, 2.6, 0);
+        topOrb.castShadow = true;
+        scene.add(topOrb);
+
+        // 燈籠 (掛在簷下)
+        const lanternMat = new THREE.MeshStandardMaterial({ color: 0xd84c3c, emissive: 0x441111, emissiveIntensity: 0.2 });
+        const lanternPos = [
+            [-1.6, 1.7, 1.5], [1.6, 1.7, 1.5],
+            [-1.6, 1.7, -1.5], [1.6, 1.7, -1.5]
+        ];
+        lanternPos.forEach(pos => {
+            const lantern = new THREE.Mesh(new THREE.SphereGeometry(0.18), lanternMat);
+            lantern.position.set(pos[0], pos[1], pos[2]);
+            lantern.castShadow = true;
+            lantern.receiveShadow = true;
+            scene.add(lantern);
         });
 
-        // 控制：非常緩慢的自轉，無閃爍
+        // 香爐
+        const burnerMat = new THREE.MeshStandardMaterial({ color: 0x6b4a3a, roughness: 0.8 });
+        const burner = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.6, 0.7, 0.2, 16),
+            burnerMat
+        );
+        burner.position.set(0, 0.3, 1.0);
+        burner.castShadow = true;
+        burner.receiveShadow = true;
+        scene.add(burner);
+
+        const burnerTop = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.4, 0.4, 0.1, 16),
+            new THREE.MeshStandardMaterial({ color: 0x8b5a3a })
+        );
+        burnerTop.position.set(0, 0.45, 1.0);
+        burnerTop.castShadow = true;
+        burnerTop.receiveShadow = true;
+        scene.add(burnerTop);
+
+        // 控制：非常緩慢的自轉
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
+        controls.dampingFactor = 0.06;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.8;      // 很慢
+        controls.autoRotateSpeed = 0.7;
         controls.enableZoom = true;
         controls.enablePan = true;
         controls.enableRotate = true;
         controls.enableTouchRotate = true;
-        controls.target.set(0, 1.0, 0);
+        controls.target.set(0, 1.2, 0);
 
         function animate() {
             requestAnimationFrame(animate);
@@ -379,7 +505,7 @@
             camera.updateProjectionMatrix();
         });
 
-        // ---------- 互動核心 · 無飄移 · 無閃爍 · 祝福固定顯示 ----------
+        // ---------- 互動核心 · 祝福詞完整顯示 ----------
         const moon = document.getElementById('moonDisplay');
         const resultMsg = document.getElementById('resultMessage');
         const shakeArea = document.getElementById('shakeArea');
@@ -388,20 +514,20 @@
         const musicBtn = document.getElementById('musicToggle');
         let isPlaying = false;
 
-        // Jacky 祝福詞庫 · 清楚 · 不亂
+        // Jacky 祝福詞庫 · 每句都是完整「Jacky 祝⋯⋯」
         const blessings = [
-            "🐴 Jacky 祝 · 馬年大吉",
-            "🧧 Jacky 賀 · 恭喜發財",
-            "💰 Jacky 賜 · 財源廣進",
-            "🌸 Jacky 願 · 馬到成功",
-            "🏮 Jacky 送 · 聖筊連連",
-            "✨ Jacky 祈 · 金馬獻瑞",
-            "🎋 Jacky 盼 · 步步高升",
-            "🍊 Jacky 贈 · 大吉大利",
-            "🏇 Jacky 祝 · 前程萬里",
-            "🎊 Jacky 賀 · 五福臨門",
-            "🥢 Jacky 賜 · 聖筊聖筊",
-            "🐎 Jacky 願 · 馬年發財"
+            "🐴 Jacky 祝您馬年大吉 · 平安順遂",
+            "🧧 Jacky 賀您恭喜發財 · 財源廣進",
+            "💰 Jacky 賜您財源滾滾 · 富貴年年",
+            "🌸 Jacky 願您馬到成功 · 步步高升",
+            "🏮 Jacky 送您聖筊連連 · 好運不斷",
+            "✨ Jacky 祈您金馬獻瑞 · 吉星高照",
+            "🎋 Jacky 盼您一馬當先 · 前程萬里",
+            "🍊 Jacky 贈您大吉大利 · 事事如意",
+            "🏇 Jacky 祝您策馬揚鞭 · 鵬程萬里",
+            "🎊 Jacky 賀您五福臨門 · 闔家平安",
+            "🥢 Jacky 賜您聖筊聖筊 · 心想事成",
+            "🐎 Jacky 願您馬年發財 · 好運旺來"
         ];
 
         // 音樂
@@ -425,16 +551,16 @@
             isPlaying = !isPlaying;
         });
 
-        // 聖筊！不飄不移，只有下方祝福區改變文字
+        // 聖筊！祝福詞完整顯示
         function doSheng() {
-            // 筊杯短暫回饋（無動畫，只有顏色）
+            // 筊杯短暫回饋
             moon.style.opacity = '0.7';
             setTimeout(() => { moon.style.opacity = '1'; }, 120);
 
             moon.textContent = '🥢🥢';
             resultMsg.innerHTML = '🥢🥢 Jacky 賜聖筊';
 
-            // 隨機一句祝福，直接顯示在固定框內
+            // 隨機一句完整祝福
             const text = blessings[Math.floor(Math.random() * blessings.length)];
             blessDisplay.textContent = text;
 
@@ -464,7 +590,7 @@
         shakeArea.addEventListener('click', doSheng);
 
         // 預設顯示
-        blessDisplay.textContent = "🐴 搖手機 · 得聖筊 · 接祝福";
+        blessDisplay.textContent = "🐴 搖手機 · 得聖筊 · Jacky 祝您馬年大吉";
     </script>
 </body>
 </html>
