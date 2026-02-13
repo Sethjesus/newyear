@@ -2,11 +2,11 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <!-- 手機友善 · 3D文字放大＋JACKY音效＋預設音樂自動播放 · 奉天宮 · 雙馬明顯春聯 · 財神走入＋許多元寶從奉天宮噴發 -->
+   
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes, viewport-fit=cover">
-    <title> 馬年元寶滿天飛 ·</title>
+    <title>馬年奔騰·奉天宮發財</title>
     <style>
-        /* ********** 財神報喜 · 紅金年味 · 運動自然 ********** */
+        /* ********** 紅金年味 · 馬年主視覺 ********** */
         * {
             margin: 0;
             padding: 0;
@@ -23,40 +23,40 @@
             justify-content: center;
             padding: 20px;
             position: relative;
-            background-image: radial-gradient(circle at 10% 30%, #b84a3a 0%, #8f3a2a 100%);
+            background-image: radial-gradient(circle at 10% 30%, #b84a3a 0%, #7f3a2a 100%);
         }
 
-        /* 自然運動icon裝飾 */
+       
         body::before {
-            content: "🏮財神🏮 🐴🏃 🚴 🧗 🌿 ☁️ ⛰️ 🪙🪙🪙";
+            content: "🏮奉天宮🏮 🐴🐴🐴 ⛰️🌲🧗🚴🏃 🪙🪙🪙";
             position: fixed;
             top: 10px;
             left: 0px;
-            font-size: 32px;
-            color: rgba(255, 255, 180, 0.35);
+            font-size: 34px;
+            color: rgba(255, 240, 170, 0.5);
             white-space: nowrap;
             transform: rotate(-3deg);
             pointer-events: none;
             z-index: 3;
-            letter-spacing: 12px;
+            letter-spacing: 14px;
             width: 100%;
-            text-shadow: 2px 2px 0 #5a2a1a;
+            text-shadow: 3px 3px 0 #5a2a1a;
         }
 
         body::after {
-            content: "🧧🐴🧧🐴🧧 奉天宮 元寶滿天 🧧🐴🧧🐴🧧";
+            content: "🧧🐴🧧🐴🧧 奉天發財 🧧🐴🧧🐴🧧";
             position: fixed;
             bottom: 10px;
             right: 0px;
             font-size: 30px;
-            color: rgba(255, 220, 100, 0.4);
+            color: rgba(255, 220, 100, 0.45);
             white-space: nowrap;
             transform: rotate(4deg);
             pointer-events: none;
             z-index: 3;
         }
 
-        /* 音樂列 最上方 */
+        /* 音樂列 — 唯一開關 */
         .music-row-top {
             width: 100%;
             max-width: 580px;
@@ -106,7 +106,7 @@
         }
 
         .red-card::before {
-            content: "🐴 元寶滿地堆 🐴";
+            content: "🐴🐴 丙午馬年 · 元寶滿天 🐴🐴";
             position: absolute;
             top: -18px;
             left: 8%;
@@ -236,18 +236,18 @@
             100% { color: #fffad6; background: #8a3a2a; border: 4px solid #ffd97a; box-shadow: inset 0 0 0 2px #b85a2a, 0 8px 0 #5a2a1e; text-shadow: 0 0 0 #000; transform: scale(1) translateZ(0) rotateX(0deg) rotateY(0deg); }
         }
 
-        /* 春聯區 直式 */
+        /* 春聯區 六馬奔騰春聯 */
         .couplet-area {
             width: 100%;
             max-width: 580px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             margin-top: 20px;
             padding: 0 5px;
             z-index: 20;
+            gap: 18px;
         }
-
         .couplet-left, .couplet-right {
             background: #c43a1e;
             border: 6px solid #ffd97a;
@@ -265,13 +265,11 @@
             background-image: linear-gradient(145deg, #b53a1e, #d64a2a);
             min-width: 70px;
         }
-
         .couplet-left span, .couplet-right span {
             display: block;
             margin: 8px 0;
             text-shadow: 3px 3px 0 #3a1a1a;
         }
-
         .couplet-center {
             font-size: min(48px, 10vw);
             color: #ffecaa;
@@ -286,16 +284,16 @@
             white-space: nowrap;
         }
 
-        /* 3D 奉天宮 Canvas 容器——加大，動畫財神走入＋元寶噴泉 */
+        
         .temple-box {
             width: 100%;
             max-width: 580px;
-            height: 300px;
+            height: 320px;
             border-radius: 40px;
             overflow: hidden;
             border: 6px solid #ffd97a;
             margin-top: 20px;
-            background: #4a2e1e;
+            background: #3a5a6a;
             position: relative;
             box-shadow: 0 12px 0 #5a2a1a;
             z-index: 25;
@@ -323,7 +321,7 @@
             display: block;
         }
 
-        /* 運動自然元素列 */
+        /* 運動自然元素列 — 馬年奔騰 */
         .sports-nature-row {
             width: 100%;
             max-width: 580px;
@@ -368,24 +366,24 @@
 </head>
 <body>
 
-    <!-- 音樂列 · 最上方 · 預設自動播放 -->
+    <!-- 音樂列 — 唯一開關，無重複 -->
     <div class="music-row-top">
-        <span style="font-size: min(32px, 6.5vw); color: #ffecaa;">🎵 Jacky 來拜年</span>
+        <span style="font-size: min(32px, 6.5vw); color: #ffecaa;">🎵 馬年奔騰·Jacky</span>
         <button id="musicToggle" class="music-btn">🔊</button>
     </div>
 
-    <!-- 主紅包 · 聖筊雙馬 -->
+    <!-- 主紅包 · 聖筊六馬 -->
     <div class="red-card">
-        <div class="sheng-big">聖筊</div>
+        <div class="sheng-big">馬到成功</div>
         <div style="font-size: min(44px, 10vw); color: #ffecaa; text-shadow: 4px 4px 0 #6a2a1a;">
-            🐴🧧🪙🐴🏃
+            🐴🐴🧧🪙🐴🐴🏃
         </div>
     </div>
 
     <!-- 筊杯互動區 -->
     <div class="bwa-panel">
         <div id="moonDisplay" class="moon">🥢🥢</div>
-        <div id="resultMessage" class="result-line">🥢 Jacky 祝聖筊 🐴</div>
+        <div id="resultMessage" class="result-line">🥢 聖筊·馬年金元寶 🐴</div>
         <div id="shakeArea" class="shake-btn">
             <span>📳</span>
             <span>🥢</span>
@@ -394,47 +392,47 @@
         </div>
     </div>
 
-    <!-- 祝福訊息區 · 3D文字放大＋JACKY音效 -->
+    <!-- 祝福訊息區 · 3D文字放大＋JACKY音效 馬年祝福-->
     <div id="blessDisplay" class="bless-message-area">
-        🐴 搖手機 · 得聖筊 · 元寶從奉天宮噴出來啦！
+        🐴🐴 丙午馬年·奉天宮萬馬奔騰·元寶滿天 🐴🐴
     </div>
 
-    <!-- 春聯區 · 雙馬明顯春聯 -->
+    <!-- 春聯區 · 六馬奔騰春聯 -->
     <div class="couplet-area">
-       
+        
         <div class="couplet-center">
-            🧧元寶滿天🧧
+            🧧馬年大發奉天發財🧧
         </div>
-       
+        
     </div>
 
-    <!-- ★★★ 3D 奉天宮 · 廟外雙馬 ＋ 財神走入 ＋ 大量元寶從廟噴出 ★★★ -->
+   
     <div class="temple-box">
         <canvas id="templeCanvas"></canvas>
-        <div class="temple-title">🏯 奉天宮 · 元寶噴泉</div>
+        <div class="temple-title">🐴 奉天宮發財 🐴</div>
     </div>
 
-    <!-- 運動自然元素區 -->
+    <!-- 運動自然元素區 — 馬年奔騰 -->
     <div class="sports-nature-row">
-        <div class="sports-icon"><span>🏃‍♂️</span> 跑步</div>
-        <div class="sports-icon"><span>🚴‍♀️</span> 單車</div>
-        <div class="sports-icon"><span>🧗‍♂️</span> 登山</div>
-        <div class="nature-icon"><span>🌲</span> 森林</div>
-        <div class="nature-icon"><span>☁️</span> 清風</div>
-        <div class="nature-icon"><span>⛰️</span> 高山</div>
+        <div class="sports-icon"><span>🐴</span> 駿馬</div>
+        <div class="sports-icon"><span>🏃‍♂️</span> 奔騰</div>
+        <div class="sports-icon"><span>🧧</span> 元寶</div>
+        <div class="nature-icon"><span>🌲</span> 後山</div>
+        <div class="nature-icon"><span>🏢</span> 101</div>
+        <div class="nature-icon"><span>🐴</span> 馬年</div>
     </div>
 
     <div class="footer-note">
-        🥢 聖筊 ·  元寶滿天飛 🐴
+        🐴 丙午馬年·奉天發財 🐴
     </div>
 
-    <!-- 背景音樂 - 預設自動播放 -->
+    <!-- 背景音樂 - 預設自動播放 · 單一來源避免重複開關 -->
     <audio id="bgMusic" loop preload="auto" autoplay>
         <source src="https://raw.githubusercontent.com/Sethjesus/newyear/main/horse.mp3" type="audio/mpeg">
         <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Three.js 奉天宮模組 + 財神(帶元寶)走入動畫 + 雙馬 + 元寶噴泉 -->
+    <!-- Three.js 奉天宮模組 + 財神走入＋六馬＋元寶噴泉＋後山＋101在東南方（右前） -->
     <script type="importmap">
         {
             "imports": {
@@ -445,7 +443,7 @@
     </script>
 
     <script type="module">
-        // ---------- 3D 奉天宮 · 雙馬 · 財神走入 · 大量元寶從廟噴發 ----------
+        
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
@@ -454,11 +452,12 @@
         const h = canvas.clientHeight;
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x8f3a2a); // 紅棕基底
+        scene.background = new THREE.Color(0x6f8a9f); // 淡藍天
 
         const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
-        camera.position.set(6.5, 4.2, 14);
-        camera.lookAt(0, 1.8, 0);
+       
+        camera.position.set(-6.5, 5.0, 12);
+        camera.lookAt(0, 2.0, -1.0);
 
         const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
         renderer.setSize(w, h);
@@ -470,7 +469,7 @@
         scene.add(ambient);
         
         const mainLight = new THREE.DirectionalLight(0xffeedd, 1.7);
-        mainLight.position.set(6, 12, 12);
+        mainLight.position.set(8, 14, 14);
         mainLight.castShadow = true;
         mainLight.receiveShadow = true;
         mainLight.shadow.mapSize.width = 1024;
@@ -478,10 +477,10 @@
         scene.add(mainLight);
 
         const fillLight = new THREE.DirectionalLight(0xffddbb, 0.8);
-        fillLight.position.set(-5, 5, 8);
+        fillLight.position.set(-5, 7, 10);
         scene.add(fillLight);
 
-        // 紅土地面
+        // 紅土地面 (廟前廣場)
         const ground = new THREE.Mesh(
             new THREE.CircleGeometry(25, 32),
             new THREE.MeshStandardMaterial({ color: 0x9f4a3a, roughness: 0.8, emissive: 0x3a1a1a, emissiveIntensity: 0.1 })
@@ -491,468 +490,282 @@
         ground.receiveShadow = true;
         scene.add(ground);
 
-        // 自然元素：小樹 (運動自然)
+        // ========== 自然元素：後山 (奉天宮後面有座山，在南方) ==========
+        function createMountain(x, z, scaleH, colorStone) {
+            const mountainGroup = new THREE.Group();
+            const stoneMat = new THREE.MeshStandardMaterial({ color: colorStone, roughness: 0.8, emissive: 0x2a3a2a, emissiveIntensity: 0.1 });
+            const m1 = new THREE.Mesh(new THREE.ConeGeometry(1.9 * scaleH, 2.0 * scaleH, 12), stoneMat);
+            m1.position.y = 1.0 * scaleH;
+            m1.castShadow = true; m1.receiveShadow = true;
+            mountainGroup.add(m1);
+            const m2 = new THREE.Mesh(new THREE.ConeGeometry(1.3 * scaleH, 1.5 * scaleH, 10), stoneMat);
+            m2.position.set(1.1 * scaleH, 0.8 * scaleH, 0.5 * scaleH);
+            m2.castShadow = true; m2.receiveShadow = true;
+            mountainGroup.add(m2);
+            const m3 = new THREE.Mesh(new THREE.ConeGeometry(1.0 * scaleH, 1.2 * scaleH, 10), stoneMat);
+            m3.position.set(-1.0 * scaleH, 0.7 * scaleH, -0.4 * scaleH);
+            m3.castShadow = true; m3.receiveShadow = true;
+            mountainGroup.add(m3);
+            const snow = new THREE.Mesh(new THREE.SphereGeometry(0.5 * scaleH), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4 }));
+            snow.position.y = 2.1 * scaleH;
+            snow.scale.set(0.8, 0.3, 0.8);
+            snow.castShadow = true; snow.receiveShadow = true;
+            mountainGroup.add(snow);
+            mountainGroup.position.set(x, 0.0, z);
+            return mountainGroup;
+        }
+
+        // 後山兩座 (奉天宮後面，南方)
+        const mountain1 = createMountain(-1.8, -5.2, 1.2, 0x7a8a6a);
+        scene.add(mountain1);
+        const mountain2 = createMountain(2.5, -5.8, 1.4, 0x6a7a5a);
+        scene.add(mountain2);
+        const mountain3 = createMountain(-0.5, -6.5, 1.0, 0x5a7a6a);
+        scene.add(mountain3);
+        
+        // 樹林
         function addTree(x, z, size) {
             const trunkMat = new THREE.MeshStandardMaterial({ color: 0x6b4e3a, roughness: 0.9 });
             const leafMat = new THREE.MeshStandardMaterial({ color: 0x3a7a3a, roughness: 0.7, emissive: 0x1a3a1a, emissiveIntensity: 0.1 });
-            
             const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.15 * size, 0.2 * size, 1.2 * size), trunkMat);
             trunk.position.set(x, 0.6 * size, z);
-            trunk.castShadow = true;
-            trunk.receiveShadow = true;
+            trunk.castShadow = true; trunk.receiveShadow = true;
             scene.add(trunk);
-            
             const leaves1 = new THREE.Mesh(new THREE.ConeGeometry(0.7 * size, 0.7 * size, 8), leafMat);
             leaves1.position.set(x, 1.3 * size, z);
-            leaves1.castShadow = true;
-            leaves1.receiveShadow = true;
+            leaves1.castShadow = true; leaves1.receiveShadow = true;
             scene.add(leaves1);
-            
             const leaves2 = new THREE.Mesh(new THREE.ConeGeometry(0.5 * size, 0.6 * size, 8), leafMat);
             leaves2.position.set(x, 1.8 * size, z);
-            leaves2.castShadow = true;
-            leaves2.receiveShadow = true;
+            leaves2.castShadow = true; leaves2.receiveShadow = true;
             scene.add(leaves2);
         }
-
-        addTree(-4.5, -4.5, 1.0);
-        addTree(5.0, -4.0, 1.1);
-        addTree(-4.8, 4.2, 0.9);
-        addTree(4.8, 4.5, 1.0);
-        addTree(-3.0, -5.5, 0.8);
-        addTree(3.5, 5.5, 0.9);
+        addTree(-4.5, -4.5, 1.0); addTree(5.0, -4.0, 1.1); addTree(-4.8, 4.2, 0.9);
+        addTree(4.8, 4.5, 1.0); addTree(-3.0, -5.5, 0.9); addTree(3.5, -5.8, 1.0);
+        addTree(-2.0, -6.2, 0.8); addTree(1.5, -6.5, 1.1); addTree(-0.8, -7.0, 0.9);
+        addTree(0.2, -6.8, 1.0);
 
         // 石頭
         const stoneMat = new THREE.MeshStandardMaterial({ color: 0x9a7a6a, roughness: 0.9 });
-        for (let i = 0; i < 12; i++) {
-            const stone = new THREE.Mesh(new THREE.DodecahedronGeometry(0.1 + Math.random()*0.18), stoneMat);
-            stone.position.set(3 + Math.random()*5, 0.05, 2 + Math.random()*6);
+        for (let i = 0; i < 18; i++) {
+            const stone = new THREE.Mesh(new THREE.DodecahedronGeometry(0.1 + Math.random()*0.2), stoneMat);
+            stone.position.set(2 + Math.random()*5, 0.05, -3 - Math.random()*5);
             stone.rotation.set(Math.random(), Math.random(), Math.random());
-            stone.castShadow = true;
-            stone.receiveShadow = true;
-            scene.add(stone);
-        }
-        for (let i = 0; i < 12; i++) {
-            const stone = new THREE.Mesh(new THREE.DodecahedronGeometry(0.1 + Math.random()*0.18), stoneMat);
-            stone.position.set(-3 - Math.random()*5, 0.05, -2 - Math.random()*6);
-            stone.rotation.set(Math.random(), Math.random(), Math.random());
-            stone.castShadow = true;
-            stone.receiveShadow = true;
+            stone.castShadow = true; stone.receiveShadow = true;
             scene.add(stone);
         }
 
         // ========== 奉天宮主體 ==========
-        const base1 = new THREE.Mesh(
-            new THREE.BoxGeometry(5.8, 0.4, 5.4),
-            new THREE.MeshStandardMaterial({ color: 0xba8a6a, roughness: 0.7 })
-        );
-        base1.position.set(0, 0.2, 0);
-        base1.castShadow = true;
-        base1.receiveShadow = true;
-        scene.add(base1);
+        const base1 = new THREE.Mesh(new THREE.BoxGeometry(5.8, 0.4, 5.4), new THREE.MeshStandardMaterial({ color: 0xba8a6a, roughness: 0.7 }));
+        base1.position.set(0, 0.2, 0); base1.castShadow = true; base1.receiveShadow = true; scene.add(base1);
+        const base2 = new THREE.Mesh(new THREE.BoxGeometry(5.4, 0.35, 5.0), new THREE.MeshStandardMaterial({ color: 0xca9a7a, roughness: 0.7 }));
+        base2.position.set(0, 0.55, 0); base2.castShadow = true; base2.receiveShadow = true; scene.add(base2);
+        const columnBase = new THREE.Mesh(new THREE.BoxGeometry(5.0, 0.35, 4.6), new THREE.MeshStandardMaterial({ color: 0xdaaa8a, roughness: 0.6 }));
+        columnBase.position.set(0, 0.95, 0); columnBase.castShadow = true; columnBase.receiveShadow = true; scene.add(columnBase);
 
-        const base2 = new THREE.Mesh(
-            new THREE.BoxGeometry(5.4, 0.35, 5.0),
-            new THREE.MeshStandardMaterial({ color: 0xca9a7a, roughness: 0.7 })
-        );
-        base2.position.set(0, 0.55, 0);
-        base2.castShadow = true;
-        base2.receiveShadow = true;
-        scene.add(base2);
-
-        const columnBase = new THREE.Mesh(
-            new THREE.BoxGeometry(5.0, 0.35, 4.6),
-            new THREE.MeshStandardMaterial({ color: 0xdaaa8a, roughness: 0.6 })
-        );
-        columnBase.position.set(0, 0.95, 0);
-        columnBase.castShadow = true;
-        columnBase.receiveShadow = true;
-        scene.add(columnBase);
-
-        // 柱子
         const columnMat = new THREE.MeshStandardMaterial({ color: 0xc88a4a, roughness: 0.5, emissive: 0x3a2a1a, emissiveIntensity: 0.1 });
-        const colPos = [
-            [-2.0, 1.5, 1.8], [2.0, 1.5, 1.8],
-            [-2.0, 1.5, -1.8], [2.0, 1.5, -1.8]
-        ];
-        colPos.forEach(pos => {
-            const column = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.26, 1.7, 8), columnMat);
-            column.position.set(pos[0], pos[1], pos[2]);
-            column.castShadow = true;
-            column.receiveShadow = true;
-            scene.add(column);
+        [[-2.0,1.5,1.8],[2.0,1.5,1.8],[-2.0,1.5,-1.8],[2.0,1.5,-1.8]].forEach(pos => {
+            const column = new THREE.Mesh(new THREE.CylinderGeometry(0.24,0.26,1.7,8), columnMat);
+            column.position.set(pos[0],pos[1],pos[2]); column.castShadow = true; column.receiveShadow = true; scene.add(column);
         });
 
-        // 牆身
-        const wall = new THREE.Mesh(
-            new THREE.BoxGeometry(4.8, 1.5, 4.4),
-            new THREE.MeshStandardMaterial({ color: 0xb86a4a, roughness: 0.7 })
-        );
-        wall.position.set(0, 1.55, 0);
-        wall.castShadow = true;
-        wall.receiveShadow = true;
-        scene.add(wall);
-
-        // 廟門
-        const doorMat = new THREE.MeshStandardMaterial({ color: 0x9a5a3a, roughness: 0.8, emissive: 0x2a1a1a, emissiveIntensity: 0.1 });
-        const door = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.3, 0.25), doorMat);
-        door.position.set(0, 1.25, 2.21);
-        door.castShadow = true;
-        door.receiveShadow = true;
-        scene.add(door);
+        const wall = new THREE.Mesh(new THREE.BoxGeometry(4.8,1.5,4.4), new THREE.MeshStandardMaterial({ color: 0xb86a4a, roughness: 0.7 }));
+        wall.position.set(0,1.55,0); wall.castShadow = true; wall.receiveShadow = true; scene.add(wall);
+        const door = new THREE.Mesh(new THREE.BoxGeometry(1.5,1.3,0.25), new THREE.MeshStandardMaterial({ color: 0x9a5a3a, roughness:0.8 }));
+        door.position.set(0,1.25,2.21); door.castShadow = true; door.receiveShadow = true; scene.add(door);
 
         // 屋頂
         const roofMat1 = new THREE.MeshStandardMaterial({ color: 0xcc8844, roughness: 0.5, emissive: 0x442211, emissiveIntensity: 0.1 });
-        const roof1 = new THREE.Mesh(new THREE.ConeGeometry(4.4, 1.0, 4), roofMat1);
-        roof1.position.set(0, 2.4, 0);
-        roof1.rotation.y = Math.PI / 4;
-        roof1.castShadow = true;
-        roof1.receiveShadow = true;
-        scene.add(roof1);
-
-        const roofMat2 = new THREE.MeshStandardMaterial({ color: 0xbb7733, roughness: 0.5 });
-        const roof2 = new THREE.Mesh(new THREE.ConeGeometry(3.8, 0.9, 4), roofMat2);
-        roof2.position.set(0, 3.1, 0);
-        roof2.rotation.y = Math.PI / 4;
-        roof2.castShadow = true;
-        roof2.receiveShadow = true;
-        scene.add(roof2);
-
-        const roofMat3 = new THREE.MeshStandardMaterial({ color: 0xaa6622, roughness: 0.5 });
-        const roof3 = new THREE.Mesh(new THREE.ConeGeometry(3.2, 0.8, 4), roofMat3);
-        roof3.position.set(0, 3.8, 0);
-        roof3.rotation.y = Math.PI / 4;
-        roof3.castShadow = true;
-        roof3.receiveShadow = true;
-        scene.add(roof3);
-
-        // 寶頂
-        const topMat = new THREE.MeshStandardMaterial({ color: 0xeecc66, emissive: 0x553311, emissiveIntensity: 0.2 });
-        const topOrb = new THREE.Mesh(new THREE.SphereGeometry(0.22), topMat);
-        topOrb.position.set(0, 4.3, 0);
-        topOrb.castShadow = true;
-        scene.add(topOrb);
+        const roof1 = new THREE.Mesh(new THREE.ConeGeometry(4.4,1.0,4), roofMat1);
+        roof1.position.set(0,2.4,0); roof1.rotation.y = Math.PI/4; roof1.castShadow = true; roof1.receiveShadow = true; scene.add(roof1);
+        const roof2 = new THREE.Mesh(new THREE.ConeGeometry(3.8,0.9,4), new THREE.MeshStandardMaterial({ color: 0xbb7733 }));
+        roof2.position.set(0,3.1,0); roof2.rotation.y = Math.PI/4; roof2.castShadow = true; roof2.receiveShadow = true; scene.add(roof2);
+        const roof3 = new THREE.Mesh(new THREE.ConeGeometry(3.2,0.8,4), new THREE.MeshStandardMaterial({ color: 0xaa6622 }));
+        roof3.position.set(0,3.8,0); roof3.rotation.y = Math.PI/4; roof3.castShadow = true; roof3.receiveShadow = true; scene.add(roof3);
+        const topOrb = new THREE.Mesh(new THREE.SphereGeometry(0.22), new THREE.MeshStandardMaterial({ color: 0xeecc66, emissive: 0x553311, emissiveIntensity: 0.2 }));
+        topOrb.position.set(0,4.3,0); topOrb.castShadow = true; scene.add(topOrb);
 
         // 燈籠
         const lanternMat = new THREE.MeshStandardMaterial({ color: 0xe84c3c, emissive: 0x441111, emissiveIntensity: 0.2 });
-        const lanternPos = [
-            [-2.0, 2.3, 1.9], [2.0, 2.3, 1.9],
-            [-2.0, 2.3, -1.9], [2.0, 2.3, -1.9]
-        ];
-        lanternPos.forEach(pos => {
+        [[-2.0,2.3,1.9],[2.0,2.3,1.9],[-2.0,2.3,-1.9],[2.0,2.3,-1.9]].forEach(pos => {
             const lantern = new THREE.Mesh(new THREE.SphereGeometry(0.24), lanternMat);
-            lantern.position.set(pos[0], pos[1], pos[2]);
-            lantern.castShadow = true;
-            lantern.receiveShadow = true;
-            scene.add(lantern);
+            lantern.position.set(pos[0],pos[1],pos[2]); lantern.castShadow = true; lantern.receiveShadow = true; scene.add(lantern);
         });
 
-        // 香爐
-        const burnerMat = new THREE.MeshStandardMaterial({ color: 0x8a5a3a, roughness: 0.8 });
-        const burner = new THREE.Mesh(new THREE.CylinderGeometry(0.85, 0.95, 0.35, 16), burnerMat);
-        burner.position.set(0, 0.35, 1.6);
-        burner.castShadow = true;
-        burner.receiveShadow = true;
-        scene.add(burner);
+        const burner = new THREE.Mesh(new THREE.CylinderGeometry(0.85,0.95,0.35,16), new THREE.MeshStandardMaterial({ color: 0x8a5a3a, roughness:0.8 }));
+        burner.position.set(0,0.35,1.6); burner.castShadow = true; burner.receiveShadow = true; scene.add(burner);
 
-        // ========== 廟外兩匹馬 · 超級明顯 ==========
-        function createHorse(x, z, scaleFactor, colorHex) {
+        // ========== 廟外六匹馬 · 馬年奔騰 ==========
+        function createHorse(x, z, scaleFactor, colorHex, rotY) {
             const horseGroup = new THREE.Group();
-            const bodyGeo = new THREE.BoxGeometry(1.0 * scaleFactor, 0.7 * scaleFactor, 1.6 * scaleFactor);
-            const bodyMat = new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.6, emissive: 0x3a1e1a, emissiveIntensity: 0.15 });
-            const body = new THREE.Mesh(bodyGeo, bodyMat);
-            body.position.y = 0.45 * scaleFactor;
-            body.castShadow = true; body.receiveShadow = true;
-            horseGroup.add(body);
-            
-            const headGeo = new THREE.SphereGeometry(0.32 * scaleFactor);
-            const headMat = new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.6 });
-            const head = new THREE.Mesh(headGeo, headMat);
-            head.position.set(0.55 * scaleFactor, 0.75 * scaleFactor, 0.65 * scaleFactor);
-            head.castShadow = true; head.receiveShadow = true;
-            horseGroup.add(head);
-            
-            const neckGeo = new THREE.CylinderGeometry(0.24 * scaleFactor, 0.26 * scaleFactor, 0.5 * scaleFactor);
-            const neck = new THREE.Mesh(neckGeo, bodyMat);
-            neck.position.set(0.4 * scaleFactor, 0.7 * scaleFactor, 0.6 * scaleFactor);
-            neck.rotation.z = -0.3; neck.rotation.x = 0.2;
-            neck.castShadow = true; neck.receiveShadow = true;
-            horseGroup.add(neck);
-            
-            const legGeo = new THREE.CylinderGeometry(0.15 * scaleFactor, 0.16 * scaleFactor, 0.55 * scaleFactor);
-            const legMat = new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.7 });
-            const leg1 = new THREE.Mesh(legGeo, legMat); leg1.position.set(-0.3 * scaleFactor, 0.2 * scaleFactor, 0.5 * scaleFactor); leg1.castShadow = true; leg1.receiveShadow = true; horseGroup.add(leg1);
-            const leg2 = new THREE.Mesh(legGeo, legMat); leg2.position.set(0.25 * scaleFactor, 0.2 * scaleFactor, 0.5 * scaleFactor); leg2.castShadow = true; leg2.receiveShadow = true; horseGroup.add(leg2);
-            const leg3 = new THREE.Mesh(legGeo, legMat); leg3.position.set(-0.3 * scaleFactor, 0.2 * scaleFactor, -0.5 * scaleFactor); leg3.castShadow = true; leg3.receiveShadow = true; horseGroup.add(leg3);
-            const leg4 = new THREE.Mesh(legGeo, legMat); leg4.position.set(0.25 * scaleFactor, 0.2 * scaleFactor, -0.5 * scaleFactor); leg4.castShadow = true; leg4.receiveShadow = true; horseGroup.add(leg4);
-            
-            const tailGeo = new THREE.ConeGeometry(0.16 * scaleFactor, 0.45 * scaleFactor, 6);
-            const tail = new THREE.Mesh(tailGeo, legMat);
-            tail.position.set(-0.5 * scaleFactor, 0.45 * scaleFactor, -0.8 * scaleFactor);
-            tail.rotation.x = 0.6; tail.rotation.z = 0.2;
-            tail.castShadow = true; tail.receiveShadow = true;
-            horseGroup.add(tail);
-            
-            const earGeo = new THREE.ConeGeometry(0.1 * scaleFactor, 0.16 * scaleFactor, 6);
+            const body = new THREE.Mesh(new THREE.BoxGeometry(1.0*scaleFactor,0.7*scaleFactor,1.6*scaleFactor), 
+                new THREE.MeshStandardMaterial({ color: colorHex, roughness:0.6, emissive:0x3a1e1a, emissiveIntensity:0.15 }));
+            body.position.y = 0.45*scaleFactor; body.castShadow = true; body.receiveShadow = true; horseGroup.add(body);
+            const head = new THREE.Mesh(new THREE.SphereGeometry(0.32*scaleFactor), new THREE.MeshStandardMaterial({ color: colorHex, roughness:0.6 }));
+            head.position.set(0.55*scaleFactor,0.75*scaleFactor,0.65*scaleFactor); head.castShadow = true; head.receiveShadow = true; horseGroup.add(head);
+            const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.24*scaleFactor,0.26*scaleFactor,0.5*scaleFactor), body.material);
+            neck.position.set(0.4*scaleFactor,0.7*scaleFactor,0.6*scaleFactor); neck.rotation.z = -0.3; neck.rotation.x = 0.2; neck.castShadow = true; neck.receiveShadow = true; horseGroup.add(neck);
+            const legGeo = new THREE.CylinderGeometry(0.15*scaleFactor,0.16*scaleFactor,0.55*scaleFactor);
+            const legMat = new THREE.MeshStandardMaterial({ color: colorHex, roughness:0.7 });
+            [[-0.3,0.2,0.5],[0.25,0.2,0.5],[-0.3,0.2,-0.5],[0.25,0.2,-0.5]].forEach(p => {
+                const leg = new THREE.Mesh(legGeo, legMat); leg.position.set(p[0]*scaleFactor, p[1]*scaleFactor, p[2]*scaleFactor); leg.castShadow = true; leg.receiveShadow = true; horseGroup.add(leg);
+            });
+            const tail = new THREE.Mesh(new THREE.ConeGeometry(0.16*scaleFactor,0.45*scaleFactor,6), legMat);
+            tail.position.set(-0.5*scaleFactor,0.45*scaleFactor,-0.8*scaleFactor); tail.rotation.x = 0.6; tail.rotation.z = 0.2; tail.castShadow = true; tail.receiveShadow = true; horseGroup.add(tail);
+            const earGeo = new THREE.ConeGeometry(0.1*scaleFactor,0.16*scaleFactor,6);
             const earMat = new THREE.MeshStandardMaterial({ color: colorHex });
-            const ear1 = new THREE.Mesh(earGeo, earMat); ear1.position.set(0.6 * scaleFactor, 0.95 * scaleFactor, 0.7 * scaleFactor); ear1.rotation.x = -0.2; ear1.rotation.z = -0.3; ear1.castShadow = true; horseGroup.add(ear1);
-            const ear2 = new THREE.Mesh(earGeo, earMat); ear2.position.set(0.75 * scaleFactor, 0.95 * scaleFactor, 0.7 * scaleFactor); ear2.rotation.x = -0.2; ear2.rotation.z = 0.3; ear2.castShadow = true; horseGroup.add(ear2);
-            
-            const maneGeo = new THREE.ConeGeometry(0.1 * scaleFactor, 0.25 * scaleFactor, 6);
-            const maneMat = new THREE.MeshStandardMaterial({ color: 0x6a3a1a });
-            for (let i = 0; i < 4; i++) {
-                const mane = new THREE.Mesh(maneGeo, maneMat);
-                mane.position.set(0.3 + i * 0.1 * scaleFactor, 0.8 * scaleFactor, 0.6 * scaleFactor);
-                mane.rotation.x = 0.3; mane.rotation.z = -0.1;
-                mane.scale.set(0.8, 1, 0.8);
-                mane.castShadow = true;
-                horseGroup.add(mane);
-            }
-            horseGroup.position.set(x, 0.1, z);
-            horseGroup.rotation.y = Math.PI / 2.2;
-            horseGroup.scale.set(1.2, 1.2, 1.2);
+            const ear1 = new THREE.Mesh(earGeo, earMat); ear1.position.set(0.6*scaleFactor,0.95*scaleFactor,0.7*scaleFactor); ear1.rotation.x = -0.2; ear1.rotation.z = -0.3; ear1.castShadow = true; horseGroup.add(ear1);
+            const ear2 = new THREE.Mesh(earGeo, earMat); ear2.position.set(0.75*scaleFactor,0.95*scaleFactor,0.7*scaleFactor); ear2.rotation.x = -0.2; ear2.rotation.z = 0.3; ear2.castShadow = true; horseGroup.add(ear2);
+            horseGroup.position.set(x,0.1,z); horseGroup.rotation.y = rotY; horseGroup.scale.set(1.2,1.2,1.2);
             return horseGroup;
         }
+        // 六匹馬，遍布廟前與後山
+        scene.add(createHorse(-2.8, -0.2, 0.8, 0xc88a4a, 1.4));
+        scene.add(createHorse(3.0, -0.1, 0.85, 0x9a6a3a, 1.4));
+        scene.add(createHorse(-1.5, -2.2, 0.65, 0x7a5a3a, 1.0));
+        scene.add(createHorse(-0.2, -4.5, 0.7, 0xb87a4a, 0.8));
+        scene.add(createHorse(2.2, -3.8, 0.7, 0xb87a4a, 1.2));
+        scene.add(createHorse(-3.5, -3.0, 0.75, 0xa86a4a, 0.6));
 
-        // 左馬、右馬、小馬
-        const horse1 = createHorse(-2.8, -0.2, 0.8, 0xc88a4a);
-        scene.add(horse1);
-        const horse2 = createHorse(3.0, -0.1, 0.85, 0x9a6a3a);
-        scene.add(horse2);
-        const horse3 = createHorse(-1.5, -2.2, 0.65, 0x7a5a3a);
-        horse3.rotation.y = 1.0;
-        scene.add(horse3);
-
-        // ========== 春聯立體裝飾 ==========
-        function createCouplet(x, y, z) {
-            const group = new THREE.Group();
-            const panelMat = new THREE.MeshStandardMaterial({ color: 0xc43a1e, roughness: 0.6, emissive: 0x2a1a1a, emissiveIntensity: 0.1 });
-            const panel = new THREE.Mesh(new THREE.BoxGeometry(0.28, 1.3, 0.12), panelMat);
-            panel.position.y = 0.9;
-            panel.castShadow = true; panel.receiveShadow = true;
-            group.add(panel);
-            const borderMat = new THREE.MeshStandardMaterial({ color: 0xffcc66, emissive: 0x553311, emissiveIntensity: 0.1 });
-            const border = new THREE.Mesh(new THREE.BoxGeometry(0.33, 1.35, 0.03), borderMat);
-            border.position.y = 0.9; border.position.z = 0.07;
-            border.castShadow = true; border.receiveShadow = true;
-            group.add(border);
-            group.position.set(x, y, z);
-            return group;
+       
+        // 東南方 = 右前 = 正X, 正Z (以廟門朝Z+為前，右為X+)
+        // 奉天宮廟門朝Z+，後山在Z-，所以前方是Z+，右側是X+
+        // 因此東南方向 = (正X, 正Z)
+        function createTaipei101() {
+            const towerGroup = new THREE.Group();
+            const baseMat = new THREE.MeshStandardMaterial({ color: 0x6a8a9a, roughness: 0.6, emissive: 0x1a3a4a, emissiveIntensity: 0.15 });
+            const base1 = new THREE.Mesh(new THREE.BoxGeometry(1.3, 0.5, 1.3), baseMat);
+            base1.position.y = 0.25; base1.castShadow = true; base1.receiveShadow = true; towerGroup.add(base1);
+            const seg1 = new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.6, 1.0), new THREE.MeshStandardMaterial({ color: 0x8aaacc, roughness: 0.5, emissive: 0x2a4a6a, emissiveIntensity: 0.1 }));
+            seg1.position.y = 1.1; seg1.castShadow = true; seg1.receiveShadow = true; towerGroup.add(seg1);
+            const seg2 = new THREE.Mesh(new THREE.BoxGeometry(0.85, 1.3, 0.85), new THREE.MeshStandardMaterial({ color: 0x9abbe0 }));
+            seg2.position.y = 2.2; seg2.castShadow = true; seg2.receiveShadow = true; towerGroup.add(seg2);
+            const seg3 = new THREE.Mesh(new THREE.BoxGeometry(0.7, 1.2, 0.7), new THREE.MeshStandardMaterial({ color: 0xaaccff }));
+            seg3.position.y = 3.2; seg3.castShadow = true; seg3.receiveShadow = true; towerGroup.add(seg3);
+            const seg4 = new THREE.Mesh(new THREE.BoxGeometry(0.55, 1.0, 0.55), new THREE.MeshStandardMaterial({ color: 0xcceeff }));
+            seg4.position.y = 4.2; seg4.castShadow = true; seg4.receiveShadow = true; towerGroup.add(seg4);
+            const spire = new THREE.Mesh(new THREE.ConeGeometry(0.2, 0.8, 8), new THREE.MeshStandardMaterial({ color: 0xffdd66, emissive: 0x553300, emissiveIntensity: 0.2 }));
+            spire.position.y = 4.9; spire.castShadow = true; spire.receiveShadow = true; towerGroup.add(spire);
+            // 東南方：右前 (正X, 正Z)，廟門朝Z+，所以前方是Z+，右方是X+
+            towerGroup.position.set(7.5, 0.0, 6.5); // 右前遠方
+            towerGroup.scale.set(0.85, 0.85, 0.85);
+            return towerGroup;
         }
-        const leftCouplet = createCouplet(-1.3, 0.9, 2.25);
-        scene.add(leftCouplet);
-        const rightCouplet = createCouplet(1.3, 0.9, 2.25);
-        scene.add(rightCouplet);
-        const topBannerMat = new THREE.MeshStandardMaterial({ color: 0xc43a1e, roughness: 0.6 });
-        const topBanner = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.28, 0.18), topBannerMat);
-        topBanner.position.set(0, 1.9, 2.3);
-        topBanner.castShadow = true; topBanner.receiveShadow = true;
-        scene.add(topBanner);
-        const topBorder = new THREE.Mesh(new THREE.BoxGeometry(1.85, 0.33, 0.06), new THREE.MeshStandardMaterial({ color: 0xffcc66 }));
-        topBorder.position.set(0, 1.9, 2.42);
-        topBorder.castShadow = true; topBorder.receiveShadow = true;
-        scene.add(topBorder);
+        const taipei101 = createTaipei101();
+        scene.add(taipei101);
+        
+        
+        const buildMat = new THREE.MeshStandardMaterial({ color: 0x6a7a8a, roughness: 0.7 });
+        for (let i=0;i<4;i++) {
+            const b = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.6+Math.random()*0.4, 0.4), buildMat);
+            b.position.set(7.0 + Math.random()*1.8, 0.3, 6.0 + Math.random()*1.8);
+            b.castShadow = true; b.receiveShadow = true; scene.add(b);
+        }
 
-        // ★★★ 財神爺（帶元寶）模型 · 將加入走入動畫 ★★★
+        // 春聯立體裝飾
+        function createCouplet(x,y,z) { const g=new THREE.Group(); const p=new THREE.Mesh(new THREE.BoxGeometry(0.28,1.3,0.12), new THREE.MeshStandardMaterial({color:0xc43a1e})); p.position.y=0.9; p.castShadow=true; p.receiveShadow=true; g.add(p); const b=new THREE.Mesh(new THREE.BoxGeometry(0.33,1.35,0.03), new THREE.MeshStandardMaterial({color:0xffcc66})); b.position.y=0.9; b.position.z=0.07; b.castShadow=true; g.add(b); g.position.set(x,y,z); return g; }
+        scene.add(createCouplet(-1.3,0.9,2.25)); scene.add(createCouplet(1.3,0.9,2.25));
+        const topBanner = new THREE.Mesh(new THREE.BoxGeometry(1.8,0.28,0.18), new THREE.MeshStandardMaterial({color:0xc43a1e}));
+        topBanner.position.set(0,1.9,2.3); topBanner.castShadow = true; topBanner.receiveShadow = true; scene.add(topBanner);
+        const topBorder = new THREE.Mesh(new THREE.BoxGeometry(1.85,0.33,0.06), new THREE.MeshStandardMaterial({color:0xffcc66}));
+        topBorder.position.set(0,1.9,2.42); topBorder.castShadow = true; topBorder.receiveShadow = true; scene.add(topBorder);
+
+        // ★★★ 財神爺（帶元寶）走入 ★★★
         function createGodOfWealth() {
             const godGroup = new THREE.Group();
-            
-            // 身體（紅袍）
-            const bodyGeo = new THREE.CylinderGeometry(0.45, 0.45, 1.1, 8);
-            const bodyMat = new THREE.MeshStandardMaterial({ color: 0xd43a3a, roughness: 0.5, emissive: 0x3a1a1a, emissiveIntensity: 0.1 });
-            const body = new THREE.Mesh(bodyGeo, bodyMat);
-            body.position.y = 0.7;
-            body.castShadow = true; body.receiveShadow = true;
-            godGroup.add(body);
-            
-            // 頭
-            const headGeo = new THREE.SphereGeometry(0.28);
-            const headMat = new THREE.MeshStandardMaterial({ color: 0xffccaa, roughness: 0.4 });
-            const head = new THREE.Mesh(headGeo, headMat);
-            head.position.y = 1.32;
-            head.castShadow = true; head.receiveShadow = true;
-            godGroup.add(head);
-            
-            // 帽子（財神帽）
-            const hatGeo = new THREE.ConeGeometry(0.35, 0.5, 8);
-            const hatMat = new THREE.MeshStandardMaterial({ color: 0xeebb44, emissive: 0x553311, emissiveIntensity: 0.2 });
-            const hat = new THREE.Mesh(hatGeo, hatMat);
-            hat.position.y = 1.62;
-            hat.rotation.y = 0.3;
-            hat.castShadow = true; hat.receiveShadow = true;
-            godGroup.add(hat);
-            
-            const hatBall = new THREE.Mesh(new THREE.SphereGeometry(0.09), new THREE.MeshStandardMaterial({ color: 0xff3333, emissive: 0x441111 }));
-            hatBall.position.set(0.15, 1.8, 0.1);
-            hatBall.castShadow = true;
-            godGroup.add(hatBall);
-            
-            // 鬍子
-            const beardGeo = new THREE.TorusGeometry(0.18, 0.05, 6, 20, Math.PI);
-            const beardMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9 });
-            const beard = new THREE.Mesh(beardGeo, beardMat);
-            beard.position.set(0, 1.12, 0.2);
-            beard.rotation.x = 0.2;
-            beard.rotation.z = 0.1;
-            beard.scale.set(1, 0.4, 0.3);
-            beard.castShadow = true;
-            godGroup.add(beard);
-            
-            // 左手元寶（金色）
+            const body = new THREE.Mesh(new THREE.CylinderGeometry(0.45,0.45,1.1,8), new THREE.MeshStandardMaterial({ color: 0xd43a3a, roughness:0.5, emissive:0x3a1a1a, emissiveIntensity:0.1 }));
+            body.position.y = 0.7; body.castShadow = true; body.receiveShadow = true; godGroup.add(body);
+            const head = new THREE.Mesh(new THREE.SphereGeometry(0.28), new THREE.MeshStandardMaterial({ color:0xffccaa, roughness:0.4 }));
+            head.position.y = 1.32; head.castShadow = true; head.receiveShadow = true; godGroup.add(head);
+            const hat = new THREE.Mesh(new THREE.ConeGeometry(0.35,0.5,8), new THREE.MeshStandardMaterial({ color:0xeebb44, emissive:0x553311, emissiveIntensity:0.2 }));
+            hat.position.y = 1.62; hat.rotation.y = 0.3; hat.castShadow = true; hat.receiveShadow = true; godGroup.add(hat);
+            const hatBall = new THREE.Mesh(new THREE.SphereGeometry(0.09), new THREE.MeshStandardMaterial({ color:0xff3333, emissive:0x441111 }));
+            hatBall.position.set(0.15,1.8,0.1); hatBall.castShadow = true; godGroup.add(hatBall);
+            const beard = new THREE.Mesh(new THREE.TorusGeometry(0.18,0.05,6,20,Math.PI), new THREE.MeshStandardMaterial({ color:0xffffff, roughness:0.9 }));
+            beard.position.set(0,1.12,0.2); beard.rotation.x=0.2; beard.rotation.z=0.1; beard.scale.set(1,0.4,0.3); beard.castShadow=true; godGroup.add(beard);
             const yuanBaoGroup = new THREE.Group();
-            const yuanBaoMain = new THREE.Mesh(new THREE.SphereGeometry(0.13), new THREE.MeshStandardMaterial({ color: 0xffdd44, emissive: 0x553300, emissiveIntensity: 0.2 }));
-            yuanBaoMain.scale.set(1.2, 0.5, 0.8);
-            yuanBaoMain.rotation.z = 0.5;
-            yuanBaoMain.castShadow = true;
-            yuanBaoGroup.add(yuanBaoMain);
-            
-            const yuanBaoTop = new THREE.Mesh(new THREE.TorusGeometry(0.1, 0.04, 6, 16, Math.PI), new THREE.MeshStandardMaterial({ color: 0xffcc33 }));
-            yuanBaoTop.rotation.x = 1.5;
-            yuanBaoTop.position.y = 0.1;
-            yuanBaoTop.scale.set(1, 0.4, 0.5);
-            yuanBaoTop.castShadow = true;
-            yuanBaoGroup.add(yuanBaoTop);
-            
-            yuanBaoGroup.position.set(0.5, 1.0, 0.4);
-            yuanBaoGroup.rotation.z = -0.4;
-            yuanBaoGroup.rotation.x = 0.3;
-            godGroup.add(yuanBaoGroup);
-            
-            // 右手自然擺動
-            const rightHand = new THREE.Mesh(new THREE.SphereGeometry(0.13), new THREE.MeshStandardMaterial({ color: 0xffccaa }));
-            rightHand.position.set(-0.45, 0.95, 0.35);
-            rightHand.castShadow = true;
-            godGroup.add(rightHand);
-            
+            const yuanMain = new THREE.Mesh(new THREE.SphereGeometry(0.13), new THREE.MeshStandardMaterial({ color:0xffdd44, emissive:0x553300, emissiveIntensity:0.2 }));
+            yuanMain.scale.set(1.2,0.5,0.8); yuanMain.rotation.z = 0.5; yuanMain.castShadow = true; yuanBaoGroup.add(yuanMain);
+            const yuanTop = new THREE.Mesh(new THREE.TorusGeometry(0.1,0.04,6,16,Math.PI), new THREE.MeshStandardMaterial({ color:0xffcc33 }));
+            yuanTop.rotation.x = 1.5; yuanTop.position.y = 0.1; yuanTop.scale.set(1,0.4,0.5); yuanTop.castShadow = true; yuanBaoGroup.add(yuanTop);
+            yuanBaoGroup.position.set(0.5,1.0,0.4); yuanBaoGroup.rotation.z = -0.4; yuanBaoGroup.rotation.x = 0.3; godGroup.add(yuanBaoGroup);
+            const rightHand = new THREE.Mesh(new THREE.SphereGeometry(0.13), new THREE.MeshStandardMaterial({ color:0xffccaa }));
+            rightHand.position.set(-0.45,0.95,0.35); rightHand.castShadow = true; godGroup.add(rightHand);
             godGroup.position.y = 0.2;
             return godGroup;
         }
-
-        // 建立財神，放在起始點（左側遠處）
         const godOfWealth = createGodOfWealth();
-        godOfWealth.position.set(-6.5, 0.25, -1.0);
-        godOfWealth.rotation.y = 0.6;
+        godOfWealth.position.set(-6.2, 0.25, -1.2);
+        godOfWealth.rotation.y = 0.8;
         scene.add(godOfWealth);
 
-        // ★★★ 元寶噴泉系統：許多元寶從奉天宮廟門/屋頂噴出 ★★★
+        // ★★★ 元寶噴泉：300個元寶大噴發，馬年旺旺 ★★★
         const ybArray = [];
         function createYuanBao() {
-            const group = new THREE.Group();
-            const main = new THREE.Mesh(new THREE.SphereGeometry(0.12), new THREE.MeshStandardMaterial({ color: 0xffdd44, emissive: 0x553300, emissiveIntensity: 0.2 }));
-            main.scale.set(1.2, 0.5, 0.8);
-            main.castShadow = true; main.receiveShadow = true;
-            group.add(main);
-            const topRing = new THREE.Mesh(new THREE.TorusGeometry(0.09, 0.03, 6, 16, Math.PI), new THREE.MeshStandardMaterial({ color: 0xffcc33 }));
-            topRing.rotation.x = 1.5;
-            topRing.position.y = 0.08;
-            topRing.scale.set(1, 0.4, 0.5);
-            topRing.castShadow = true;
-            group.add(topRing);
-            return group;
+            const g = new THREE.Group();
+            const main = new THREE.Mesh(new THREE.SphereGeometry(0.12), new THREE.MeshStandardMaterial({ color:0xffdd44, emissive:0x553300, emissiveIntensity:0.2 }));
+            main.scale.set(1.2,0.5,0.8); main.castShadow = true; main.receiveShadow = true; g.add(main);
+            const top = new THREE.Mesh(new THREE.TorusGeometry(0.09,0.03,6,16,Math.PI), new THREE.MeshStandardMaterial({ color:0xffcc33 }));
+            top.rotation.x = 1.5; top.position.y = 0.08; top.scale.set(1,0.4,0.5); top.castShadow = true; g.add(top);
+            return g;
         }
-
-        // 初始化 60 個元寶，放在廟的周圍發射點 (從廟中心噴出)
-        for (let i = 0; i < 80; i++) {
+        for (let i=0;i<300;i++) {
             const yb = createYuanBao();
-            // 隨機起始位置：廟門附近 (x: -1.5~1.5, y: 1.5~3.5, z: 1.8~2.2) 以及屋頂區域
-            const spawnX = (Math.random() - 0.5) * 3.2;
-            const spawnY = 1.8 + Math.random() * 2.2;
-            const spawnZ = 1.6 + Math.random() * 1.2;
-            yb.position.set(spawnX, spawnY, spawnZ);
-            
-            // 隨機速度向量
-            const vx = (Math.random() - 0.5) * 0.08;
-            const vy = 0.03 + Math.random() * 0.08;
-            const vz = (Math.random() - 0.5) * 0.08;
-            
+            yb.position.set((Math.random()-0.5)*6, 1.8+Math.random()*4.5, 1.0+Math.random()*2.5);
+            const vx = (Math.random()-0.5)*0.13;
+            const vy = 0.06 + Math.random()*0.15;
+            const vz = (Math.random()-0.5)*0.13;
             scene.add(yb);
-            ybArray.push({
-                mesh: yb,
-                vel: new THREE.Vector3(vx, vy, vz),
-                life: Math.random() * 100 + 50,
-                maxLife: 120
-            });
+            ybArray.push({ mesh: yb, vel: new THREE.Vector3(vx,vy,vz) });
         }
-
-        // 再加一些元寶從廟頂寶頂噴出
-        for (let i = 0; i < 30; i++) {
+        for (let i=0;i<100;i++) {
             const yb = createYuanBao();
-            yb.position.set((Math.random()-0.5)*2.5, 4.0 + Math.random()*1.2, (Math.random()-0.5)*1.5);
-            const vx = (Math.random() - 0.5) * 0.09;
-            const vy = 0.04 + Math.random() * 0.09;
-            const vz = (Math.random() - 0.5) * 0.09;
-            scene.add(yb);
-            ybArray.push({
-                mesh: yb,
-                vel: new THREE.Vector3(vx, vy, vz),
-                life: Math.random() * 80 + 40,
-                maxLife: 120
-            });
+            yb.position.set((Math.random()-0.5)*6, 2.5+Math.random()*4.5, -4.0+Math.random()*2.5);
+            const vx = (Math.random()-0.5)*0.11;
+            const vy = 0.05+Math.random()*0.13;
+            const vz = (Math.random()-0.5)*0.11;
+            scene.add(yb); ybArray.push({mesh: yb, vel: new THREE.Vector3(vx,vy,vz)});
         }
 
-        // 漂浮元寶 (跟隨財神)
-        const floatingYuan = new THREE.Mesh(new THREE.SphereGeometry(0.1), new THREE.MeshStandardMaterial({ color: 0xffaa00, emissive: 0x553300 }));
-        floatingYuan.scale.set(1.2, 0.5, 0.8);
-        floatingYuan.position.set(-6.5, 1.1, -0.8);
-        scene.add(floatingYuan);
-        
-        // 控制視角
+        const floatingYuan = new THREE.Mesh(new THREE.SphereGeometry(0.1), new THREE.MeshStandardMaterial({ color:0xffaa00, emissive:0x553300 }));
+        floatingYuan.scale.set(1.2,0.5,0.8); floatingYuan.position.set(-6.2,1.1,-1.0); scene.add(floatingYuan);
+
         const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.06;
-        controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.5;
-        controls.enableZoom = true;
-        controls.enablePan = true;
-        controls.target.set(0, 1.8, 0);
+        controls.enableDamping = true; controls.dampingFactor = 0.06; controls.autoRotate = true; controls.autoRotateSpeed = 0.4; controls.target.set(0,2.0,-1.0);
 
-        // 動畫：財神走入、元寶噴泉更新
+        // 動畫循環
         let godDirection = 1;
-        let godStep = 0;
-
         function animate() {
             requestAnimationFrame(animate);
-            
-            // 財神走入動畫：來回走動
-            godStep += 0.012;
-            if (godDirection > 0) {
-                godOfWealth.position.x += 0.025;
-                floatingYuan.position.x += 0.025;
-                if (godOfWealth.position.x >= 2.2) { godDirection = -1; }
-            } else {
-                godOfWealth.position.x -= 0.025;
-                floatingYuan.position.x -= 0.025;
-                if (godOfWealth.position.x <= -6.0) { godDirection = 1; }
-            }
-            godOfWealth.position.y = 0.25 + Math.sin(Date.now() * 0.006) * 0.04;
-            floatingYuan.position.y = 1.1 + Math.sin(Date.now() * 0.008) * 0.1;
+            godOfWealth.position.x += godDirection * 0.022;
+            floatingYuan.position.x += godDirection * 0.022;
+            if (godOfWealth.position.x >= 2.8) godDirection = -1;
+            if (godOfWealth.position.x <= -6.2) godDirection = 1;
+            godOfWealth.position.y = 0.25 + Math.sin(Date.now()*0.006)*0.04;
+            floatingYuan.position.y = 1.1 + Math.sin(Date.now()*0.008)*0.1;
             floatingYuan.rotation.y += 0.03;
-            
-            // ★★★ 元寶噴泉：移動、旋轉、重置 ★★★
+
             ybArray.forEach(item => {
-                // 移動
                 item.mesh.position.x += item.vel.x;
                 item.mesh.position.y += item.vel.y;
                 item.mesh.position.z += item.vel.z;
-                
-                // 旋轉
-                item.mesh.rotation.x += 0.05;
-                item.mesh.rotation.y += 0.08;
-                item.mesh.rotation.z += 0.04;
-                
-                // 重力影響，稍微下降
-                item.vel.y -= 0.0025;
-                
-                // 邊界重置：掉到地面以下或太遠，就重置回廟口
-                if (item.mesh.position.y < 0.2 || Math.abs(item.mesh.position.x) > 8 || Math.abs(item.mesh.position.z) > 6) {
-                    // 重新出生在廟門附近
-                    item.mesh.position.x = (Math.random() - 0.5) * 3.0;
-                    item.mesh.position.y = 2.0 + Math.random() * 2.0;
-                    item.mesh.position.z = 1.8 + Math.random() * 1.0;
-                    // 新速度
-                    item.vel.x = (Math.random() - 0.5) * 0.08;
-                    item.vel.y = 0.05 + Math.random() * 0.09;
-                    item.vel.z = (Math.random() - 0.5) * 0.08;
+                item.mesh.rotation.x += 0.06;
+                item.mesh.rotation.y += 0.09;
+                item.vel.y -= 0.0023;
+                if (item.mesh.position.y < 0.1 || Math.abs(item.mesh.position.x) > 12 || Math.abs(item.mesh.position.z) > 11) {
+                    item.mesh.position.x = (Math.random()-0.5)*5.0;
+                    item.mesh.position.y = 2.5 + Math.random()*4.0;
+                    item.mesh.position.z = 1.2 + Math.random()*2.2;
+                    item.vel.x = (Math.random()-0.5)*0.11;
+                    item.vel.y = 0.07 + Math.random()*0.13;
+                    item.vel.z = (Math.random()-0.5)*0.11;
+                }
+            });
+            
+            
+            taipei101.children.forEach((child, idx) => {
+                if (child.material && child.material.emissive) {
+                    child.material.emissiveIntensity = 0.15 + Math.sin(Date.now() * 0.003 + idx) * 0.06;
                 }
             });
             
@@ -961,100 +774,65 @@
         }
         animate();
 
-        window.addEventListener('resize', () => {
-            const w = canvas.clientWidth;
-            const h = canvas.clientHeight;
-            renderer.setSize(w, h);
-            camera.aspect = w / h;
-            camera.updateProjectionMatrix();
+        window.addEventListener('resize', ()=>{
+            const w = canvas.clientWidth, h = canvas.clientHeight;
+            renderer.setSize(w,h); camera.aspect = w/h; camera.updateProjectionMatrix();
         });
 
-        // ---------- 互動核心 · 3D文字放大＋JACKY音效＋擲筊 ----------
+        // ---------- 互動核心 · 3D文字放大＋JACKY音效＋擲筊 — 單一音樂開關 ----------
         const moon = document.getElementById('moonDisplay');
         const resultMsg = document.getElementById('resultMessage');
         const shakeArea = document.getElementById('shakeArea');
         const blessDisplay = document.getElementById('blessDisplay');
-        
         const audio = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicToggle');
         let isPlaying = true;
 
         const blessings = [
-            "💰 元寶從奉天宮噴出來啦！財神到",
-            "🐴 Jacky 雙馬奔騰 · 元寶滿天飛",
-            "🏮 聖筊連連 · 奉天宮金幣灑不停",
-            "🧧 千顆元寶萬兩金 · 財神爺賜福",
-            "🏃 財神陪你跑 · 元寶一路發",
-            "🌲 元寶掉進森林 · 自然生財",
-            "☁️ 天降元寶 · 福氣滿天",
-            "⛰️ 元寶堆成山 · 步步高升",
-            "🎋 財神賜聖筊 · 萬事如意"
+            "🐴🐴 丙午馬年 · 奉天宮萬馬奔騰 元寶滿天",
+            "🐴 聖筊迎駿馬 · 財神送金山 · 馬年大發",
+            "🏮 馬到成功 · 奉天宮後山元寶噴泉",
+            "🧧 金馬元寶 · 奉天發財 · 福氣啦",
+            "🐴 馬年行大運 · 財神爺陪你跑後山",
+            "🌲 後山森林駿馬躍 · 元寶灑滿山",
+            "☁️ 天降元寶 · 馬年如意 · 元寶伴佑",
+            "⛰️ 元寶堆成馬鞍山 · 步步高升",
+            "🎋 財神賜聖筊 · 馬年富貴連連"
         ];
 
-        function initAudio() {
-            audio.volume = 0.4;
-            const playPromise = audio.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => { isPlaying = true; musicBtn.textContent = '🔊'; })
-                .catch(() => { isPlaying = false; musicBtn.textContent = '🔇'; });
-            }
-        }
+        function initAudio() { audio.volume = 0.4; const p = audio.play(); p.then(()=>{ isPlaying=true; musicBtn.textContent='🔊'; }).catch(()=>{ isPlaying=false; musicBtn.textContent='🔇'; }); }
         initAudio();
-
-        musicBtn.addEventListener('click', () => {
-            if (isPlaying) { audio.pause(); musicBtn.textContent = '🔇'; isPlaying = false; }
-            else { audio.play().then(() => { musicBtn.textContent = '🔊'; isPlaying = true; }); }
-        });
+        musicBtn.addEventListener('click', ()=>{ if(isPlaying) { audio.pause(); musicBtn.textContent='🔇'; isPlaying=false; } else { audio.play().then(()=>{ musicBtn.textContent='🔊'; isPlaying=true; }); } });
 
         function playJACKY() {
             try {
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
                 const ctx = new AudioContext();
                 if (ctx.state === 'suspended') ctx.resume();
-                function playJa(time, pan, vol) {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    const panner = ctx.createStereoPanner();
-                    osc.type = 'sawtooth'; osc.frequency.value = 780;
-                    panner.pan.value = pan; gain.gain.value = vol;
-                    osc.connect(gain); gain.connect(panner); panner.connect(ctx.destination);
-                    osc.start(time); osc.stop(time + 0.13);
-                    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.11);
-                }
-                function playCky(time, pan, vol) {
-                    const osc = ctx.createOscillator(); const gain = ctx.createGain(); const panner = ctx.createStereoPanner();
-                    osc.type = 'triangle'; osc.frequency.value = 520;
-                    panner.pan.value = pan; gain.gain.value = vol;
-                    osc.connect(gain); gain.connect(panner); panner.connect(ctx.destination);
-                    osc.start(time); osc.stop(time + 0.15);
-                    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.13);
-                }
-                function playKey(time, pan, vol) {
-                    const osc = ctx.createOscillator(); const gain = ctx.createGain(); const panner = ctx.createStereoPanner();
-                    osc.type = 'sawtooth'; osc.frequency.value = 920;
-                    panner.pan.value = pan; gain.gain.value = vol;
-                    osc.connect(gain); gain.connect(panner); panner.connect(ctx.destination);
-                    osc.start(time); osc.stop(time + 0.13);
-                    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.11);
-                }
                 const now = ctx.currentTime;
-                playJa(now, -0.5, 0.4); playCky(now+0.09, -0.4, 0.38); playKey(now+0.18, -0.3, 0.42);
-                playJa(now+0.4, 0.3, 0.45); playCky(now+0.49, 0.4, 0.43); playKey(now+0.58, 0.5, 0.46);
-                playJa(now+0.85, -0.2, 0.5); playCky(now+0.94, 0.1, 0.48); playKey(now+1.03, 0.0, 0.52);
+                const playTone = (time, freq, type, pan, vol) => {
+                    const osc = ctx.createOscillator(); const gain = ctx.createGain(); const panner = ctx.createStereoPanner();
+                    osc.type = type; osc.frequency.value = freq; panner.pan.value = pan; gain.gain.value = vol;
+                    osc.connect(gain); gain.connect(panner); panner.connect(ctx.destination);
+                    osc.start(time); osc.stop(time+0.12); gain.gain.exponentialRampToValueAtTime(0.001, time+0.1);
+                };
+                playTone(now, 780, 'sawtooth', -0.5, 0.4); playTone(now+0.09, 520, 'triangle', -0.4, 0.38); playTone(now+0.18, 920, 'sawtooth', -0.3, 0.42);
+                playTone(now+0.4, 880, 'triangle', 0.3, 0.45); playTone(now+0.49, 540, 'sawtooth', 0.4, 0.43); playTone(now+0.58, 960, 'sawtooth', 0.5, 0.46);
+                playTone(now+0.85, 760, 'triangle', -0.2, 0.5); playTone(now+0.94, 590, 'sawtooth', 0.1, 0.48); playTone(now+1.03, 1010, 'sawtooth', 0.0, 0.52);
             } catch(e) {}
         }
 
         function doSheng() {
             moon.textContent = '🥢🥢';
-            resultMsg.innerHTML = '🥢🥢 Jacky 財神聖筊 · 元寶爆發 🪙';
-            const text = blessings[Math.floor(Math.random() * blessings.length)];
+            resultMsg.innerHTML = '🥢🥢 聖筊 · 馬年金元寶滾滾來 🐴';
+            const text = blessings[Math.floor(Math.random()*blessings.length)];
             blessDisplay.textContent = text;
             blessDisplay.classList.remove('sheng-text-3d');
             void blessDisplay.offsetWidth;
             blessDisplay.classList.add('sheng-text-3d');
             playJACKY();
-            if (navigator.vibrate) navigator.vibrate([30, 40, 30, 60]);
-            setTimeout(() => blessDisplay.classList.remove('sheng-text-3d'), 1000);
+            if (navigator.vibrate) navigator.vibrate([30,40,30,60]);
+            setTimeout(()=> blessDisplay.classList.remove('sheng-text-3d'), 1000);
         }
 
         let lastShake = 0;
@@ -1063,16 +841,14 @@
                 const acc = e.accelerationIncludingGravity;
                 if (!acc) return;
                 const now = Date.now();
-                if (now - lastShake < 1000) return;
-                const x = Math.abs(acc.x || 0); const y = Math.abs(acc.y || 0); const z = Math.abs(acc.z || 0);
-                if ((x > 9.8 || y > 9.8 || z > 9.8) && (x + y + z > 25)) { lastShake = now; doSheng(); }
+                if (now-lastShake<1000) return;
+                const x = Math.abs(acc.x||0), y = Math.abs(acc.y||0), z = Math.abs(acc.z||0);
+                if ((x>9.8||y>9.8||z>9.8) && (x+y+z>25)) { lastShake=now; doSheng(); }
             });
         }
-
         moon.addEventListener('click', doSheng);
         shakeArea.addEventListener('click', doSheng);
-
-        blessDisplay.textContent = "💰 元寶滿地堆 ·  搖聖筊迎雙馬";
+        blessDisplay.textContent = "🐴🐴 丙午馬年·奉天發財 🐴🐴";
     </script>
 </body>
 </html>
